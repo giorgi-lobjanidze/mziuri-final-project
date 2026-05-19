@@ -1,8 +1,12 @@
-@use 'abstracts';
-
-@use 'components/spinnerloader';
-@use 'components/btns';
-
-@use 'layouts/header';
-
-@use 'routes/home';
+// @import './abstracts/mixins';
+@use './abstracts/variables';
+@use './components/spinnerloader';
+@use './components/btns';
+@use './layouts/header';
+@use './routes/home';
+@use './routes/shop';
+@use './components/product';
+@use './components/productlist';
+@use './components/filtersection';
+@use './components/sortby';
+// @import './page';

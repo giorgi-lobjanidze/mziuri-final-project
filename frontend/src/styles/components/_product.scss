@@ -1,0 +1,103 @@
+.product-card {
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+    .product-badge {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: $color-main;
+        color: white;
+        font-family: $font-family-2;
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 2px;
+        z-index: 1;
+    }
+
+    .product-img {
+        background: #E0E0E0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+        height: 280px;
+
+        img {
+            height: 100%;
+            object-fit: contain;
+            transition: 0.3s;
+        }
+
+        &:hover img {
+            transform: scale(1.05);
+        }
+    }
+
+    .product-info {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        h3 {
+            font-family: $font-family-2;
+            font-size: 16px;
+            font-weight: 600;
+            color: #222;
+        }
+
+        .product-volume {
+            font-family: $font-family-2;
+            font-size: 13px;
+            color: #888;
+        }
+
+        .product-rating {
+            font-size: 14px;
+            color: $color-main;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            .price-current {
+                font-family: $font-family-2;
+                font-size: 16px;
+                font-weight: 700;
+                color: $color-main;
+            }
+
+            .price-old {
+                font-family: $font-family-2;
+                font-size: 14px;
+                color: #aaa;
+                text-decoration: line-through;
+            }
+        }
+
+        .add-to-cart {
+            margin-top: 8px;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid #ddd;
+            font-family: $font-family-2;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+
+            &:hover {
+                background: $color-main;
+                border-color: $color-main;
+                color: white;
+            }
+        }
+    }
+}
