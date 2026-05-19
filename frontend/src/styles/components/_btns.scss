@@ -1,0 +1,35 @@
+@use '../abstracts' as *;
+
+.primary-btn {
+  background-color: $color-main;
+  color:            black;
+  border:           none;
+  padding:          14px 28px;
+  font-family:      $font-family-2;
+  font-size:        15px;
+  cursor:           pointer;
+  transition:       0.5s;
+  border-radius:    5px;
+
+  &:hover {
+    background-color: $color-dark;
+    color:            white;
+  }
+}
+
+.secondary-btn {
+  background-color: $color-light;
+  color:            black;
+  border:           1px solid rgba(255, 255, 255, 0.4);
+  padding:          14px 28px;
+  font-family:      $font-family-2;
+  font-size:        15px;
+  cursor:           pointer;
+  transition:       0.5s;
+  border-radius:    5px;
+
+  &:hover {
+    background-color: $color-main;
+    border-color:     $color-main;
+  }
+}

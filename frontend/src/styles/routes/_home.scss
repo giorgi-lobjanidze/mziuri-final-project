@@ -1,0 +1,61 @@
+@use '../abstracts' as *;
+
+.hero {
+  background-image:    url('//brew-blis.myshopify.com/cdn/shop/files/Hero_Banner.png?v=1736771645');
+  background-size:     cover;
+  background-position: center;
+  height:              90vh;
+  padding-left:        200px;
+  padding-right:       200px;
+  position:            relative;
+  overflow:            hidden;
+
+  @include flex(space-between, center, 0, row);
+
+  .hero-text {
+    @include flex(center, flex-start, 0, column);
+
+    p, h1 { color: white; }
+
+    .arrivals {
+      @include flex(flex-start, center, 10px, row);
+      font-family:    $font-family-2;
+      text-transform: uppercase;
+      color:          #feedec;
+    }
+
+    .hero-header {
+      font-size:      52px;
+      font-family:    $font-family-2;
+      font-weight:    400;
+      text-transform: capitalize;
+      line-height:    120%;
+    }
+
+    .hero-p {
+      font-size:      14px;
+      font-family:    $font-family-2;
+      color:          $color-text-muted;
+      text-transform: capitalize;
+      margin-top:     24px;
+    }
+
+    .btns-container {
+      @include flex(flex-start, center, 1rem, row);
+      margin-top: 50px;
+    }
+  }
+
+  .img-container {
+    display:         flex;
+    align-items:     flex-end;
+    justify-content: flex-end;
+
+    img {
+      position: absolute;
+      right:    180px;
+      bottom:   0;
+      top:      auto;
+    }
+  }
+}
