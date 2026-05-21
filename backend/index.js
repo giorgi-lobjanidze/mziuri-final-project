@@ -2,6 +2,9 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser';
+import { rateLimit } from 'express-rate-limit'
+import helmet from "helmet";
+import compression from 'compression';
 // TODO: create these modules and import them:
 // import { connectDB } from './db/connectDB.js'
 // import { auth } from './middleware/auth.js'
@@ -15,12 +18,22 @@ dotenv.config()
 app.use(express.json())
 app.use(cookieParser()); 
 
+app.use(compression())
+app.use(helmet())
+
 app.use(cors({
     origin: (origin, callback) => {
         callback(null, origin || '*'); 
     },    
     credentials: true 
 }));
+
+const limiter = rateLimit({
+    windowMs: 5 * 60 * 1000, //5 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    message: "Too many requests from this IP, please try again later"
+})
+app.use(limiter)
 
 // app.use('/api/todos', auth, TodosRouter)  // uncomment after creating auth middleware and TodosRouter
 // app.use('/api/users', UsersRouter)         // uncomment after creating UsersRouter
