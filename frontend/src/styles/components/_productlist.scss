@@ -1,6 +1,48 @@
+@use '../abstracts' as *;
+.product-list-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
 .product-list {
-    flex: 1;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  .pagination-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: #e8e8e8;
+    border-radius: 6px;
+    font-family: $font-family-2;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s;
+    color: #333;
+
+    &:hover:not(:disabled) {
+      background: $color-main;
+      color: white;
+    }
+
+    &.active {
+      background: $color-main;
+      color: white;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+  }
 }

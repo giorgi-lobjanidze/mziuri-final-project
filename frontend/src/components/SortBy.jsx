@@ -56,10 +56,15 @@ function SortBy({ sortBy, setSortBy }) {
       <div className='sort-select'>
         <label>Sort By:</label>
         <select value={sortBy} onChange={e => setSortBy(e.target.value)}>
+          <option value="manual">Featured</option>
+          <option value="most-relevant">Most relevant</option>
+          <option value="best-selling">Best selling</option>
           <option value='alphabetically-az'>Alphabetically, A-Z</option>
           <option value='alphabetically-za'>Alphabetically, Z-A</option>
           <option value='price-low'>Price, Low to High</option>
           <option value='price-high'>Price, High to Low</option>
+          <option value="created-ascending">Date, old to new</option>
+          <option value="created-descending">Date, new to old</option>
         </select>
       </div>
     </div>

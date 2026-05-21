@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Product from './Product'
 import data from '../data/data.json'
+
+const PRODUCTS_PER_PAGE = 6
 
 function getLowestPrice(variants) {
   const available = variants.filter(v => v.available)
@@ -32,13 +34,49 @@ function mapProduct(p) {
 const rawProducts = data.products
 
 function ProductList({ filters, sortBy }) {
+  const [currentPage, setCurrentPage] = useState(1)
+
   const products = rawProducts.map(mapProduct)
+  const totalPages = Math.ceil(products.length / PRODUCTS_PER_PAGE)
+
+  const paginated = products.slice(
+    (currentPage - 1) * PRODUCTS_PER_PAGE,
+    currentPage * PRODUCTS_PER_PAGE
+  )
+
+  const handlePage = (page) => {
+    if (page < 1 || page > totalPages) return
+    setCurrentPage(page)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
-    <div className='product-list'>
-      {products.map(product => (
-        <Product key={product.id} product={product} />
-      ))}
+    <div className='product-list-wrapper'>
+      <div className='product-list'>
+        {paginated.map(product => (
+          <Product key={product.id} product={product} />
+        ))}
+      </div>
+
+      <div className='pagination'>
+        <button className='pagination-btn' onClick={() => handlePage(currentPage - 1)} disabled={currentPage === 1}>
+          «
+        </button>
+
+        {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+          <button
+            key={page}
+            className={`pagination-btn ${currentPage === page ? 'active' : ''}`}
+            onClick={() => handlePage(page)}
+          >
+            {page}
+          </button>
+        ))}
+
+        <button className='pagination-btn' onClick={() => handlePage(currentPage + 1)} disabled={currentPage === totalPages}>
+          »
+        </button>
+      </div>
     </div>
   )
 }

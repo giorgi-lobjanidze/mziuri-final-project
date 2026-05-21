@@ -454,9 +454,28 @@
   top: auto;
 }
 
+.shop-banner {
+  background-image: url(//brew-blis.myshopify.com/cdn/shop/files/breadcrum_1920x.png?v=1737448594);
+  height: 300px;
+  background-size: cover;
+  background-position: center bottom;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row;
+  color: white;
+  font-family: "Nunito Sans", serif;
+  font-size: 50px;
+}
+.shop-banner .icon {
+  height: 48px;
+  width: 44px;
+}
+
 .shop {
   padding: 40px 210px;
-  background-color: #f5f3ee;
+  background-color: #F6FBF2;
 }
 .shop .shop-controls {
   margin-bottom: 24px;
@@ -468,24 +487,28 @@
 }
 
 .product-card {
-  background: white;
+  padding: 15px;
+  background: #F6FBF2;
   border-radius: 4px;
   overflow: hidden;
   position: relative;
   display: flex;
   flex-direction: column;
+  border: 1px solid black;
+  border-radius: 10px;
 }
 .product-card .product-badge {
   position: absolute;
-  top: 12px;
-  left: 12px;
-  background: #FEA90C;
+  top: 28px;
+  left: 28px;
+  background: #DD3842;
   color: white;
   font-family: "Nunito Sans", serif;
   font-size: 12px;
   padding: 4px 8px;
   border-radius: 2px;
   z-index: 1;
+  border-radius: 5px;
 }
 .product-card .product-img {
   background: #E0E0E0;
@@ -494,6 +517,7 @@
   justify-content: center;
   padding: 32px;
   height: 280px;
+  border-radius: 10px;
 }
 .product-card .product-img img {
   height: 100%;
@@ -523,7 +547,7 @@
 }
 .product-card .product-info .product-rating {
   font-size: 14px;
-  color: #FEA90C;
+  color: black;
 }
 .product-card .product-info .product-price {
   display: flex;
@@ -534,7 +558,7 @@
   font-family: "Nunito Sans", serif;
   font-size: 16px;
   font-weight: 700;
-  color: #FEA90C;
+  color: #DD3842;
 }
 .product-card .product-info .product-price .price-old {
   font-family: "Nunito Sans", serif;
@@ -552,6 +576,8 @@
   cursor: pointer;
   transition: 0.3s;
   width: 100%;
+  border: 1px solid black;
+  border-radius: 3px;
 }
 .product-card .product-info .add-to-cart:hover {
   background: #FEA90C;
@@ -559,11 +585,48 @@
   color: white;
 }
 
-.product-list {
+.product-list-wrapper {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.product-list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 24px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.pagination .pagination-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: #e8e8e8;
+  border-radius: 6px;
+  font-family: "Nunito Sans", serif;
+  font-size: 14px;
+  cursor: pointer;
+  transition: 0.2s;
+  color: #333;
+}
+.pagination .pagination-btn:hover:not(:disabled) {
+  background: #FEA90C;
+  color: white;
+}
+.pagination .pagination-btn.active {
+  background: #FEA90C;
+  color: white;
+}
+.pagination .pagination-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
 }
 
 .filter-section {
@@ -599,6 +662,9 @@
   flex-direction: column;
   gap: 10px;
 }
+.filter-section .filter-group p {
+  font-family: "Nunito Sans", serif;
+}
 .filter-section .filter-group .filter-group-header {
   display: flex;
   justify-content: space-between;
@@ -606,7 +672,6 @@
 }
 .filter-section .filter-group .filter-group-header span {
   font-size: 12px;
-  color: #FEA90C;
   cursor: pointer;
   font-family: "Nunito Sans", serif;
 }
@@ -648,7 +713,7 @@
   height: 16px;
 }
 .filter-section .filter-group .price-highlight {
-  color: #FEA90C;
+  color: #dd3842;
   font-weight: 600;
 }
 .filter-section .filter-group .price-inputs {

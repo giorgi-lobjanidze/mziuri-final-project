@@ -1,6 +1,23 @@
+@use '../abstracts' as *;
+.shop-banner {
+    background-image: url(//brew-blis.myshopify.com/cdn/shop/files/breadcrum_1920x.png?v=1737448594);
+    height: 300px;
+    background-size: cover;
+    background-position: center bottom;
+    @include flex(center, center, 10px, row);
+    color: white;
+    font-family: $font-family-2;
+    font-size: 50px;
+    .icon {
+        height: 48px;
+        width: 44px;
+    }
+}
 .shop {
     padding: 40px 210px;
-    background-color: #f5f3ee;
+    background-color: #F6FBF2;
+
+    
 
     .shop-controls {
         margin-bottom: 24px;

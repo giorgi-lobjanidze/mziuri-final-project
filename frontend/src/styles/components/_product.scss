@@ -1,23 +1,27 @@
 @use '../abstracts' as *;
 .product-card {
-    background: white;
+    padding: 15px;
+    background: #F6FBF2;
     border-radius: 4px;
     overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
 
     .product-badge {
         position: absolute;
-        top: 12px;
-        left: 12px;
-        background: $color-main;
+        top: 28px;
+        left: 28px;
+        background: #DD3842;
         color: white;
         font-family: $font-family-2;
         font-size: 12px;
         padding: 4px 8px;
         border-radius: 2px;
         z-index: 1;
+        border-radius: 5px;
     }
 
     .product-img {
@@ -27,6 +31,7 @@
         justify-content: center;
         padding: 32px;
         height: 280px;
+        border-radius: 10px;
 
         img {
             height: 100%;
@@ -60,7 +65,7 @@
 
         .product-rating {
             font-size: 14px;
-            color: $color-main;
+            color: black;
         }
 
         .product-price {
@@ -72,7 +77,7 @@
                 font-family: $font-family-2;
                 font-size: 16px;
                 font-weight: 700;
-                color: $color-main;
+                color: #DD3842;
             }
 
             .price-old {
@@ -93,6 +98,8 @@
             cursor: pointer;
             transition: 0.3s;
             width: 100%;
+            border: 1px solid black;
+            border-radius: 3px;
 
             &:hover {
                 background: $color-main;

@@ -67,12 +67,6 @@ function FilterSection({ filters, setFilters }) {
           <input type='number' placeholder='To' value={priceTo} onChange={e => { setPriceTo(e.target.value); setFilters(prev => ({ ...prev, priceTo: e.target.value })) }} />
         </div>
       </div>
-
-      <div className='filter-banner'>
-        <h3>50% Discount</h3>
-        <p>This Week's Hot Deal</p>
-        <button>Shop Sale</button>
-      </div>
     </div>
   )
 }
