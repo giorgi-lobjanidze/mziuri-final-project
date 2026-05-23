@@ -4,8 +4,10 @@
     align-items: center;
     gap: 16px;
     padding: 12px 16px;
-    background: white;
+    background: #F6FBF2;
     border-radius: 4px;
+    border: 1px solid black;
+    border-radius: 10px;
 
     .view-icons {
         display: flex;
@@ -13,7 +15,7 @@
         gap: 12px;
         cursor: pointer;
 
-        > span {
+        span {
             display: flex;
             align-items: center;
             padding: 4px;
@@ -34,8 +36,8 @@
         }
     }
 
-    > span {  // only the "13 Products" span, not nested ones
-        color: #555;
+    span {
+        color: black;
         font-family: $font-family-2;
         font-size: 14px;
     }

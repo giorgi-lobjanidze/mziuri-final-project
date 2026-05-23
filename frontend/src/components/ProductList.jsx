@@ -28,17 +28,55 @@ function mapProduct(p) {
     reviews: 1,
     image: p.images[0]?.src ?? '',
     inStock,
+    tags: p.tags ?? [],
+    createdAt: p.created_at ?? '',
   }
 }
 
 const rawProducts = data.products
 
-function ProductList({ filters, sortBy }) {
+function ProductList({ filters, sortBy, view }) {
   const [currentPage, setCurrentPage] = useState(1)
 
-  const products = rawProducts.map(mapProduct)
-  const totalPages = Math.ceil(products.length / PRODUCTS_PER_PAGE)
+  let products = rawProducts.map(mapProduct)
 
+  // filter
+  if (filters.category.length > 0) {
+    products = products.filter(p =>
+      filters.category.some(cat => p.tags.includes(cat))
+    )
+  }
+
+  if (filters.availability.length > 0) {
+    products = products.filter(p => {
+      if (filters.availability.includes('instock') && p.inStock) return true
+      if (filters.availability.includes('outofstock') && !p.inStock) return true
+      return false
+    })
+  }
+
+  if (filters.priceFrom !== '') {
+    products = products.filter(p => p.price >= parseFloat(filters.priceFrom))
+  }
+
+  if (filters.priceTo !== '') {
+    products = products.filter(p => p.price <= parseFloat(filters.priceTo))
+  }
+
+  // sort
+  products = [...products].sort((a, b) => {
+    switch (sortBy) {
+      case 'alphabetically-az': return a.name.localeCompare(b.name)
+      case 'alphabetically-za': return b.name.localeCompare(a.name)
+      case 'price-low': return a.price - b.price
+      case 'price-high': return b.price - a.price
+      case 'created-ascending': return new Date(a.createdAt) - new Date(b.createdAt)
+      case 'created-descending': return new Date(b.createdAt) - new Date(a.createdAt)
+      default: return 0
+    }
+  })
+
+  const totalPages = Math.ceil(products.length / PRODUCTS_PER_PAGE)
   const paginated = products.slice(
     (currentPage - 1) * PRODUCTS_PER_PAGE,
     currentPage * PRODUCTS_PER_PAGE
@@ -52,31 +90,26 @@ function ProductList({ filters, sortBy }) {
 
   return (
     <div className='product-list-wrapper'>
-      <div className='product-list'>
-        {paginated.map(product => (
-          <Product key={product.id} product={product} />
-        ))}
+      <div className={`product-list ${view}`}>
+        {products.length === 0
+          ? <p className='no-products'>No products match your filters.</p>
+          : paginated.map(product => (
+              <Product key={product.id} product={product} />
+            ))
+        }
       </div>
 
-      <div className='pagination'>
-        <button className='pagination-btn' onClick={() => handlePage(currentPage - 1)} disabled={currentPage === 1}>
-          «
-        </button>
-
-        {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-          <button
-            key={page}
-            className={`pagination-btn ${currentPage === page ? 'active' : ''}`}
-            onClick={() => handlePage(page)}
-          >
-            {page}
-          </button>
-        ))}
-
-        <button className='pagination-btn' onClick={() => handlePage(currentPage + 1)} disabled={currentPage === totalPages}>
-          »
-        </button>
-      </div>
+      {totalPages > 1 && (
+        <div className='pagination'>
+          <button className='pagination-btn' onClick={() => handlePage(currentPage - 1)} disabled={currentPage === 1}>«</button>
+          {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+            <button key={page} className={`pagination-btn ${currentPage === page ? 'active' : ''}`} onClick={() => handlePage(page)}>
+              {page}
+            </button>
+          ))}
+          <button className='pagination-btn' onClick={() => handlePage(currentPage + 1)} disabled={currentPage === totalPages}>»</button>
+        </div>
+      )}
     </div>
   )
 }
