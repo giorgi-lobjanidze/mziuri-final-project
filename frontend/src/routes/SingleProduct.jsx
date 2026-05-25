@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useLoader } from '../context/LoaderContext'
-import data from '../data/data.json'
+import { getProductById } from '../api/api'
 
 function SingleProduct() {
   const { id } = useParams()
@@ -14,10 +14,11 @@ function SingleProduct() {
   const [quantity, setQuantity] = useState(1)
 
   useEffect(() => {
-    const found = data.products.find(item => item.id === Number(id))
-    setProduct(found)
-    setSelectedVariant(found?.variants[0] ?? null)
-    setSelectedImage(found?.images[0]?.src ?? null)
+    getProductById(id).then(found => {
+      setProduct(found)
+      setSelectedVariant(found?.variants[0] ?? null)
+      setSelectedImage(found?.images[0]?.src ?? null)
+    })
   }, [id])
 
   if (!product) return <div className='single-product-error'>Product not found.</div>
@@ -157,7 +158,7 @@ function SingleProduct() {
                 <path d="M15.8346 6.6665V9.83316L11.243 7.9915C10.443 7.67483 9.55964 7.67483 8.75964 7.9915L4.16797 9.83316V6.6665C4.16797 5.2915 5.29297 4.1665 6.66797 4.1665H13.3346C14.7096 4.1665 15.8346 5.2915 15.8346 6.6665Z" stroke="#515D66" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M12.0846 4.1665H7.91797V2.49984C7.91797 2.0415 8.29297 1.6665 8.7513 1.6665H11.2513C11.7096 1.6665 12.0846 2.0415 12.0846 2.49984V4.1665Z" stroke="#515D66" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              <span>Estimated Delivery:</span> May 28 - Jun 01
+              <span>ㅤEstimated Delivery:</span> May 28 - Jun 01
             </p>
             <p>
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -168,7 +169,7 @@ function SingleProduct() {
                 <path d="M4.0237 16.6001C5.30316 16.6001 6.34036 15.5629 6.34036 14.2835C6.34036 13.004 5.30316 11.9668 4.0237 11.9668C2.74424 11.9668 1.70703 13.004 1.70703 14.2835C1.70703 15.5629 2.74424 16.6001 4.0237 16.6001Z" stroke="#515D66" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
                 <path d="M15.9768 16.6001C17.2563 16.6001 18.2935 15.5629 18.2935 14.2835C18.2935 13.004 17.2563 11.9668 15.9768 11.9668C14.6974 11.9668 13.6602 13.004 13.6602 14.2835C13.6602 15.5629 14.6974 16.6001 15.9768 16.6001Z" stroke="#515D66" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-              Return Within 90 Days Of Purchase. Taxes Are Non-Refundable.
+              ㅤReturn Within 90 Days Of Purchase. Taxes Are Non-Refundable.
             </p>
           </div>
 

@@ -502,8 +502,12 @@
 .shop .collections__img-wrap img {
   width: 100%;
   height: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: 1s;
+}
+.shop .collections__img-wrap img:hover {
+  scale: 1.1;
 }
 .shop .collections__label {
   display: flex;

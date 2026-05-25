@@ -5,8 +5,9 @@ import cookieParser from 'cookie-parser';
 import { rateLimit } from 'express-rate-limit'
 import helmet from "helmet";
 import compression from 'compression';
+import ProductsRouter from './routes/products.js'
 // TODO: create these modules and import them:
-// import { connectDB } from './db/connectDB.js'
+import connectDB from './db/connection.js'
 // import { auth } from './middleware/auth.js'
 // import TodosRouter from './routes/todos.js'
 // import UsersRouter from './routes/users.js'
@@ -35,10 +36,12 @@ const limiter = rateLimit({
 })
 app.use(limiter)
 
+app.use('/api/products', ProductsRouter) 
+
 // app.use('/api/todos', auth, TodosRouter)  // uncomment after creating auth middleware and TodosRouter
 // app.use('/api/users', UsersRouter)         // uncomment after creating UsersRouter
 
 app.listen(3003, () => {
     console.log('server has started')
-    // connectDB(process.env.CONNECTION_STRING)  // uncomment after creating connectDB
+    connectDB(process.env.CONNECTION_STRING)  // uncomment after creating connectDB
 })

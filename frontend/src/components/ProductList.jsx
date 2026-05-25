@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Product from './Product'
-import data from '../data/data.json'
+import { getProducts } from '../api/api'
 
 const PRODUCTS_PER_PAGE = 6
 
@@ -33,10 +33,15 @@ function mapProduct(p) {
   }
 }
 
-const rawProducts = data.products
+// const rawProducts = data.products
 
 function ProductList({ filters, sortBy, view }) {
   const [currentPage, setCurrentPage] = useState(1)
+  const [rawProducts, setRawProducts] = useState([])
+
+  useEffect(() => {
+    getProducts().then(products => setRawProducts(products ?? []))
+  }, [])
 
   let products = rawProducts.map(mapProduct)
 
