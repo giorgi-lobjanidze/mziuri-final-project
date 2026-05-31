@@ -75,6 +75,7 @@
     padding-top: 10px;
     padding-left: 20px;
     font-family: $font-family-2;
+    z-index: 5;
 
     .select-france {
         transform: translateY(-24px);
@@ -91,6 +92,7 @@
     right: 170px;
     font-family: $font-family-2;
     font-size: 14px;
+    z-index: 5;
 
     .select-currency {
         padding-top: 5px;

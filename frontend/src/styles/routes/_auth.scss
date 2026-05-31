@@ -1,0 +1,142 @@
+@use '../abstracts' as *;
+
+.auth-page {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F6FBF2;
+  padding: 40px 20px;
+
+  .auth-card {
+    background: white;
+    border-radius: 16px;
+    padding: 48px 40px;
+    width: 100%;
+    max-width: 560px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+
+    h1 {
+      font-family: $font-family-2;
+      font-size: 36px;
+      font-weight: 400;
+      color: #222;
+      margin-bottom: 28px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  .auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    label {
+      font-family: $font-family-2;
+      font-size: 14px;
+      font-weight: 500;
+      color: black;
+
+      span { 
+        color: $color-main; 
+     }
+    }
+
+    input {
+      padding: 16px 20px;
+      border: 1px solid #696969;
+      border-radius: 10px;
+      font-family: $font-family-2;
+      font-size: 15px;
+      outline: none;
+      transition: 0.2s;
+      color: #333;
+
+      &::placeholder { 
+        color: black; 
+        font-size: 13px;
+      }
+
+      &:focus { 
+        border-color: $color-main; 
+      }
+
+      &.error { 
+        border-color: #e74c3c; 
+      }
+    }
+  }
+
+  .auth-error {
+    font-family: $font-family-2;
+    font-size: 12px;
+    color: #e74c3c;
+    margin-top: 2px;
+  }
+
+  .auth-server-error {
+    font-family: $font-family-2;
+    font-size: 14px;
+    color: #e74c3c;
+    background: #fdf0f0;
+    padding: 10px 14px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .auth-forgot {
+    font-family: $font-family-2;
+    font-size: 13px;
+    color: #555;
+    cursor: pointer;
+    margin-top: -4px;
+
+    &:hover { 
+        color: $color-main; 
+    }
+  }
+
+  .auth-btn-primary {
+    width: 100%;
+    padding: 16px;
+    background: $color-main;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    font-family: $font-family-2;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.5s;
+    margin-top: 4px;
+
+    &:hover { 
+        background: #212529; 
+        color: white;
+    }
+  }
+
+  .auth-btn-secondary {
+    width: 100%;
+    padding: 16px;
+    background: transparent;
+    color: #222;
+    border: 1.5px solid $color-main;
+    border-radius: 10px;
+    font-family: $font-family-2;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.5s;
+
+    &:hover {
+      background: $color-main;
+      color: white;
+    }
+  }
+}

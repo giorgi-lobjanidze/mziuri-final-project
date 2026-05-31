@@ -10,7 +10,7 @@ import ProductsRouter from './routes/products.js'
 import connectDB from './db/connection.js'
 // import { auth } from './middleware/auth.js'
 // import TodosRouter from './routes/todos.js'
-// import UsersRouter from './routes/users.js'
+import UsersRouter from './routes/users.js'
 
 const app = express()
 
@@ -36,7 +36,8 @@ const limiter = rateLimit({
 })
 app.use(limiter)
 
-app.use('/api/products', ProductsRouter) 
+app.use('/api/products', ProductsRouter)
+app.use('/api/users', UsersRouter)
 
 // app.use('/api/todos', auth, TodosRouter)  // uncomment after creating auth middleware and TodosRouter
 // app.use('/api/users', UsersRouter)         // uncomment after creating UsersRouter

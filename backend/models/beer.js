@@ -1,5 +1,6 @@
-const mongoose = require('mongoose');
-const { Schema } = mongoose;
+import mongoose from 'mongoose'
+
+const { Schema } = mongoose
 
 const variantSchema = new Schema(
   {
@@ -19,7 +20,7 @@ const variantSchema = new Schema(
     featuredImage:    { type: String,  default: null },
   },
   { _id: false, timestamps: true }
-);
+)
 
 const imageSchema = new Schema(
   {
@@ -31,16 +32,16 @@ const imageSchema = new Schema(
     variantIds: [{ type: Number }],
   },
   { _id: false, timestamps: true }
-);
+)
 
 const optionSchema = new Schema(
   {
-    name:     { type: String,   required: true }, 
-    position: { type: Number,   default: 1 },
-    values:   [{ type: String }],         
+    name:     { type: String, required: true },
+    position: { type: Number, default: 1 },
+    values:   [{ type: String }],
   },
   { _id: false }
-);
+)
 
 const productSchema = new Schema(
   {
@@ -51,34 +52,28 @@ const productSchema = new Schema(
     vendor:      { type: String, index: true },
     productType: { type: String, default: '', index: true },
     tags:        [{ type: String }],
-    publishedAt: { type: Date,   default: null },
-
-    variants: [variantSchema],
-    images:   [imageSchema],
-    options:  [optionSchema],
+    publishedAt: { type: Date, default: null },
+    variants:    [variantSchema],
+    images:      [imageSchema],
+    options:     [optionSchema],
   },
-  {
-    timestamps: true, 
-    collection: 'products', 
-  }
-);
+  { timestamps: true, collection: 'products' }
+)
 
-
-productSchema.index({ productType: 1, publishedAt: -1 });
-productSchema.index({ tags: 1 });
-productSchema.index({ vendor: 1, productType: 1 });
-productSchema.index({ 'variants.available': 1 });
-// SKU lookups
-productSchema.index({ 'variants.sku': 1 }, { sparse: true });
+productSchema.index({ productType: 1, publishedAt: -1 })
+productSchema.index({ tags: 1 })
+productSchema.index({ vendor: 1, productType: 1 })
+productSchema.index({ 'variants.available': 1 })
+productSchema.index({ 'variants.sku': 1 }, { sparse: true })
 
 productSchema.virtual('minPrice').get(function () {
-  const available = this.variants.filter(v => v.available);
-  if (!available.length) return null;
-  return Math.min(...available.map(v => v.price));
-});
+  const available = this.variants.filter(v => v.available)
+  if (!available.length) return null
+  return Math.min(...available.map(v => v.price))
+})
 
 productSchema.methods.isAvailable = function () {
-  return this.variants.some(v => v.available);
-};
+  return this.variants.some(v => v.available)
+}
 
-module.exports = mongoose.model('Product', productSchema);
+export default mongoose.model('Product', productSchema)

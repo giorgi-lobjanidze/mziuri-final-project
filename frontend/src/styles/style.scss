@@ -5,6 +5,7 @@
 @use './layouts/header';
 @use './routes/home';
 @use './routes/shop';
+@use './routes/auth';
 @use './routes/singleproduct';
 @use './components/product';
 @use './components/productlist';
