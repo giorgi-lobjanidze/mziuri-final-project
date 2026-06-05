@@ -664,6 +664,179 @@
   color: white;
 }
 
+.contact {
+  padding: 48px 210px 80px;
+  background: #F6FBF2;
+}
+.contact .contact-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 60px;
+}
+.contact .contact-cards .contact-card {
+  background: #E0E0E0;
+  border-radius: 8px;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+}
+.contact .contact-cards .contact-card .contact-card-icon {
+  width: 46px;
+  height: 46px;
+  background: #FEA90C;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+.contact .contact-cards .contact-card h3 {
+  font-family: "Nunito Sans", serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #222;
+}
+.contact .contact-cards .contact-card p {
+  font-family: "Nunito Sans", serif;
+  font-size: 13px;
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.contact .contact-cards .contact-card p .live-dot {
+  width: 8px;
+  height: 8px;
+  background: #2ecc71;
+  border-radius: 50%;
+  display: inline-block;
+}
+.contact .contact-cards .contact-card .contact-socials {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+.contact .contact-cards .contact-card .contact-socials a {
+  color: #555;
+  transition: 0.2s;
+  display: flex;
+}
+.contact .contact-cards .contact-card .contact-socials a:hover {
+  color: #FEA90C;
+}
+.contact .contact-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+.contact .contact-body .contact-form-section h2 {
+  font-family: "Nunito Sans", serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: #222;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.contact .contact-body .contact-form-section h2 img {
+  width: 24px;
+}
+.contact .contact-body .contact-form-section .contact-hours {
+  font-family: "Nunito Sans", serif;
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 24px;
+}
+.contact .contact-body .contact-form-section .contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.contact .contact-body .contact-form-section .contact-form .contact-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 14px 16px;
+  background: #F6FBF2;
+  transition: 0.2s;
+}
+.contact .contact-body .contact-form-section .contact-form .contact-input-wrapper input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: "Nunito Sans", serif;
+  font-size: 14px;
+  color: #333;
+  background: transparent;
+}
+.contact .contact-body .contact-form-section .contact-form .contact-input-wrapper input::-moz-placeholder {
+  color: black;
+}
+.contact .contact-body .contact-form-section .contact-form .contact-input-wrapper input::placeholder {
+  color: black;
+}
+.contact .contact-body .contact-form-section .contact-form .contact-input-wrapper.textarea-wrapper {
+  align-items: flex-start;
+  padding: 14px 16px;
+}
+.contact .contact-body .contact-form-section .contact-form .contact-input-wrapper.textarea-wrapper textarea {
+  flex: 1;
+  border: none;
+  outline: none;
+  resize: none;
+  font-family: "Nunito Sans", serif;
+  font-size: 14px;
+  color: black;
+  background: transparent;
+  width: 100%;
+}
+.contact .contact-body .contact-form-section .contact-form .contact-input-wrapper.textarea-wrapper textarea::-moz-placeholder {
+  color: black;
+}
+.contact .contact-body .contact-form-section .contact-form .contact-input-wrapper.textarea-wrapper textarea::placeholder {
+  color: black;
+}
+.contact .contact-body .contact-form-section .contact-form .primary-btn {
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 14px 32px;
+}
+.contact .contact-body .contact-map {
+  height: 500px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.contact .contact-body .contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.contact .contact-body .contact-input-wrapper.error {
+  border-color: #e74c3c;
+}
+.contact .contact-body .contact-error {
+  font-family: "Nunito Sans", serif;
+  font-size: 12px;
+  color: #e74c3c;
+}
+.contact .contact-body .contact-success {
+  font-family: "Nunito Sans", serif;
+  font-size: 14px;
+  color: #2ecc71;
+  background: #f0fdf4;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
 .single-product {
   background-color: #F6FBF2;
   display: flex;

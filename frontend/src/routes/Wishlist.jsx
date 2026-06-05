@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useLoader } from '../context/LoaderContext';
 
 function Wishlist() {
-
   const { useFakeLoader } = useLoader();
-  useEffect(() => { useFakeLoader(); }, [useFakeLoader]);
+  useEffect(() => {
+    useFakeLoader();
+  }, [useFakeLoader]);
 
-  return (
-    <div>Wishlist</div>
-  )
+  return <div>Wishlist</div>;
 }
 
-export default Wishlist
+export default Wishlist;

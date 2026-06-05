@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useLoader } from '../context/LoaderContext';
 
 function NotFound() {
-
   const { useFakeLoader } = useLoader();
-  useEffect(() => { useFakeLoader(); }, [useFakeLoader]);
+  useEffect(() => {
+    useFakeLoader();
+  }, [useFakeLoader]);
 
-  return (
-    <div>NotFound</div>
-  )
+  return <div>NotFound</div>;
 }
 
-export default NotFound
+export default NotFound;

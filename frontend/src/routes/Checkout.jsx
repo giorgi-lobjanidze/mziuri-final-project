@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { useLoader } from '../context/LoaderContext';
 
 function Checkout() {
-
   const { useFakeLoader } = useLoader();
-  useEffect(() => { useFakeLoader(); }, [useFakeLoader]);
+  useEffect(() => {
+    useFakeLoader();
+  }, [useFakeLoader]);
 
-  return (
-    <div>Checkout</div>
-  )
+  return <div>Checkout</div>;
 }
 
-export default Checkout
+export default Checkout;
