@@ -21,6 +21,8 @@ import useScrollTop from './hooks/useScrollTop';
 import useAppScale from './hooks/useAppScale';
 import { useLoader } from './context/LoaderContext';
 import Spinnerloader from './components/Spinnerloader';
+import ForgotPasword from './routes/ForgotPasword';
+import ResetPassword from './routes/ResetPassword';
 
 function App() {
   useDocumentTitle();
@@ -70,6 +72,14 @@ function App() {
           <Route
             path="/register"
             element={<Register />}
+          />
+          <Route
+            path="/forgot-password"
+            element={<ForgotPasword />}
+          />
+          <Route
+            path="/reset-password/:token"
+            element={<ResetPassword />}
           />
           <Route
             path="/shop"

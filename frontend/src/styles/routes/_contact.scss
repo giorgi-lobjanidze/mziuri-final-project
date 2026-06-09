@@ -65,7 +65,9 @@
           transition: 0.2s;
           display: flex;
 
-          &:hover { color: $color-main; }
+          &:hover { 
+            color: $color-main; 
+          }
         }
       }
     }
@@ -141,7 +143,9 @@
               background: transparent;
               width: 100%;
 
-              &::placeholder { color: black; }
+              &::placeholder { 
+                color: black; 
+              }
             }
           }
         }
@@ -187,4 +191,102 @@
       margin-bottom: 8px;
     }
   }
+  .contact-stores {
+  margin-top: 80px;
+
+  .contact-stores-header {
+    text-align: center;
+    margin-bottom: 40px;
+
+    h2 {
+      font-family: $font-family-2;
+      font-size: 36px;
+      font-weight: 400;
+      color: #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 12px;
+
+      img { width: 24px; }
+    }
+
+    p {
+      font-family: $font-family-2;
+      font-size: 14px;
+      color: #888;
+      line-height: 1.6;
+    }
+  }
+
+  .contact-stores-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .contact-store-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .contact-store-img {
+      width: 100%;
+      height: 200px;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 8px;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.3s;
+
+        &:hover { 
+          cursor: pointer; 
+        }
+      }
+    }
+
+    h4 {
+      font-family: $font-family-2;
+      font-size: 16px;
+      font-weight: 600;
+      color: #222;
+    }
+
+    p {
+      font-family: $font-family-2;
+      font-size: 13px;
+      color: #888;
+    }
+
+    .contact-store-phone {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 4px;
+
+      .contact-store-phone-icon {
+        width: 40px;
+        height: 40px;
+        background: $color-main;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      span {
+        font-family: $font-family-2;
+        font-size: 20px;
+        font-weight: 500;
+        color: #222;
+      }
+    }
+  }
+}
 }

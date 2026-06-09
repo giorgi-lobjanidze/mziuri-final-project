@@ -1,26 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useLoader } from '../context/LoaderContext';
-import { useUserData } from '../context/UserContext';
+import * as api from '../api/api.js';
 
-function Login() {
+function ForgotPasword() {
   const { useFakeLoader } = useLoader();
   useEffect(() => {
     useFakeLoader();
   }, []);
-  const navigate = useNavigate();
-  const { login } = useUserData();
 
-  const [form, setForm] = useState({ email: '', password: '' });
+  const [form, setForm] = useState({ email: '' });
   const [errors, setErrors] = useState({});
   const [serverError, setServerError] = useState('');
+  const [success, setSuccess] = useState(false);
 
   const validate = () => {
     const errs = {};
     if (!form.email) errs.email = 'Email is required';
-    else if (!/\S+@\S+\.\S+/.test(form.email)) errs.email = 'Invalid email address';
-    if (!form.password) errs.password = 'Password is required';
-    else if (form.password.length < 6) errs.password = 'Password must be at least 6 characters';
     return errs;
   };
 
@@ -30,25 +26,19 @@ function Login() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    const errs = validate();
-    if (Object.keys(errs).length > 0) return setErrors(errs);
+    e.preventDefault()
+    const errs = validate()
+    if (Object.keys(errs).length > 0) return setErrors(errs)
 
     try {
-      const res = await fetch('/api/users/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-      if (!res.ok) return setServerError(data.err || 'Login failed');
-      login(data.data);
-      localStorage.setItem('user', JSON.stringify(data.data));
-      navigate('/');
+        await api.forgotPassword(form);
+        setSuccess(true);
+        setServerError('');
+        setForm({ email: '' });
     } catch (err) {
-      setServerError('Something went wrong. Please try again.');
+        setServerError(err.message);
     }
-  };
+  }
 
   return (
     <>
@@ -59,7 +49,7 @@ function Login() {
             alt=""
           />
         </div>
-        <p>Login</p>
+        <p>Forgot Password</p>
         <div className="icon">
           <img
             src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
@@ -70,9 +60,11 @@ function Login() {
 
       <div className="auth-page">
         <div className="auth-card">
-          <h1>Login</h1>
+          <h1>Reset Your Password</h1>
+          <p className="resetp">We will send you an email to reset your password.</p>
 
           {serverError && <p className="auth-server-error">{serverError}</p>}
+          {success && <p className="auth-success">Email sent!</p>}
 
           <form
             onSubmit={handleSubmit}
@@ -80,7 +72,7 @@ function Login() {
           >
             <div className="auth-field">
               <label>
-                Email Address <span>*</span>
+                Email <span>*</span>
               </label>
               <input
                 type="email"
@@ -93,38 +85,18 @@ function Login() {
               {errors.email && <p className="auth-error">{errors.email}</p>}
             </div>
 
-            <div className="auth-field">
-              <label>
-                Password <span>*</span>
-              </label>
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={form.password}
-                onChange={handleChange}
-                className={errors.password ? 'error' : ''}
-              />
-              {errors.password && <p className="auth-error">{errors.password}</p>}
-            </div>
-
-            <Link to="/forgot-password">
-              <p className="auth-forgot">Forgot Your Password ?</p>
-            </Link>
-            
-
             <button
               type="submit"
               className="auth-btn-primary"
             >
-              Login
+              Submit
             </button>
-            <Link to="/register">
+            <Link to="/login">
               <button
                 type="button"
                 className="auth-btn-secondary"
               >
-                Create New Account
+                Cancel
               </button>
             </Link>
           </form>
@@ -134,4 +106,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default ForgotPasword;

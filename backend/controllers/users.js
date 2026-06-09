@@ -1,6 +1,7 @@
 import User from '../models/user.js'
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcryptjs'
+import { sendResetPasswordMail, sendContactMail} from '../utills/mailSender.js'
 
 export const register = async (req, res) => {
   try {
@@ -82,3 +83,57 @@ export const getUser = async (req, res) => {
     return res.status(500).json({ err: 'Something went wrong' })
   }
 }
+
+export const forgotPasswordUser = async (req, res) => {
+    try {
+        const { email } = req.body;
+
+        let user = await User.findOne({ email: email });
+        if(!user) {
+            return res.status(400).json({err: "Email is incorrect!"})
+        }
+
+        const access_token = jwt.sign({ id: user._id }, process.env.JWT_RESET_PASS_SECRET_KEY, { expiresIn: '15m' });
+        const url = `http://localhost:5173/reset-password/${access_token}`  
+
+        await sendResetPasswordMail(email, url)
+
+        return res.status(200).json({ data: "Check your email for further instructions" })
+    } catch (err) {
+        return res.status(500).json({ err: "Something went wrong" });
+    }
+
+}
+
+
+export const resetPasswordUser = async (req, res) => {
+    try {
+        const { password } = req.body;
+        const token = req.header('Authorization');
+
+        const decoded = jwt.verify(token, process.env.JWT_RESET_PASS_SECRET_KEY);
+        const userId = decoded.id;
+
+        const hashedPassword = await bcrypt.hash(password + process.env.BCRYPT_PEPPER, 11)
+
+        await User.findOneAndUpdate({_id: userId}, {
+            password: hashedPassword
+        })
+
+        return res.status(200).json({ data: "Password successfully changed!" })
+    } catch (err) {
+      return res.status(500).json({ err: "Something went wrong" });
+    }
+
+}
+
+export const contact = async (req, res) => {
+  try {
+    const { name, email, phone, message } = req.body;
+    await sendContactMail(email, name, phone, message);
+    return res.status(200).json({ data: "Email has sent!" });
+  } catch (err) {
+    console.error('Contact mail error:', err);
+    return res.status(500).json({ err: "Something went wrong" });
+  }
+};

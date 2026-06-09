@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLoader } from '../context/LoaderContext';
+import * as api from '../api/api.js';
 
 function Contact() {
   const { useFakeLoader } = useLoader();
@@ -10,6 +11,33 @@ function Contact() {
   const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' });
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
+
+  const globalStores = [
+    {
+      city: 'Paris, France',
+      address: '45 Rue De Rivoli, 75001 Paris',
+      phone: '+33 1 42 65 00 55',
+      img: 'https://brew-blis.myshopify.com/cdn/shop/files/locations01.png?v=1737466799&width=2000',
+    },
+    {
+      city: 'New York City, USA',
+      address: '123 Fifth Avenue, New York, NY 10011',
+      phone: '+1 (212) 555-0190',
+      img: 'https://brew-blis.myshopify.com/cdn/shop/files/locations02.png?v=1737466799&width=2000',
+    },
+    {
+      city: 'Madrid, Spain',
+      address: 'Calle De Serrano, 112, 28006 Madrid',
+      phone: '+34 91 555 1234',
+      img: 'https://brew-blis.myshopify.com/cdn/shop/files/locations03.png?v=1737466799&width=2000',
+    },
+    {
+      city: 'Madrid, Spain',
+      address: 'Calle De Serrano, 112, 28006 Madrid',
+      phone: '+34 91 555 1234',
+      img: 'https://brew-blis.myshopify.com/cdn/shop/files/locations03.png?v=1737466799&width=2000',
+    },
+  ];
 
   const validate = () => {
     const errs = {};
@@ -30,27 +58,24 @@ function Contact() {
     setSuccess(false);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const errs = validate();
-
     if (Object.keys(errs).length > 0) {
       setErrors(errs);
       return;
     }
 
-    console.log('message sent:', form);
-
-    setErrors({});
-    setSuccess(true);
-
-    setForm({
-      name: '',
-      email: '',
-      phone: '',
-      message: '',
-    });
+    try {
+      const { data } = await api.contact(form);
+      console.log('message sent:', form);
+      setErrors({});
+      setSuccess(true);
+      setForm({ name: '', email: '', phone: '', message: '' });
+    } catch (err) {
+      console.error('Contact error:', err);
+    }
   };
 
   return (
@@ -393,13 +418,69 @@ function Contact() {
           <div className="contact-map">
             <iframe
               title="map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3304.8!2d-118.35!3d34.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDAxJzEyLjAiTiAxMTjCsDIxJzAwLjAiVw!5e0!3m2!1sen!2sus!4v1"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.945509544357!2d-122.0612759!3d37.3911209!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb7227e1ef8ff%3A0x1cbb80d811f16025!2zQmV2ZXJseSBTdCwgTW91bnRhaW4gVmlldywgQ0EgOTQwNDMsIOGDkOGDm-GDlOGDoOGDmOGDmeGDmOGDoSDhg6jhg5Thg5Thg6Dhg5fhg5Thg5Hhg6Phg5rhg5gg4YOo4YOi4YOQ4YOi4YOU4YOR4YOY!5e0!3m2!1ska!2sge!4v1780758509750!5m2!1ska!2sge"
               width="100%"
               height="100%"
               style={{ border: 0 }}
               allowFullScreen=""
               loading="lazy"
             />
+          </div>
+        </div>
+
+        {/* stores around the world */}
+        <div className="contact-stores">
+          <div className="contact-stores-header">
+            <h2>
+              <img
+                src="//brew-blis.myshopify.com/cdn/shop/files/vector1.png?v=1736771826"
+                alt=""
+              />
+              Stores around the world
+              <img
+                src="//brew-blis.myshopify.com/cdn/shop/files/vector2.png?v=1736775115"
+                alt=""
+              />
+            </h2>
+            <p>
+              Explore A Curated Selection Of Beers From Renowned Breweries Around <br /> The World,
+              Delivering Global Flavors To Your Doorstep.
+            </p>
+          </div>
+
+          <div className="contact-stores-grid">
+            {globalStores.map((store, i) => (
+              <div
+                key={i}
+                className="contact-store-card"
+              >
+                <div className="contact-store-img">
+                  <img
+                    src={store.img}
+                    alt={store.city}
+                  />
+                </div>
+                <h4>{store.city}</h4>
+                <p>{store.address}</p>
+                <div className="contact-store-phone">
+                  <div className="contact-store-phone-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="20"
+                      height="20"
+                      viewBox="0 0 20 20"
+                      fill="none"
+                    >
+                      <path
+                        d="M16.2509 15.5304L15.8338 14.8339C15.0836 13.5971 14.0484 12.1776 12.6904 12.1776C12.4389 12.1776 12.1897 12.2282 11.9431 12.3307L11.2142 12.6432C11.1477 12.6708 11.083 12.7022 11.0145 12.7355C10.828 12.8262 10.6165 12.929 10.3989 12.929C9.86217 12.929 9.2403 12.2305 8.64811 10.9623C8.06692 9.71762 8.10399 9.06508 8.23741 8.73673C8.38462 8.37447 8.72695 8.21959 9.09471 8.08041C9.14585 8.06101 9.19204 8.04342 9.23696 8.02493L9.97501 7.71418C11.8978 6.9101 11.1825 4.10014 10.948 3.17889L10.7491 2.3868C10.579 1.734 10.1282 0 8.63277 0C8.35594 0 8.06061 0.064496 7.75527 0.191774C7.55492 0.271334 4.79792 1.39672 3.79909 3.37382C2.60532 5.72716 2.82605 8.88296 4.45451 12.7515C6.07079 16.625 8.16669 18.9942 10.684 19.7933C11.1158 19.9305 11.6038 19.9999 12.1346 19.9999H12.1349C13.8721 19.9999 15.587 19.2608 15.7262 19.1994C16.3251 18.9457 16.7123 18.5601 16.8768 18.0532C17.1557 17.1937 16.6878 16.2519 16.2509 15.5304ZM15.5897 17.6356C15.5514 17.7534 15.4185 17.8609 15.1948 17.9551C15.1911 17.9567 15.1866 17.9586 15.1828 17.9603C15.1673 17.9672 13.615 18.647 12.1345 18.6469C11.7428 18.6469 11.3926 18.5988 11.0935 18.5037C8.97266 17.8305 7.1592 15.72 5.70231 12.2286C4.23459 8.7416 4.00006 5.96837 5.0062 3.98495C5.78746 2.43858 8.23335 1.45761 8.25734 1.44823C8.26221 1.44625 8.26699 1.44435 8.27177 1.44237C8.41105 1.38391 8.53589 1.35306 8.63277 1.35306C8.9309 1.35306 9.20223 1.81545 9.43803 2.72173L9.63602 3.51048C10.0632 5.18828 9.99819 6.23772 9.45129 6.46647L8.71675 6.77587C8.68753 6.78796 8.65334 6.80068 8.61563 6.81502C8.20989 6.96864 7.36558 7.28814 6.98375 8.22735C6.63727 9.0796 6.7807 10.1615 7.42178 11.535C8.28521 13.3835 9.25897 14.2821 10.3987 14.2821C10.9277 14.2821 11.3523 14.0757 11.6059 13.9525C11.6526 13.9298 11.6944 13.909 11.7393 13.8904L12.4693 13.5774C12.5446 13.546 12.6169 13.5307 12.6903 13.5307C13.0417 13.5307 13.6717 13.8786 14.6749 15.5325L15.0918 16.2285C15.6055 17.0767 15.6461 17.4618 15.5897 17.6356Z"
+                        fill="black"
+                      ></path>
+                    </svg>
+                  </div>
+                  <span>{store.phone}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
