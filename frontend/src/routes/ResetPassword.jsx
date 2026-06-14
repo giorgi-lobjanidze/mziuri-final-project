@@ -21,7 +21,8 @@ function ResetPassword() {
     if (!form.password) errs.password = 'Password is required';
     else if (form.password.length < 6) errs.password = 'Password must be at least 6 characters';
     if (!form.confirmPassword) errs.confirmPassword = 'Please confirm your password';
-    else if (form.password !== form.confirmPassword) errs.confirmPassword = 'Passwords do not match';
+    else if (form.password !== form.confirmPassword)
+      errs.confirmPassword = 'Passwords do not match';
     return errs;
   };
 
@@ -36,12 +37,12 @@ function ResetPassword() {
     if (Object.keys(errs).length > 0) return setErrors(errs);
 
     try {
-        await api.resetPassword({ password: form.password }, token);
-        setSuccess(true);
-        setServerError('');
-        setForm({ password: '', confirmPassword: '' });
+      await api.resetPassword({ password: form.password }, token);
+      setSuccess(true);
+      setServerError('');
+      setForm({ password: '', confirmPassword: '' });
     } catch (err) {
-        setServerError(err.message);
+      setServerError(err.message);
     }
   };
 
@@ -49,11 +50,17 @@ function ResetPassword() {
     <>
       <div className="shop-banner">
         <div className="icon">
-          <img src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564" alt="" />
+          <img
+            src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564"
+            alt=""
+          />
         </div>
         <p>Reset Password</p>
         <div className="icon">
-          <img src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611" alt="" />
+          <img
+            src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
+            alt=""
+          />
         </div>
       </div>
 
@@ -64,9 +71,14 @@ function ResetPassword() {
           {serverError && <p className="auth-server-error">{serverError}</p>}
           {success && <p className="auth-success">Password successfully changed!</p>}
 
-          <form onSubmit={handleSubmit} noValidate>
+          <form
+            onSubmit={handleSubmit}
+            noValidate
+          >
             <div className="auth-field">
-              <label>New Password <span>*</span></label>
+              <label>
+                New Password <span>*</span>
+              </label>
               <input
                 type="password"
                 name="password"
@@ -79,7 +91,9 @@ function ResetPassword() {
             </div>
 
             <div className="auth-field">
-              <label>Confirm New Password <span>*</span></label>
+              <label>
+                Confirm New Password <span>*</span>
+              </label>
               <input
                 type="password"
                 name="confirmPassword"
@@ -91,9 +105,19 @@ function ResetPassword() {
               {errors.confirmPassword && <p className="auth-error">{errors.confirmPassword}</p>}
             </div>
 
-            <button type="submit" className="auth-btn-primary">Reset Password</button>
+            <button
+              type="submit"
+              className="auth-btn-primary"
+            >
+              Reset Password
+            </button>
             <Link to="/login">
-              <button type="button" className="auth-btn-secondary">Back to Login</button>
+              <button
+                type="button"
+                className="auth-btn-secondary"
+              >
+                Back to Login
+              </button>
             </Link>
           </form>
         </div>

@@ -111,7 +111,6 @@ function Login() {
             <Link to="/forgot-password">
               <p className="auth-forgot">Forgot Your Password ?</p>
             </Link>
-            
 
             <button
               type="submit"

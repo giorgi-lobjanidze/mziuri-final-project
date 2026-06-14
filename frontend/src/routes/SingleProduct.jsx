@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useLoader } from '../context/LoaderContext';
 import { getProductById } from '../api/api';
+import { useCart } from '../context/CartContext';
 
 function SingleProduct() {
   const { id } = useParams();
@@ -12,6 +13,7 @@ function SingleProduct() {
   const [selectedVariant, setSelectedVariant] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     getProductById(id).then((found) => {
@@ -190,6 +192,7 @@ function SingleProduct() {
             <button
               className="single-add-to-cart"
               disabled={!inStock}
+              onClick={() => addToCart(product, selectedVariant, quantity)}
             >
               {inStock ? 'Add to cart' : 'Sold Out'}
             </button>

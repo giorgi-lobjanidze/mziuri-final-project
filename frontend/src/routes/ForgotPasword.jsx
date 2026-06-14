@@ -26,19 +26,19 @@ function ForgotPasword() {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    const errs = validate()
-    if (Object.keys(errs).length > 0) return setErrors(errs)
+    e.preventDefault();
+    const errs = validate();
+    if (Object.keys(errs).length > 0) return setErrors(errs);
 
     try {
-        await api.forgotPassword(form);
-        setSuccess(true);
-        setServerError('');
-        setForm({ email: '' });
+      await api.forgotPassword(form);
+      setSuccess(true);
+      setServerError('');
+      setForm({ email: '' });
     } catch (err) {
-        setServerError(err.message);
+      setServerError(err.message);
     }
-  }
+  };
 
   return (
     <>

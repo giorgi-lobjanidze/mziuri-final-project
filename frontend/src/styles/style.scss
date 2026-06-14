@@ -7,9 +7,12 @@
 @use './routes/shop';
 @use './routes/auth';
 @use './routes/contact';
+@use './routes/cart';
 @use './routes/singleproduct';
 @use './components/product';
 @use './components/productlist';
 @use './components/filtersection';
 @use './components/sortby';
+@use './components/producttable';
+@use './components/carttotal';
 // @import './page';
