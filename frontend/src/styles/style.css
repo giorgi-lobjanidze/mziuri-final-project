@@ -410,6 +410,176 @@
   justify-content: center;
 }
 
+.footer-images {
+  display: flex;
+  justify-content: space-between;
+}
+.footer-images img {
+  width: 12%;
+}
+
+.footer {
+  background: #EAEAEC;
+  padding: 60px 185px 0;
+  font-family: "Nunito Sans", serif;
+}
+.footer .footer-top {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
+  gap: 40px;
+  padding-bottom: 30px;
+}
+.footer .footer-brand .footer-logo {
+  height: 64px;
+  margin-bottom: 16px;
+}
+.footer .footer-brand p {
+  color: #777;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.footer .footer-brand .footer-contact {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 14px;
+  color: #777;
+}
+.footer .footer-brand .footer-contact span {
+  font-weight: 550;
+  color: #141516;
+  margin-right: 6px;
+}
+.footer .footer-links h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #141516;
+  margin-bottom: 20px;
+}
+.footer .footer-links ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer .footer-links ul a {
+  color: #777;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+.footer .footer-links ul a:hover {
+  text-decoration: underline;
+}
+.footer .footer-newsletter h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #141516;
+  margin-bottom: 12px;
+}
+.footer .footer-newsletter > p {
+  color: #777;
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+.footer .footer-newsletter .newsletter-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.footer .footer-newsletter .newsletter-form .newsletter-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid black;
+  border-radius: 6px;
+  padding: 13px 14px;
+  background: #EAEAEC;
+  flex: 1;
+}
+.footer .footer-newsletter .newsletter-form .newsletter-input-wrapper svg {
+  color: #777;
+}
+.footer .footer-newsletter .newsletter-form .newsletter-input-wrapper input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  color: #141516;
+  width: 220px;
+  background: transparent;
+}
+.footer .footer-newsletter .newsletter-form .newsletter-input-wrapper input::-moz-placeholder {
+  color: black;
+}
+.footer .footer-newsletter .newsletter-form .newsletter-input-wrapper input::placeholder {
+  color: black;
+}
+.footer .footer-newsletter .newsletter-form button {
+  width: 130px;
+  background: #141516;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.footer .footer-newsletter .newsletter-form button:hover {
+  background: #FEA90C;
+}
+.footer .footer-newsletter .footer-socials {
+  display: flex;
+  gap: 10px;
+}
+.footer .footer-newsletter .footer-socials a {
+  width: 38px;
+  height: 38px;
+  border: 1px solid #ddd;
+  background: #f3f9ec;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #141516;
+  transition: all 0.2s;
+}
+.footer .footer-newsletter .footer-socials a:hover {
+  background: #FEA90C;
+  border-color: #FEA90C;
+  color: white;
+}
+.footer .footer-bottom {
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.footer .footer-bottom p {
+  font-size: 14px;
+  color: #777;
+}
+.footer .footer-bottom p a {
+  color: #FEA90C;
+  text-decoration: none;
+  font-weight: 500;
+}
+.footer .footer-bottom .footer-payments {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.footer .footer-bottom .footer-payments img {
+  height: 30px;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .hero {
   background-image: url("//brew-blis.myshopify.com/cdn/shop/files/Hero_Banner.png?v=1736771645");
   background-size: cover;
@@ -1022,6 +1192,35 @@
   color: #aaa;
 }
 
+.wishlist {
+  padding: 60px 185px;
+  background: #F6FBF2;
+  min-height: 370px;
+}
+.wishlist h2, .wishlist p {
+  font-family: "Nunito Sans", serif;
+  text-transform: capitalize;
+}
+.wishlist h2 {
+  font-size: 42px;
+  font-weight: 550;
+}
+.wishlist p {
+  font-size: 16px;
+}
+.wishlist .zero-wishlist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 120px;
+}
+.wishlist .products-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
 .single-product {
   background-color: #F6FBF2;
   display: flex;
@@ -1456,6 +1655,44 @@
   background: #FEA90C;
   border-color: #FEA90C;
   color: white;
+}
+.product-card .product-card-image-wrapper {
+  position: relative;
+}
+.product-card .product-card-image-wrapper .product-wishlist-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  background: white;
+  border: none;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.2s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.product-card .product-card-image-wrapper .product-wishlist-btn svg path {
+  fill: none;
+  stroke: #141516;
+  stroke-width: 1.5;
+  transition: fill 0.2s, stroke 0.2s;
+}
+.product-card .product-card-image-wrapper .product-wishlist-btn:hover svg path {
+  stroke: #e74c3c;
+}
+.product-card .product-card-image-wrapper .product-wishlist-btn.active svg path {
+  fill: #e74c3c;
+  stroke: #e74c3c;
+}
+.product-card .product-card-image-wrapper:hover .product-wishlist-btn {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .product-list-wrapper {

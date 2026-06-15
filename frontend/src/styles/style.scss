@@ -3,11 +3,13 @@
 @use './components/spinnerloader';
 @use './components/btns';
 @use './layouts/header';
+@use './layouts/footer';
 @use './routes/home';
 @use './routes/shop';
 @use './routes/auth';
 @use './routes/contact';
 @use './routes/cart';
+@use './routes/wishlist';
 @use './routes/singleproduct';
 @use './components/product';
 @use './components/productlist';
