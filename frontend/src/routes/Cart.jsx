@@ -4,8 +4,10 @@ import { useLoader } from '../context/LoaderContext';
 import { useCart } from '../context/CartContext';
 import ProductTable from '../components/ProductTable';
 import CartTotal from '../components/CartTotal';
+import { useTranslation } from 'react-i18next';
 
 function Cart() {
+  const { t } = useTranslation();
   const { useFakeLoader } = useLoader();
   useEffect(() => {
     useFakeLoader();
@@ -21,7 +23,7 @@ function Cart() {
             alt=""
           />
         </div>
-        <p>Your Cart</p>
+        <p>{t('YourCart')}</p>
         <div className="icon">
           <img
             src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
@@ -73,9 +75,9 @@ function Cart() {
             ></path>
           </svg>
 
-          <h2>Your cart is empty.</h2>
+          <h2>{t('CartIsEmpty')}</h2>
           <Link to="/shop">
-            <p>Continue shopping</p>
+            <p>{t('ContinueShopping')}</p>
           </Link>
         </div>
       ) : (
@@ -83,7 +85,7 @@ function Cart() {
           <div className="cart-left">
             <ProductTable />
             <div className="cart-note">
-              <h3>Add Order Note</h3>
+              <h3>{t('AddOrderNote')}</h3>
               <textarea
                 placeholder="How can we help you?"
                 rows={6}

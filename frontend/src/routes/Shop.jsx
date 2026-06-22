@@ -3,8 +3,10 @@ import { useLoader } from '../context/LoaderContext';
 import FilterSection from '../components/FilterSection';
 import SortBy from '../components/SortBy';
 import ProductList from '../components/ProductList';
+import { useTranslation } from 'react-i18next';
 
 function Shop() {
+  const { t } = useTranslation();
   const { useFakeLoader } = useLoader();
   useEffect(() => useFakeLoader(), []);
 
@@ -40,7 +42,7 @@ function Shop() {
       id: 4,
       name: 'Amber Ale',
       count: 12,
-      image: 'https://brew-blis.myshopify.com/cdn/shop/files/cat03.png?v=1737092466&width=3000',
+      image: 'https://brew-blis.myshopify.com/cdn/shop/files/cat04.png?v=1737092466&width=1780',
     },
     {
       id: 5,
@@ -65,7 +67,7 @@ function Shop() {
             alt=""
           />
         </div>
-        <p>Products</p>
+        <p>{t('Products')}</p>
         <div className="icon">
           <img
             src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"

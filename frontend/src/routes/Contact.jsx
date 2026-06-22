@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useLoader } from '../context/LoaderContext';
 import * as api from '../api/api.js';
+import { useTranslation } from 'react-i18next';
 
 function Contact() {
+  const { t } = useTranslation();
   const { useFakeLoader } = useLoader();
   useEffect(() => {
     useFakeLoader();
@@ -87,7 +89,7 @@ function Contact() {
             alt=""
           />
         </div>
-        <p>Contact</p>
+        <p>{t('Contact')}</p>
         <div className="icon">
           <img
             src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
@@ -114,9 +116,9 @@ function Contact() {
                 ></path>
               </svg>
             </div>
-            <h3>Customer Service</h3>
+            <h3>{t('CustomerService')}</h3>
             <p>+31 42 65 00 55</p>
-            <p style={{ color: '#666' }}>Call Us From 8am To 8pm</p>
+            <p style={{ color: '#666' }}>{t('CallUsFromTo')}</p>
           </div>
 
           <div className="contact-card">
@@ -145,11 +147,11 @@ function Contact() {
                 </defs>
               </svg>
             </div>
-            <h3>Live Chat</h3>
+            <h3>{t('LiveChat')}</h3>
             <p>
-              <span className="live-dot"></span> Live Chat Available
+              <span className="live-dot"></span> {t('LiveChatAvailable')}
             </p>
-            <p style={{ color: '#666' }}>Daily: 10am To 10pm</p>
+            <p style={{ color: '#666' }}>{t('Daily')}</p>
           </div>
 
           <div className="contact-card">
@@ -167,9 +169,9 @@ function Contact() {
                 ></path>
               </svg>
             </div>
-            <h3>Write To Us</h3>
+            <h3>{t('WriteToUs')}</h3>
             <p>Uiparadox99@Gmail.Com</p>
-            <p style={{ color: '#666' }}>Any Time</p>
+            <p style={{ color: '#666' }}>{t('AnyTime')}</p>
           </div>
 
           <div className="contact-card">
@@ -191,7 +193,7 @@ function Contact() {
                 ></path>
               </svg>
             </div>
-            <h3>Follow Us</h3>
+            <h3>{t('FollowUs')}</h3>
             <div className="contact-socials">
               <a href="#">
                 <svg
@@ -269,17 +271,15 @@ function Contact() {
                 src="//brew-blis.myshopify.com/cdn/shop/files/vector1.png?v=1736771826"
                 alt=""
               />
-              Get In Touch
+              {t('GetInTouch')}
               <img
                 src="//brew-blis.myshopify.com/cdn/shop/files/vector2.png?v=1736775115"
                 alt=""
               />
             </h2>
-            <p className="contact-hours">
-              Open Mon-Fri 10 AM-9 PM, Sat 10-6 PM, Closed On Sundays.
-            </p>
+            <p className="contact-hours">{t('OpenHours')}.</p>
 
-            {success && <p className="contact-success">✅ Message sent successfully!</p>}
+            {success && <p className="contact-success">{t('MessageSuccessfull')}!</p>}
 
             <form
               onSubmit={handleSubmit}
@@ -410,7 +410,7 @@ function Contact() {
                 type="submit"
                 className="primary-btn"
               >
-                Send Message
+                {t('SendMessage')}
               </button>
             </form>
           </div>
@@ -436,16 +436,13 @@ function Contact() {
                 src="//brew-blis.myshopify.com/cdn/shop/files/vector1.png?v=1736771826"
                 alt=""
               />
-              Stores around the world
+              {t('StoresAroundTheWorld')}
               <img
                 src="//brew-blis.myshopify.com/cdn/shop/files/vector2.png?v=1736775115"
                 alt=""
               />
             </h2>
-            <p>
-              Explore A Curated Selection Of Beers From Renowned Breweries Around <br /> The World,
-              Delivering Global Flavors To Your Doorstep.
-            </p>
+            <p>{t('ExploreCuratedSelection')}</p>
           </div>
 
           <div className="contact-stores-grid">

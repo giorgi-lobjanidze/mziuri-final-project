@@ -2,8 +2,10 @@ import React, { useEffect } from 'react';
 import Primarybtn from '../components/Primarybtn';
 import Secondarybtn from '../components/Secondarybtn';
 import { useLoader } from '../context/LoaderContext';
+import { useTranslation } from 'react-i18next';
 
 function Home() {
+  const { t } = useTranslation();
   const { useFakeLoader } = useLoader();
   useEffect(() => {
     useFakeLoader();
@@ -20,7 +22,7 @@ function Home() {
                 alt=""
               />
             </div>
-            <p>New Arrival</p>
+            <p>{t('NewArrival')}</p>
             <div className="icon">
               <img
                 src="//brew-blis.myshopify.com/cdn/shop/files/vector2.png?v=1736775115"
@@ -30,18 +32,17 @@ function Home() {
           </div>
 
           <h1 className="hero-header">
-            Discover Flavors, <br /> One Bottle at a Time!
+            {t('DiscoverFlavorsFirst')} <br /> {t('DiscoverFlavorsSecond')}
           </h1>
 
           <p className="hero-p">
-            Explore the rich and diverse world of beer, savoring unique flavors crafted to
-            perfection, one <br />
-            bottle at a time!
+            {t('ExploreRichDiverseWorldFirst')} <br />
+            {t('ExploreRichDiverseWorldSecond')}
           </p>
 
           <div className="btns-container">
-            <Primarybtn>Shop Sale</Primarybtn>
-            <Secondarybtn>Our Collections</Secondarybtn>
+            <Primarybtn>{t('ShopSale')}</Primarybtn>
+            <Secondarybtn>{t('OurCollections')}</Secondarybtn>
           </div>
         </div>
 

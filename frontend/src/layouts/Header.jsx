@@ -1,12 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useTranslation } from 'react-i18next';
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { totalItems } = useCart();
+  const [showTopBar, setShowTopBar] = useState(true);
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setShowTopBar(currentScrollY <= 0);
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const [language, setLanguage] = useState({
     flag: '//brew-blis.myshopify.com/cdn/shop/t/6/assets/flag_en.png?v=14076981825125011091761984923',
@@ -24,14 +40,16 @@ function Header() {
       lang: 'English',
     });
     setIsOpen(false);
+    i18n.changeLanguage('en');
   };
 
   const handleSelectFrançais = () => {
     setLanguage({
-      flag: '//brew-blis.myshopify.com/cdn/shop/t/6/assets/flag_fr.png?v=69148847184916641131761984923',
-      lang: 'Français',
+      flag: 'https://upload.wikimedia.org/wikipedia/commons/0/0f/Flag_of_Georgia.svg',
+      lang: 'ქართული',
     });
     setIsOpen(false);
+    i18n.changeLanguage('ka');
   };
 
   const handleSelectUSD = () => {
@@ -51,7 +69,7 @@ function Header() {
 
   return (
     <>
-      <div className="top-bar">
+      <div className={`top-bar ${showTopBar ? '' : 'hidden'}`}>
         <a href="tel:">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +85,7 @@ function Header() {
           </svg>
           (323) 576-1942
         </a>
-        <p className="freeship">Free Shipping on Orders of $49+</p>
+        <p className="freeship">{t('FreeShip')}</p>
         <div className="btn-container">
           <button
             className="language-btn"
@@ -121,11 +139,11 @@ function Header() {
             <img
               width="16px"
               height="12px"
-              src="//brew-blis.myshopify.com/cdn/shop/t/6/assets/flag_fr.png?v=69148847184916641131761984923"
+              src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Flag_of_Georgia.svg"
               alt="Français"
             />{' '}
             {/* ✅ */}
-            Français
+            ქართული
           </div>
         </div>
       )}
@@ -153,7 +171,7 @@ function Header() {
         </div>
       )}
 
-      <div className="navbar">
+      <div className={`navbar ${showTopBar ? '' : 'sticky'}`}>
         <div className="logo">
           <img
             src="//brew-blis.myshopify.com/cdn/shop/files/Logo_200x@2x.png?v=1736775810"
@@ -162,14 +180,21 @@ function Header() {
             width="200"
             style={{ maxWidth: '200px', width: 'auto', height: 'auto' }}
           />{' '}
-          {/* ✅ */}
         </div>
         <div className="navitems">
-          <Link to="/">HOME</Link>
+          <Link
+            to="/"
+            style={{ textTransform: 'uppercase' }}
+          >
+            {t('Home')}
+          </Link>
 
           <div className="products-dropdown-wrapper">
-            <span className="item-dropdown">
-              PRODUCT{' '}
+            <span
+              className="item-dropdown"
+              style={{ textTransform: 'uppercase' }}
+            >
+              {t('Product')}{' '}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="12"
@@ -185,40 +210,40 @@ function Header() {
                   to="/shop"
                   style={{ color: '#FEA90C' }}
                 >
-                  Whisky
+                  {t('Whisky')}
                 </Link>
                 <Link
-                  to="/shop"
+                  to="/shop/8022781788295"
                   className="transformx"
                 >
                   Amber Crisp Ale
                 </Link>
                 <Link
-                  to="/shop"
+                  to="/shop/8022781919367"
                   className="transformx"
                 >
                   Amber Gold Lager
                 </Link>
                 <Link
-                  to="/shop"
+                  to="/shop/8022782083207"
                   className="transformx"
                 >
                   Citrus Smooth IPA
                 </Link>
                 <Link
-                  to="/shop"
+                  to="/shop/8022783656071"
                   className="transformx"
                 >
                   Crisp Golden IPA
                 </Link>
                 <Link
-                  to="/shop"
+                  to="/shop/8022782541959"
                   className="transformx"
                 >
                   Dark Chocolate Stout
                 </Link>
                 <Link
-                  to="/shop"
+                  to="/shop/8022783557767"
                   className="transformx"
                 >
                   Stouth Rich Dark
@@ -229,40 +254,40 @@ function Header() {
                   to="/shop"
                   style={{ color: '#FEA90C' }}
                 >
-                  Beer
+                  {t('Beer')}
                 </Link>
                 <Link
-                  to="/shop"
+                  to="/shop/8022790045831"
                   className="transformx"
                 >
                   Velvet Dark Stout
                 </Link>
                 <Link
-                  to="/shop"
+                  to="/shop/8022783885447"
                   className="transformx"
                 >
                   Summer Glow Lager
                 </Link>
                 <Link
-                  to="/shop"
+                  to="/shop/8022783557767"
                   className="transformx"
                 >
                   Stouth Rich Dark
                 </Link>
                 <Link
-                  to="/shop"
+                  to="/shop/8022749053063"
                   className="transformx"
                 >
                   Red Grapes Tasty Beer
                 </Link>
                 <Link
-                  to="/shop"
+                  to="/shop/8022788800647"
                   className="transformx"
                 >
                   Ocean Breeze IPA
                 </Link>
                 <Link
-                  to="/shop"
+                  to="/shop/8022783885447"
                   className="transformx"
                 >
                   Summer Glow Lager
@@ -272,8 +297,11 @@ function Header() {
           </div>
 
           <div className="products-dropdown-wrapper">
-            <span className="item-dropdown">
-              SHOP{' '}
+            <span
+              className="item-dropdown"
+              style={{ textTransform: 'uppercase' }}
+            >
+              {t('Shop')}{' '}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="12"
@@ -288,44 +316,47 @@ function Header() {
                 to="/shop"
                 style={{ color: '#FEA90C' }}
               >
-                Shop
+                {t('Shop')}
               </Link>
               <Link
                 to="/cart"
                 className="transformx"
               >
-                Cart
+                {t('Cart')}
               </Link>
               <Link
                 to="/wishlist"
                 className="transformx"
               >
-                Wishlist
+                {t('Wishlist')}
               </Link>
               <Link
                 to="/checkout"
                 className="transformx"
               >
-                Checkout
+                {t('Checkout')}
               </Link>
               <Link
                 to="/shop"
                 className="transformx"
               >
-                Product List
+                {t('ProductList')}
               </Link>
               <Link
                 to="/shop/:id"
                 className="transformx"
               >
-                Product Details
+                {t('ProductDetails')}
               </Link>
             </div>
           </div>
 
           <div className="products-dropdown-wrapper">
-            <span className="item-dropdown">
-              BLOG{' '}
+            <span
+              className="item-dropdown"
+              style={{ textTransform: 'uppercase' }}
+            >
+              {t('Blog')}{' '}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="12"
@@ -340,20 +371,23 @@ function Header() {
                 to="/blog"
                 className="transformx"
               >
-                Blog List
+                {t('BlogList')}
               </Link>
               <Link
                 to="/blog"
                 className="transformx"
               >
-                Blog Details
+                {t('BlogDetails')}
               </Link>
             </div>
           </div>
 
           <div className="pages-dropdown-wrapper">
-            <span className="item-dropdown">
-              PAGES{' '}
+            <span
+              className="item-dropdown"
+              style={{ textTransform: 'uppercase' }}
+            >
+              {t('Pages')}{' '}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="12"
@@ -364,9 +398,9 @@ function Header() {
               </svg>
             </span>
             <div className="pages-dropdown-menu">
-              <Link to="/about">About Us</Link>
-              <Link to="/contact">Contact Us</Link>
-              <Link to="/profile">Account</Link>
+              <Link to="/about">{t('AboutUs')}</Link>
+              <Link to="/contact">{t('ContactUs')}</Link>
+              <Link to="/profile">{t('Account')}</Link>
               <Link to="*">404</Link>
             </div>
           </div>

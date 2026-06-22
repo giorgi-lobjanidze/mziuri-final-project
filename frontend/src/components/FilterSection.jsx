@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
-
-const categories = ['Beer', 'Whisky', 'Wheat Beer', 'Non-Alcoholic Beer', 'IPA (India Pale Ale)'];
+import { useTranslation } from 'react-i18next';
 
 function FilterSection({ setFilters }) {
+  const { t } = useTranslation();
   const [priceFrom, setPriceFrom] = useState('');
   const [priceTo, setPriceTo] = useState('');
+  const categories = [
+    { key: 'beer', label: t('Beer') },
+    { key: 'whisky', label: t('Whisky') },
+    { key: 'wheatBeer', label: t('WheatBeer') },
+    { key: 'nonAlcoholicBeer', label: t('NonAlcoholicBeer') },
+    { key: 'ipa', label: t('IPA') },
+  ];
 
   const toggleCategory = (cat) => {
     setFilters((prev) => ({
@@ -50,14 +57,14 @@ function FilterSection({ setFilters }) {
       </div>
 
       <div className="filter-group">
-        <h4>Product Categories</h4>
+        <h4>{t('ProductCategories')}</h4>
         {categories.map((i) => (
           <div
-            key={i}
+            key={i.key}
             className="filter-item"
-            onClick={() => toggleCategory(i)}
+            onClick={() => toggleCategory(i.key)}
           >
-            <span>{i}</span>
+            <span>{i.label}</span>
             <span>(12)</span>
           </div>
         ))}
@@ -65,34 +72,36 @@ function FilterSection({ setFilters }) {
 
       <div className="filter-group">
         <div className="filter-group-header">
-          <h4>AVAILABILITY</h4>
-          <span onClick={() => setFilters((prev) => ({ ...prev, availability: [] }))}>RESET</span>
+          <h4>{t('Availability')}</h4>
+          <span onClick={() => setFilters((prev) => ({ ...prev, availability: [] }))}>
+            {t('Reset')}
+          </span>
         </div>
         <label>
           <input
             type="checkbox"
             onChange={() => toggleAvailability('instock')}
           />{' '}
-          In Stock (9)
+          {t('InStock')}
         </label>
         <label>
           <input
             type="checkbox"
             onChange={() => toggleAvailability('outofstock')}
           />{' '}
-          Out Of Stock (6)
+          {t('OutOfStock')}
         </label>
       </div>
 
       <div className="filter-group">
         <div className="filter-group-header">
-          <h4>PRICE</h4>
+          <h4>{t('Price')}</h4>
           <span onClick={() => setFilters((prev) => ({ ...prev, priceFrom: '', priceTo: '' }))}>
-            RESET
+            {t('Reset')}
           </span>
         </div>
         <p>
-          The Highest Price Is <span className="price-highlight">$200.00</span>
+          {t('HighestPrice')} <span className="price-highlight">$200.00</span>
         </p>
         <div className="price-inputs">
           <input

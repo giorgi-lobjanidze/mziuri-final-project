@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function Footer() {
+  const { t } = useTranslation();
   return (
     <>
       <div className="footer-images">
@@ -48,72 +50,72 @@ function Footer() {
               className="footer-logo"
             />
             <p>
-              We Are Passionate About Crafting The <br /> Perfect Beer Experience..
+              {t('PassionateAboutBeerFirst')} <br /> {t('PassionateAboutBeerSecond')}
             </p>
             <ul className="footer-contact">
               <li>
-                <span>Address</span> 218 Fifth Avenue, Heaven Tower
+                <span>{t('Address')}</span> 218 Fifth Avenue, Heaven Tower
               </li>
               <li>
-                <span>Phone</span> (323) 576-1942
+                <span>{t('Phone')}</span> (323) 576-1942
               </li>
               <li>
-                <span>Email</span> Exampleinfo@Gmail.Com
-              </li>
-            </ul>
-          </div>
-
-          <div className="footer-links">
-            <h4>Our Company</h4>
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About Us</Link>
-              </li>
-              <li>
-                <Link to="/stores">Our Stores</Link>
-              </li>
-              <li>
-                <Link to="/contact">Contact Us</Link>
-              </li>
-              <li>
-                <Link to="/size-guide">Size Guide</Link>
-              </li>
-              <li>
-                <Link to="/account">My Account</Link>
+                <span>{t('Email')}</span> Exampleinfo@Gmail.Com
               </li>
             </ul>
           </div>
 
           <div className="footer-links">
-            <h4>Customer Service</h4>
+            <h4>{t('OurCompany')}</h4>
             <ul>
               <li>
-                <Link to="/privacy">Privacy Policy</Link>
+                <Link to="/">{t('Home')}</Link>
               </li>
               <li>
-                <Link to="/faq">Theme FAQs</Link>
+                <Link to="/about">{t('AboutUs')}</Link>
               </li>
               <li>
-                <Link to="/refund">Refund Policy</Link>
+                <Link to="/stores">{t('OurStores')}</Link>
               </li>
               <li>
-                <Link to="/search">Advanced Search</Link>
+                <Link to="/contact">{t('ContactUs')}</Link>
               </li>
               <li>
-                <Link to="/locations">Store Locations</Link>
+                <Link to="/size-guide">{t('SizeGuide')}</Link>
               </li>
               <li>
-                <Link to="/terms">Term & Conditions</Link>
+                <Link to="/account">{t('MyAccount')}</Link>
+              </li>
+            </ul>
+          </div>
+
+          <div className="footer-links">
+            <h4>{t('CustomerService')}</h4>
+            <ul>
+              <li>
+                <Link to="/privacy">{t('PrivacyPolicy')}</Link>
+              </li>
+              <li>
+                <Link to="/faq">{t('ThemeFAQs')}</Link>
+              </li>
+              <li>
+                <Link to="/refund">{t('RefundPolicy')}</Link>
+              </li>
+              <li>
+                <Link to="/search">{t('AdvancedSearch')}</Link>
+              </li>
+              <li>
+                <Link to="/locations">{t('StoreLocations')}</Link>
+              </li>
+              <li>
+                <Link to="/terms">{t('TermsAndConditions')}</Link>
               </li>
             </ul>
           </div>
 
           <div className="footer-newsletter">
-            <h4>Sign Up To Newsletter</h4>
-            <p>Sign Up For Exclusive Updates, New Arrivals And More.</p>
+            <h4>{t('SignUpToNewsletter')}</h4>
+            <p>{t('SignUpForExclusiveUpdates')}</p>
             <div className="newsletter-form">
               <div className="newsletter-input-wrapper">
                 <svg
@@ -148,7 +150,7 @@ function Footer() {
               <button>Subscribe</button>
             </div>
 
-            <h4>Follow Us</h4>
+            <h4>{t('FollowUs')}</h4>
             <div className="footer-socials">
               <a href="#">
                 <svg

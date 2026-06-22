@@ -23,6 +23,7 @@ import { useLoader } from './context/LoaderContext';
 import Spinnerloader from './components/Spinnerloader';
 import ForgotPasword from './routes/ForgotPasword';
 import ResetPassword from './routes/ResetPassword';
+import ScrollToTopButton from './components/ScrollToTopButton';
 
 function App() {
   useDocumentTitle();
@@ -98,6 +99,7 @@ function App() {
             element={<NotFound />}
           />
         </Routes>
+        <ScrollToTopButton />
       </Main>
       <Footer />
     </>

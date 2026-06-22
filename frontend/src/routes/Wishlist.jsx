@@ -2,10 +2,12 @@ import React, { useEffect } from 'react';
 import { useLoader } from '../context/LoaderContext';
 import { useWishlist } from '../context/WishlistContext';
 import Product from '../components/Product';
+import { useTranslation } from 'react-i18next';
 
 function Wishlist() {
   const { useFakeLoader } = useLoader();
   const { wishlist } = useWishlist();
+  const { t } = useTranslation();
 
   useEffect(() => {
     useFakeLoader();
@@ -20,7 +22,7 @@ function Wishlist() {
             alt=""
           />
         </div>
-        <p>Wishlist</p>
+        <p>{t('Wishlist')}</p>
         <div className="icon">
           <img
             src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
@@ -30,7 +32,7 @@ function Wishlist() {
       </div>
 
       <div className="wishlist">
-        <h2>Your favourite product</h2>
+        <h2>{t('YourFavouriteProduct')}</h2>
         <p>Commodo sociosqu venenatis cras dolor sagittis integer luctus maecenas.</p>
 
         {wishlist.length === 0 ? (
@@ -64,7 +66,7 @@ function Wishlist() {
                 stroke-linejoin="round"
               ></path>
             </svg>
-            <p>Wishlist is empty.</p>
+            <p>{t('WishlistIsEmpty')}.</p>
           </div>
         ) : (
           <div className="products-grid">

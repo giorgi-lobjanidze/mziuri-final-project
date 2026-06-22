@@ -148,8 +148,18 @@ function SingleProduct() {
                     key={val}
                     className={`single-option-btn ${selectedVariant?.[`option${option.position}`] === val ? 'active' : ''}`}
                     onClick={() => {
+                      const target = {
+                        option1: selectedVariant?.option1,
+                        option2: selectedVariant?.option2,
+                        option3: selectedVariant?.option3,
+                      };
+                      target[`option${option.position}`] = val;
+
                       const matched = product.variants.find(
-                        (v) => v[`option${option.position}`] === val
+                        (v) =>
+                          v.option1 === target.option1 &&
+                          v.option2 === target.option2 &&
+                          v.option3 === target.option3
                       );
                       if (matched) setSelectedVariant(matched);
                     }}

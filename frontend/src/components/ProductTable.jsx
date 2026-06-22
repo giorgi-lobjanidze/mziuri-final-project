@@ -1,19 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useTranslation } from 'react-i18next';
 
 function ProductTable() {
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
+  const { t } = useTranslation();
 
   return (
     <div className="product-table-wrapper">
       <table className="product-table">
         <thead>
           <tr>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>Subtotal:</th>
-            <th>Remove</th>
+            <th>{t('Product')}</th>
+            <th>{t('Quantity')}</th>
+            <th>{t('Subtotal')}:</th>
+            <th>{t('Remove')}</th>
           </tr>
         </thead>
         <tbody>
@@ -83,13 +85,13 @@ function ProductTable() {
 
       <div className="product-table-actions">
         <Link to="/shop">
-          <button className="primary-btn">Continue Shopping</button>
+          <button className="primary-btn">{t('ContinueShopping')}</button>
         </Link>
         <button
           className="primary-btn"
           onClick={clearCart}
         >
-          Delete All
+          {t('DeleteAll')}
         </button>
       </div>
     </div>

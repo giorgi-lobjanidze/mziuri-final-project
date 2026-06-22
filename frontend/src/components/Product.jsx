@@ -1,11 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useWishlist } from '../context/WishlistContext';
+import { useCart } from '../context/CartContext';
 
 function Product({ product }) {
   const { id, name, volume, price, oldPrice, discount, rating, reviews, image, inStock } = product;
   const { toggleWishlist, isWishlisted } = useWishlist();
   const wishlisted = isWishlisted(product.id);
+  const { addToCart } = useCart();
+
+  const handleAddToCart = () => {
+    const variant = {
+      title: volume ?? 'default',
+      price: String(price),
+      compare_at_price: oldPrice ? String(oldPrice) : null,
+      available: inStock,
+    };
+    addToCart(product, variant, 1);
+  };
 
   return (
     <div className="product-card">
@@ -53,7 +65,12 @@ function Product({ product }) {
           <span className="price-current">${price}</span>
           {oldPrice && <span className="price-old">${oldPrice}</span>}
         </div>
-        <button className="add-to-cart">Add To Cart</button>
+        <button
+          className="add-to-cart"
+          onClick={handleAddToCart}
+        >
+          Add To Cart
+        </button>
       </div>
     </div>
   );

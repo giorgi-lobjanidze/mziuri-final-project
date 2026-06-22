@@ -66,6 +66,9 @@
         .product-rating {
             font-size: 14px;
             color: black;
+            .review-count {
+                font-family: $font-family-2;
+            }
         }
 
         .product-price {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const states = [
   'Alabama',
@@ -56,6 +57,7 @@ const states = [
 ];
 
 function CartSummary() {
+  const { t } = useTranslation();
   const { subtotal, totalSavings, cartItems } = useCart();
   const navigate = useNavigate();
   const [country, setCountry] = useState('United States');
@@ -69,7 +71,6 @@ function CartSummary() {
 
   return (
     <div className="cart-summary">
-      {/* free shipping banner */}
       <div className="cart-summary-freeship">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -110,11 +111,11 @@ function CartSummary() {
         <p>
           {remaining > 0 ? (
             <>
-              Spend <strong>${remaining.toFixed(2)}</strong> More And Get{' '}
-              <span>Free Shipping!</span>
+              {t('Spend')} <strong>${remaining.toFixed(2)}</strong> {t('MoreAndGet')}{' '}
+              <span>{t('FreeShipping')}!</span>
             </>
           ) : (
-            <span>You've unlocked Free Shipping! 🎉</span>
+            <span>{t('UnlockedShipping')}</span>
           )}
         </p>
       </div>
@@ -123,7 +124,7 @@ function CartSummary() {
 
       {/* subtotal */}
       <div className="cart-summary-row">
-        <span>Subtotal</span>
+        <span>{t('Subtotal')}</span>
         <span>${subtotal.toFixed(2)}</span>
       </div>
 
@@ -131,8 +132,8 @@ function CartSummary() {
 
       {/* shipping estimate */}
       <div className="cart-summary-section">
-        <h4>Estimate Shipping Rates:</h4>
-        <label>Country</label>
+        <h4>{t('EstimateShippingRates')}</h4>
+        <label>{t('Country')}</label>
         <select
           value={country}
           onChange={(e) => setCountry(e.target.value)}
@@ -168,7 +169,7 @@ function CartSummary() {
           <option>United States</option>
         </select>
 
-        <label>State</label>
+        <label>{t('State')}</label>
         <select
           value={state}
           onChange={(e) => setState(e.target.value)}
@@ -178,7 +179,7 @@ function CartSummary() {
           ))}
         </select>
 
-        <label>Zip/Postal Code</label>
+        <label>{t('PostalCode')}</label>
         <input
           type="text"
           placeholder="Zip/Postal Code"
@@ -186,15 +187,14 @@ function CartSummary() {
           onChange={(e) => setZip(e.target.value)}
         />
 
-        <button className="cart-summary-calc-btn">Calculate shipping rates</button>
+        <button className="cart-summary-calc-btn">{t('CalcShipping')}</button>
       </div>
 
       <div className="cart-summary-divider" />
 
-      {/* coupon */}
       <div className="cart-summary-section">
-        <h4>Coupon</h4>
-        <p className="cart-summary-coupon-note">Coupon Code Will Work On Checkout Page.</p>
+        <h4>{t('Coupon')}</h4>
+        <p className="cart-summary-coupon-note">{t('CouponCode')}.</p>
         <input
           type="text"
           placeholder="Coupon code"
@@ -205,15 +205,14 @@ function CartSummary() {
 
       <div className="cart-summary-divider" />
 
-      {/* savings */}
       {totalSavings > 0 ? (
         <div className="cart-summary-row">
-          <span>You Save In Total</span>
+          <span>{t('YouSave')}</span>
           <span>${totalSavings.toFixed(2)}</span>
         </div>
       ) : (
         <div className="cart-summary-row">
-          <span>You Save In Total</span>
+          <span>{t('YouSave')}</span>
           <span>$4.00</span>
         </div>
       )}
@@ -222,13 +221,13 @@ function CartSummary() {
 
       {/* order total */}
       <div className="cart-summary-row total">
-        <span>Order Totals</span>
+        <span>{t('OrderTotals')}</span>
         <span className="cart-summary-total">${subtotal.toFixed(2)}</span>
       </div>
 
       <div className="cart-summary-divider" />
 
-      <p className="cart-summary-tax-note">Taxes And Shipping Calculated At Checkout</p>
+      <p className="cart-summary-tax-note">{t('TaxesShipping')}</p>
 
       <label className="cart-summary-agree">
         <input
@@ -236,7 +235,7 @@ function CartSummary() {
           checked={agreed}
           onChange={(e) => setAgreed(e.target.checked)}
         />
-        I Agree With <span>Terms & Conditions</span>
+        {t('IAgree')} <span>{t('TermsConditions')}</span>
       </label>
 
       <button
@@ -244,7 +243,7 @@ function CartSummary() {
         disabled={!agreed || cartItems.length === 0}
         onClick={() => navigate('/checkout')}
       >
-        Check Out
+        {t('CheckOut')}
       </button>
     </div>
   );

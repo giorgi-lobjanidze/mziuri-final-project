@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 function SortBy({ sortBy, setSortBy, view, setView }) {
+  const { t } = useTranslation();
   return (
     <div className="sortby">
       <div className="view-icons">
@@ -181,9 +183,9 @@ function SortBy({ sortBy, setSortBy, view, setView }) {
           </svg>
         </span>
       </div>
-      <span>13 Products</span>
+      <span>13 {t('Product')}</span>
       <div className="sort-select">
-        <label style={{ color: 'black' }}>Sort By:</label>
+        <label style={{ color: 'black' }}>{t('SortBy')}:</label>
         <select
           value={sortBy}
           onChange={(e) => setSortBy(e.target.value)}
