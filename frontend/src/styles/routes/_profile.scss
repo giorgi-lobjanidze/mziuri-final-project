@@ -1,0 +1,141 @@
+@use '../abstracts' as *;
+
+.account-page {
+  background: #F6FBF2;
+  padding: 40px 210px 60px;
+
+  .account-title {
+    text-align: center;
+    font-family: $font-family-2;
+    font-size: 36px;
+    font-weight: 400;
+    color: #222;
+    padding-bottom: 16px;
+    border-bottom: 2px solid #222;
+    margin-bottom: 40px;
+  }
+
+  .account-body {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .account-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .account-welcome {
+      font-family: $font-family-2;
+      font-size: 15px;
+      color: #222;
+      margin-bottom: 16px;
+      span {
+        color: $color-main;
+      }
+
+      strong { font-weight: 700; }
+    }
+
+    h3 {
+      font-family: $font-family-2;
+      font-size: 24px;
+      font-weight: 400;
+      color: #222;
+      margin-bottom: 8px;
+    }
+
+    .account-no-orders {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 20px;
+      color: #555;
+
+      svg { margin-bottom: 4px; }
+
+      a {
+        font-family: $font-family-2;
+        font-size: 14px;
+        color: #222;
+        text-decoration: underline;
+      }
+
+      p {
+        font-family: $font-family-2;
+        font-size: 13px;
+        color: #888;
+      }
+    }
+
+    .account-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      button {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 14px 16px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-family: $font-family-2;
+        font-size: 14px;
+        font-weight: 600;
+        color: #222;
+        cursor: pointer;
+        text-align: left;
+        transition: 0.2s;
+
+        &:hover { border-color: $color-main; color: $color-main; }
+
+        &.active {
+          background: #1a1a1a;
+          color: white;
+          border-color: #1a1a1a;
+        }
+      }
+    }
+  }
+
+  .account-details {
+    flex: 1;
+
+    h2 {
+      font-family: $font-family-2;
+      font-size: 28px;
+      font-weight: 400;
+      color: #222;
+      margin-bottom: 16px;
+    }
+
+    .account-table {
+      width: 100%;
+      background: white;
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid black;
+
+      td {
+        padding: 16px 24px;
+        font-family: $font-family-2;
+        font-size: 14px;
+        color: #333;
+        border-bottom: 1px solid #eee;
+
+        &:first-child {
+          font-weight: 600;
+          width: 160px;
+          color: #222;
+        }
+      }
+
+      tr:last-child td { border-bottom: none; }
+    }
+  }
+}

@@ -7,6 +7,8 @@
 @use './routes/home';
 @use './routes/shop';
 @use './routes/auth';
+@use './routes/profile';
+@use './routes/adresses';
 @use './routes/contact';
 @use './routes/cart';
 @use './routes/wishlist';

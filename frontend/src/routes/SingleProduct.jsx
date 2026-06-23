@@ -3,8 +3,10 @@ import { useParams } from 'react-router-dom';
 import { useLoader } from '../context/LoaderContext';
 import { getProductById } from '../api/api';
 import { useCart } from '../context/CartContext';
+import { useTranslation } from 'react-i18next';
 
 function SingleProduct() {
+  const { t } = useTranslation();
   const { id } = useParams();
   const { useFakeLoader } = useLoader();
   useEffect(() => useFakeLoader(), []);
@@ -84,7 +86,7 @@ function SingleProduct() {
               <span style={{ color: 'black' }}>★★★★★</span>
             </div>
             <span className="review-text">(1 Review)</span>
-            <span className="sold-text">🔥 12 Sold In Last 24 Hours</span>
+            <span className="sold-text">🔥 {t('Sold')}</span>
           </div>
 
           {/* price */}
@@ -96,7 +98,7 @@ function SingleProduct() {
           {/* stock bar */}
           <div className="single-stock-bar">
             <p>
-              Hurry Up! Only <span className="stock-number">{stockLeft}</span> Left In Stock!
+              {t('HurryUp')} <span className="stock-number">{stockLeft}</span> {t('LeftInStock')}
             </p>
             <div className="stock-bar">
               <div
@@ -109,27 +111,17 @@ function SingleProduct() {
           {/* description */}
           <div className="single-description">
             <p>
-              Red Grapes Tasty Beer brings together the best of fruity sweetness and smooth beer
-              craftsmanship. This unique blend features the bold, rich flavors of red grapes
-              perfectly balanced with a light maltiness, offering a refreshing and delightful taste.
-              With its vibrant aroma and crisp texture, it’s an ideal choice for those who enjoy
-              exploring unconventional flavors in their beverages. The subtle tanginess of the
-              grapes adds a refreshing twist, making it a perfect companion for warm afternoons or
-              casual get-togethers.
+              {t('DescriptionFirst')}
               <br />
               <br />
-              Whether you’re unwinding after a long day or celebrating a special moment, Red Grapes
-              Tasty Beer promises to elevate your experience. Best served chilled, it delivers a
-              burst of fruity flavor that pairs wonderfully with light snacks or savory dishes. This
-              beer is more than just a drink—it's an invitation to savor the unexpected, where the
-              world of fruity wines meets the crisp satisfaction of beer.
+              {t('DescriptionSecond')}
             </p>
           </div>
 
           {/* free shipping */}
           <div className="single-freeship">
             <p>
-              Spend $500.00 More And Get <span>Free Shipping !</span>
+              {t('SpendAndGet')} <span>{t('FreeShipping')} !</span>
             </p>
           </div>
 
@@ -174,22 +166,22 @@ function SingleProduct() {
           {/* availability */}
           <div className="single-availability">
             <p>
-              <span>Availability:</span>{' '}
+              <span>{t('AvailabilityLabel')}</span>{' '}
               <em style={{ color: inStock ? 'green' : 'red' }}>
-                {inStock ? 'In Stock' : 'Out of Stock'}
+                {inStock ? t('InStockLabel') : t('OutOfStockLabel')}
               </em>
             </p>
             <p>
-              <span>Categories:</span> {product.tags.slice(0, 2).join(', ')}
+              <span>{t('Categories')}</span> {product.tags.slice(0, 2).join(', ')}
             </p>
             <p>
-              <span>Tags:</span> {product.tags.join(' , ')}
+              <span>{t('Tags')}</span> {product.tags.join(' , ')}
             </p>
           </div>
 
           {/* quantity */}
           <div className="single-quantity-row">
-            <p className="quantity-label">Quantity:</p>
+            <p className="quantity-label">{t('Quantity')}:</p>
             <div className="single-quantity">
               <button onClick={() => setQuantity((q) => Math.max(1, q - 1))}>-</button>
               <span>{quantity}</span>
@@ -204,9 +196,9 @@ function SingleProduct() {
               disabled={!inStock}
               onClick={() => addToCart(product, selectedVariant, quantity)}
             >
-              {inStock ? 'Add to cart' : 'Sold Out'}
+              {inStock ? t('AddToCart') : t('SoldOut')}
             </button>
-            <button className="single-buy-now">Buy it now</button>
+            <button className="single-buy-now">{t('BuyItNow')}</button>
           </div>
 
           {/* delivery info */}
@@ -248,7 +240,7 @@ function SingleProduct() {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span>ㅤEstimated Delivery:</span> May 28 - Jun 01
+              <span>ㅤ{t('EstimatedDelivery')}</span> {t('EstimatedDeliveryDateRange')}
             </p>
             <p>
               <svg
@@ -301,13 +293,13 @@ function SingleProduct() {
                   strokeLinejoin="round"
                 />
               </svg>
-              ㅤReturn Within 90 Days Of Purchase. Taxes Are Non-Refundable.
+              ㅤ{t('ReturnWithin90Days')}
             </p>
           </div>
 
           {/* share */}
           <div className="single-share">
-            <span>Share:</span>
+            <span>{t('Share')}</span>
             <a href="#">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

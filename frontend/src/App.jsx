@@ -24,6 +24,7 @@ import Spinnerloader from './components/Spinnerloader';
 import ForgotPasword from './routes/ForgotPasword';
 import ResetPassword from './routes/ResetPassword';
 import ScrollToTopButton from './components/ScrollToTopButton';
+import Addresses from './routes/Addresses';
 
 function App() {
   useDocumentTitle();
@@ -93,6 +94,10 @@ function App() {
           <Route
             path="/wishlist"
             element={<Wishlist />}
+          />
+          <Route
+            path="/addresses"
+            element={<Addresses />}
           />
           <Route
             path="*"

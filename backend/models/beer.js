@@ -2,6 +2,11 @@ import mongoose from 'mongoose'
 
 const { Schema } = mongoose
 
+const translationSchema = new Schema({
+  en: String,
+  ka: String,
+});
+
 const variantSchema = new Schema(
   {
     shopifyId:        { type: Number,  required: true, index: true },
@@ -48,7 +53,7 @@ const productSchema = new Schema(
     shopifyId:   { type: Number, required: true, unique: true, index: true },
     title:       { type: String, required: true, trim: true },
     handle:      { type: String, required: true, unique: true, lowercase: true },
-    bodyHtml:    { type: String, default: '' },
+    bodyHtml:    [translationSchema],
     vendor:      { type: String, index: true },
     productType: { type: String, default: '', index: true },
     tags:        [{ type: String }],

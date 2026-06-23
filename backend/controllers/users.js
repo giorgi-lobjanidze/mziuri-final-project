@@ -137,3 +137,30 @@ export const contact = async (req, res) => {
     return res.status(500).json({ err: "Something went wrong" });
   }
 };
+
+export const addAddress = async (req, res) => {
+  try {
+    const token = req.header('Authorization')
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY)
+
+    const { firstName, lastName, company, address1, address2, city, country, zip, phone, isDefault } = req.body
+
+    const user = await User.findById(decoded.id)
+    if (!user) return res.status(404).json({ err: 'User not found' })
+
+    if (isDefault) {
+      user.addresses.forEach(addr => { addr.isDefault = false })
+    }
+
+    user.addresses.push({ firstName, lastName, company, address1, address2, city, country, zip, phone, isDefault })
+    await user.save()
+
+    const userObj = user.toObject()
+    delete userObj.password
+
+    return res.status(201).json({ data: userObj })
+  } catch (err) {
+    console.error('Add address error:', err)
+    return res.status(500).json({ err: 'Something went wrong' })
+  }
+}
