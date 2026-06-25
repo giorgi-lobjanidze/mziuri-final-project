@@ -1,8 +1,11 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useCurrency } from './CurrencyContext';
 
 const CartContext = createContext();
 
 export function CartProvider({ children }) {
+  const { getPrice } = useCurrency();
+
   const [cartItems, setCartItems] = useState(() => {
     try {
       const stored = localStorage.getItem('cartItems');
@@ -36,8 +39,8 @@ export function CartProvider({ children }) {
           id: product.id,
           name,
           image,
-          price: parseFloat(variant.price),
-          oldPrice: variant.compare_at_price ? parseFloat(variant.compare_at_price) : null,
+          price: variant.price, // ✅ keep full { usd, gel } object
+          oldPrice: variant.compare_at_price ?? null, // ✅ keep full object
           variant,
           quantity,
         },
@@ -63,9 +66,12 @@ export function CartProvider({ children }) {
   const clearCart = () => setCartItems([]);
 
   const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  // ✅ subtotal/savings now resolve to the currently selected currency
+  const subtotal = cartItems.reduce((sum, item) => sum + getPrice(item.price) * item.quantity, 0);
   const totalSavings = cartItems.reduce((sum, item) => {
-    if (item.oldPrice) return sum + (item.oldPrice - item.price) * item.quantity;
+    if (item.oldPrice)
+      return sum + (getPrice(item.oldPrice) - getPrice(item.price)) * item.quantity;
     return sum;
   }, 0);
 

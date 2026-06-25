@@ -24,11 +24,11 @@ function Profile() {
     navigate('/login');
   };
 
-  const defaultAddress =
-    userData.addresses?.find((a) => a.isDefault) ?? userData.addresses?.[0] ?? null;
-
   if (!authChecked) return null;
   if (!userData) return null;
+
+  const defaultAddress =
+    userData.addresses?.find((a) => a.isDefault) ?? userData.addresses?.[0] ?? null;
 
   return (
     <>

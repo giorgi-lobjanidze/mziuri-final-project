@@ -2,18 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useWishlist } from '../context/WishlistContext';
 import { useCart } from '../context/CartContext';
+import { useCurrency } from '../context/CurrencyContext';
 
 function Product({ product }) {
   const { id, name, volume, price, oldPrice, discount, rating, reviews, image, inStock } = product;
   const { toggleWishlist, isWishlisted } = useWishlist();
   const wishlisted = isWishlisted(product.id);
   const { addToCart } = useCart();
+  const { formatPrice, getPrice } = useCurrency();
 
   const handleAddToCart = () => {
     const variant = {
       title: volume ?? 'default',
-      price: String(price),
-      compare_at_price: oldPrice ? String(oldPrice) : null,
+      price,
+      compare_at_price: oldPrice ?? null,
       available: inStock,
     };
     addToCart(product, variant, 1);
@@ -62,8 +64,8 @@ function Product({ product }) {
           <span className="review-count">({reviews} Review)</span>
         </div>
         <div className="product-price">
-          <span className="price-current">${price}</span>
-          {oldPrice && <span className="price-old">${oldPrice}</span>}
+          <span className="price-current">{formatPrice(price)}</span>
+          {oldPrice && <span className="price-old">{formatPrice(oldPrice)}</span>}
         </div>
         <button
           className="add-to-cart"

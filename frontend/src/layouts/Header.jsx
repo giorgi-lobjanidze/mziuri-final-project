@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useTranslation } from 'react-i18next';
+import { useCurrency } from '../context/CurrencyContext';
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,6 +11,7 @@ function Header() {
   const { totalItems } = useCart();
   const [showTopBar, setShowTopBar] = useState(true);
   const { t, i18n } = useTranslation();
+  const { currency, setCurrency, CURRENCIES } = useCurrency();
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -27,11 +29,6 @@ function Header() {
   const [language, setLanguage] = useState({
     flag: '//brew-blis.myshopify.com/cdn/shop/t/6/assets/flag_en.png?v=14076981825125011091761984923',
     lang: 'English',
-  });
-
-  const [currency, setCurrency] = useState({
-    country: 'United States',
-    cur: 'USD $',
   });
 
   const handleSelectEnglish = () => {
@@ -53,17 +50,12 @@ function Header() {
   };
 
   const handleSelectUSD = () => {
-    setCurrency({ country: 'United States', cur: 'USD $' });
+    setCurrency(CURRENCIES.USD);
     setIsCurrencyOpen(false);
   };
 
-  const handleSelectEUR = () => {
-    setCurrency({ country: 'European Union', cur: 'EUR €' });
-    setIsCurrencyOpen(false);
-  };
-
-  const handleSelectGBP = () => {
-    setCurrency({ country: 'United Kingdom', cur: 'GBP £' });
+  const handleSelectGEL = () => {
+    setCurrency(CURRENCIES.GEL);
     setIsCurrencyOpen(false);
   };
 
@@ -110,7 +102,7 @@ function Header() {
               setIsOpen(false);
             }}
           >
-            {currency.country} ({currency.cur})
+            {currency.label} ({currency.display})
           </button>
         </div>
       </div>
@@ -127,7 +119,6 @@ function Header() {
               src="//brew-blis.myshopify.com/cdn/shop/t/6/assets/flag_en.png?v=14076981825125011091761984923"
               alt="English"
             />{' '}
-            {/* ✅ */}
             English
           </div>
           <br />
@@ -142,7 +133,6 @@ function Header() {
               src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Flag_of_Georgia.svg"
               alt="Français"
             />{' '}
-            {/* ✅ */}
             ქართული
           </div>
         </div>
@@ -158,15 +148,9 @@ function Header() {
           </div>
           <div
             className="select-currency"
-            onClick={handleSelectEUR}
+            onClick={handleSelectGEL}
           >
-            European Union (EUR €)
-          </div>
-          <div
-            className="select-currency"
-            onClick={handleSelectGBP}
-          >
-            United Kingdom (GBP £)
+            Georgia (GEL ₾)
           </div>
         </div>
       )}

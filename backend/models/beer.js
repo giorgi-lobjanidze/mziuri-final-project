@@ -5,7 +5,12 @@ const { Schema } = mongoose
 const translationSchema = new Schema({
   en: String,
   ka: String,
-});
+})
+
+const priceSchema = new Schema({
+  usd: { type: Number, required: true, min: 0 },
+  gel: { type: Number, required: true, min: 0 },
+}, { _id: false })
 
 const variantSchema = new Schema(
   {
@@ -15,8 +20,8 @@ const variantSchema = new Schema(
     option2:          { type: String,  default: null },
     option3:          { type: String,  default: null },
     sku:              { type: String,  default: null, sparse: true },
-    price:            { type: Number,  required: true, min: 0 },
-    compareAtPrice:   { type: Number,  default: null, min: 0 },
+    price:            { type: priceSchema, required: true },
+    compareAtPrice:   { type: priceSchema, default: null },
     available:        { type: Boolean, default: false, index: true },
     requiresShipping: { type: Boolean, default: true },
     taxable:          { type: Boolean, default: true },
@@ -74,7 +79,7 @@ productSchema.index({ 'variants.sku': 1 }, { sparse: true })
 productSchema.virtual('minPrice').get(function () {
   const available = this.variants.filter(v => v.available)
   if (!available.length) return null
-  return Math.min(...available.map(v => v.price))
+  return Math.min(...available.map(v => v.price.usd))
 })
 
 productSchema.methods.isAvailable = function () {

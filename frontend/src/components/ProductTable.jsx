@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import { useCurrency } from '../context/CurrencyContext';
 import { useTranslation } from 'react-i18next';
 
 function ProductTable() {
   const { cartItems, removeFromCart, updateQuantity, clearCart } = useCart();
+  const { getPrice, formatPrice, formatNumber } = useCurrency();
   const { t } = useTranslation();
 
   return (
@@ -32,9 +34,9 @@ function ProductTable() {
                   <h4>{item.name}</h4>
                   <p>Bottle Size: {item.variant.option1}</p>
                   <p>Beer Variety: {item.variant.option2}</p>
-                  <p className="product-table-price">${item.price.toFixed(2)} </p>
+                  <p className="product-table-price">{formatPrice(item.price)} </p>
                   {item.oldPrice && (
-                    <p className="product-table-old-price">${item.oldPrice.toFixed(2)}</p>
+                    <p className="product-table-old-price">{formatPrice(item.oldPrice)}</p>
                   )}
                 </div>
               </td>
@@ -53,7 +55,9 @@ function ProductTable() {
                   </button>
                 </div>
               </td>
-              <td className="product-table-subtotal">${(item.price * item.quantity).toFixed(2)}</td>
+              <td className="product-table-subtotal">
+                {formatNumber(getPrice(item.price) * item.quantity)}
+              </td>
               <td>
                 <button
                   className="product-table-remove"

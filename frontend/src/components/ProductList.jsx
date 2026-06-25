@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Product from './Product';
 import { getProducts } from '../api/api';
+import { useCurrency } from '../context/CurrencyContext';
 
 const PRODUCTS_PER_PAGE = 6;
 
-function getLowestPrice(variants) {
+function getLowestPrice(variants, getPrice) {
   const available = variants.filter((v) => v.available);
   if (available.length === 0) return variants[0];
   return available.reduce(
-    (min, v) => (parseFloat(v.price) < parseFloat(min.price) ? v : min),
+    (min, v) => (getPrice(v.price) < getPrice(min.price) ? v : min),
     available[0]
   );
 }
 
-function mapProduct(p) {
-  const variant = getLowestPrice(p.variants);
-  const price = parseFloat(variant.price);
-  const oldPrice = variant.compare_at_price ? parseFloat(variant.compare_at_price) : null;
-  const discount = oldPrice && oldPrice > price ? Math.round((1 - price / oldPrice) * 100) : null;
+function mapProduct(p, getPrice) {
+  const variant = getLowestPrice(p.variants, getPrice);
+  const price = variant.price;
+  const oldPrice = variant.compare_at_price ?? null;
+  const priceNum = getPrice(price);
+  const oldPriceNum = oldPrice ? getPrice(oldPrice) : null;
+  const discount =
+    oldPriceNum && oldPriceNum > priceNum ? Math.round((1 - priceNum / oldPriceNum) * 100) : null;
   const inStock = p.variants.some((v) => v.available);
 
   return {
@@ -25,7 +29,7 @@ function mapProduct(p) {
     name: p.title,
     volume: variant.option1 ?? null,
     price,
-    oldPrice: oldPrice && oldPrice > price ? oldPrice : null,
+    oldPrice: oldPriceNum && oldPriceNum > priceNum ? oldPrice : null,
     discount,
     rating: 5,
     reviews: 1,
@@ -36,17 +40,16 @@ function mapProduct(p) {
   };
 }
 
-// const rawProducts = data.products
-
 function ProductList({ filters, sortBy, view }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [rawProducts, setRawProducts] = useState([]);
+  const { getPrice } = useCurrency();
 
   useEffect(() => {
     getProducts().then((products) => setRawProducts(products ?? []));
   }, []);
 
-  let products = rawProducts.map(mapProduct);
+  let products = rawProducts.map((p) => mapProduct(p, getPrice));
 
   // filter
   if (filters.category.length > 0) {
@@ -62,11 +65,11 @@ function ProductList({ filters, sortBy, view }) {
   }
 
   if (filters.priceFrom !== '') {
-    products = products.filter((p) => p.price >= parseFloat(filters.priceFrom));
+    products = products.filter((p) => getPrice(p.price) >= parseFloat(filters.priceFrom));
   }
 
   if (filters.priceTo !== '') {
-    products = products.filter((p) => p.price <= parseFloat(filters.priceTo));
+    products = products.filter((p) => getPrice(p.price) <= parseFloat(filters.priceTo));
   }
 
   // sort
@@ -77,9 +80,9 @@ function ProductList({ filters, sortBy, view }) {
       case 'alphabetically-za':
         return b.name.localeCompare(a.name);
       case 'price-low':
-        return a.price - b.price;
+        return getPrice(a.price) - getPrice(b.price);
       case 'price-high':
-        return b.price - a.price;
+        return getPrice(b.price) - getPrice(a.price);
       case 'created-ascending':
         return new Date(a.createdAt) - new Date(b.createdAt);
       case 'created-descending':

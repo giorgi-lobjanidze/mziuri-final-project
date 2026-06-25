@@ -4,6 +4,7 @@ import { useLoader } from '../context/LoaderContext';
 import { getProductById } from '../api/api';
 import { useCart } from '../context/CartContext';
 import { useTranslation } from 'react-i18next';
+import { useCurrency } from '../context/CurrencyContext';
 
 function SingleProduct() {
   const { t } = useTranslation();
@@ -16,6 +17,7 @@ function SingleProduct() {
   const [selectedImage, setSelectedImage] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
+  const { formatPrice, getPrice } = useCurrency();
 
   useEffect(() => {
     getProductById(id).then((found) => {
@@ -27,9 +29,9 @@ function SingleProduct() {
 
   if (!product) return <div className="single-product-error">Product not found.</div>;
 
-  const price = parseFloat(selectedVariant?.price ?? 0);
+  const price = getPrice(selectedVariant?.price);
   const oldPrice = selectedVariant?.compare_at_price
-    ? parseFloat(selectedVariant.compare_at_price)
+    ? getPrice(selectedVariant.compare_at_price)
     : null;
   const discount = oldPrice && oldPrice > price ? Math.round((1 - price / oldPrice) * 100) : null;
   const inStock = selectedVariant?.available ?? false;
@@ -91,8 +93,10 @@ function SingleProduct() {
 
           {/* price */}
           <div className="single-price">
-            <span className="price-current">${price.toFixed(2)}</span>
-            {oldPrice && <span className="price-old">${oldPrice.toFixed(2)}</span>}
+            <span className="price-current">{formatPrice(selectedVariant?.price)}</span>
+            {selectedVariant?.compare_at_price && (
+              <span className="price-old">{formatPrice(selectedVariant.compare_at_price)}</span>
+            )}
           </div>
 
           {/* stock bar */}
