@@ -13,8 +13,11 @@
 @use './routes/cart';
 @use './routes/wishlist';
 @use './routes/singleproduct';
+@use './routes/about';
+@use './routes/notfound';
 @use './components/product';
 @use './components/productlist';
+@use './components/collections';
 @use './components/filtersection';
 @use './components/sortby';
 @use './components/producttable';

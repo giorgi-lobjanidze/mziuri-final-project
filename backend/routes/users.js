@@ -1,6 +1,6 @@
 import express from 'express'
 import { getProducts, getProductById } from '../controllers/products.js'
-import { register, login, logout, getUser, getToken, contact, forgotPasswordUser, resetPasswordUser, addAddress } from '../controllers/users.js'
+import { register, login, logout, getUser, getToken, contact, forgotPasswordUser, resetPasswordUser, addAddress, updateCart, updateWishlist } from '../controllers/users.js'
 
 const UsersRouter = express.Router()
 
@@ -13,5 +13,7 @@ UsersRouter.post('/contact', contact)
 UsersRouter.post('/forgot-password', forgotPasswordUser)
 UsersRouter.post('/reset-password', resetPasswordUser)
 UsersRouter.post('/add-address', addAddress)
+UsersRouter.post('/update-cart', updateCart)
+UsersRouter.post('/update-wishlist', updateWishlist)
 
 export default UsersRouter

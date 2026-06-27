@@ -164,3 +164,43 @@ export const addAddress = async (req, res) => {
     return res.status(500).json({ err: 'Something went wrong' })
   }
 }
+
+export const updateCart = async (req, res) => {
+  try {
+    const token = req.header('Authorization')
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY)
+
+    const { cart } = req.body
+
+    const user = await User.findByIdAndUpdate(
+      decoded.id,
+      { cart },
+      { new: true }
+    ).select('-password')
+
+    return res.status(200).json({ data: user })
+  } catch (err) {
+    console.error('Update cart error:', err)
+    return res.status(500).json({ err: 'Something went wrong' })
+  }
+}
+
+export const updateWishlist = async (req, res) => {
+  try {
+    const token = req.header('Authorization')
+    const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY)
+
+    const { wishlist } = req.body
+
+    const user = await User.findByIdAndUpdate(
+      decoded.id,
+      { wishlist },
+      { new: true }
+    ).select('-password')
+
+    return res.status(200).json({ data: user })
+  } catch (err) {
+    console.error('Update wishlist error:', err)
+    return res.status(500).json({ err: 'Something went wrong' })
+  }
+}

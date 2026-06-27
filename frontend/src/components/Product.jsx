@@ -4,7 +4,7 @@ import { useWishlist } from '../context/WishlistContext';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 
-function Product({ product }) {
+function Product({ product, className = '' }) {
   const { id, name, volume, price, oldPrice, discount, rating, reviews, image, inStock } = product;
   const { toggleWishlist, isWishlisted } = useWishlist();
   const wishlisted = isWishlisted(product.id);
@@ -22,7 +22,7 @@ function Product({ product }) {
   };
 
   return (
-    <div className="product-card">
+    <div className={`product-card ${className}`}>
       {discount && <span className="product-badge">-{discount}%</span>}
 
       <div className="product-card-image-wrapper">
