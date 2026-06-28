@@ -38,7 +38,6 @@ function Shop() {
         </div>
       </div>
       <div className="shop">
-
         <Collections />
 
         <div className="shop-controls">

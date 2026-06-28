@@ -27,7 +27,8 @@ const mapProduct = (p, getPrice) => {
   const oldPrice = variant.compare_at_price ?? null;
   const priceNum = getPrice(price);
   const oldPriceNum = oldPrice ? getPrice(oldPrice) : null;
-  const discount = oldPriceNum && oldPriceNum > priceNum ? Math.round((1 - priceNum / oldPriceNum) * 100) : null;
+  const discount =
+    oldPriceNum && oldPriceNum > priceNum ? Math.round((1 - priceNum / oldPriceNum) * 100) : null;
   const inStock = p.variants.some((v) => v.available);
   return {
     id: p.id,
@@ -46,17 +47,39 @@ const mapProduct = (p, getPrice) => {
 };
 
 const NextArrow = ({ onClick }) => (
-  <button className="featured-arrow featured-arrow--next" onClick={onClick}>
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M9 18l6-6-6-6"/>
+  <button
+    className="featured-arrow featured-arrow--next"
+    onClick={onClick}
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <path d="M9 18l6-6-6-6" />
     </svg>
   </button>
 );
 
 const PrevArrow = ({ onClick }) => (
-  <button className="featured-arrow featured-arrow--prev" onClick={onClick}>
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M15 18l-6-6 6-6"/>
+  <button
+    className="featured-arrow featured-arrow--prev"
+    onClick={onClick}
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+    >
+      <path d="M15 18l-6-6 6-6" />
     </svg>
   </button>
 );
@@ -92,11 +115,17 @@ function Home() {
         <div className="hero-text">
           <div className="arrivals">
             <div className="icon">
-              <img src="//brew-blis.myshopify.com/cdn/shop/files/vector1.png?v=1736771826" alt="" />
+              <img
+                src="//brew-blis.myshopify.com/cdn/shop/files/vector1.png?v=1736771826"
+                alt=""
+              />
             </div>
             <p>{t('NewArrival')}</p>
             <div className="icon">
-              <img src="//brew-blis.myshopify.com/cdn/shop/files/vector2.png?v=1736775115" alt="" />
+              <img
+                src="//brew-blis.myshopify.com/cdn/shop/files/vector2.png?v=1736775115"
+                alt=""
+              />
             </div>
           </div>
           <h1 className="hero-header">
@@ -112,7 +141,10 @@ function Home() {
           </div>
         </div>
         <div className="img-container">
-          <img src="//brew-blis.myshopify.com/cdn/shop/files/hero.png?v=1736771607" alt="Hero Banner Image 500x500" />
+          <img
+            src="//brew-blis.myshopify.com/cdn/shop/files/hero.png?v=1736771607"
+            alt="Hero Banner Image 500x500"
+          />
         </div>
       </div>
 
@@ -123,27 +155,121 @@ function Home() {
       <div className="featured-products">
         <div className="featured-products-header">
           <div className="icon">
-            <img src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564" alt="" />
+            <img
+              src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564"
+              alt=""
+            />
           </div>
-          <h2>Featured Products</h2>
+          <h2>{t('FeaturedProducts')}</h2>
           <div className="icon">
-            <img src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611" alt="" />
+            <img
+              src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
+              alt=""
+            />
           </div>
         </div>
-        <p className="featured-products-sub">Describe What Your Customers Will Receive When Subscribing To Your Newsletter. What Your Customers</p>
+        <p className="featured-products-sub">{t('FeaturedProductsSub')}</p>
 
         <div className="featured-slider-wrapper">
           <Slider {...sliderSettings}>
             {products.map((product) => (
-              <div className="featured-products-slide" key={product.id}>
-                <Product product={product} className="product-home-card" />
+              <div
+                className="featured-products-slide"
+                key={product.id}
+              >
+                <Product
+                  product={product}
+                  className="product-home-card"
+                />
               </div>
             ))}
           </Slider>
         </div>
 
         <div className="featured-products-btn">
-          <Link to={'/shop'}><Primarybtn>Show All</Primarybtn></Link>
+          <Link to={'/shop'}>
+            <Primarybtn>{t('ShowAll')}</Primarybtn>
+          </Link>
+        </div>
+      </div>
+
+      <div className="promo-cards">
+        <div
+          className="promo-card"
+          style={{
+            backgroundImage:
+              "url('//brew-blis.myshopify.com/cdn/shop/files/Collection01.png?v=1737119432')",
+          }}
+        >
+          <div className="promo-card-content">
+            <div className="promo-card-tag">
+              <img
+                src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564"
+                alt=""
+              />
+              <span>{t('NewRelease')}</span>
+              <img
+                src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
+                alt=""
+              />
+            </div>
+            <h3>{t('PromoCard1')}</h3>
+            <Link to="/shop">
+              <button className="promo-btn">{t('ShopNow')}</button>
+            </Link>
+          </div>
+        </div>
+
+        <div
+          className="promo-card"
+          style={{
+            backgroundImage:
+              "url('//brew-blis.myshopify.com/cdn/shop/files/Collection02.png?v=1737119610')",
+          }}
+        >
+          <div className="promo-card-content">
+            <div className="promo-card-tag">
+              <img
+                src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564"
+                alt=""
+              />
+              <span>{t('HolidayCollections')}</span>
+              <img
+                src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
+                alt=""
+              />
+            </div>
+            <h3>{t('PromoCard2')}</h3>
+            <Link to="/shop">
+              <button className="promo-btn">{t('ShopNow')}</button>
+            </Link>
+          </div>
+        </div>
+
+        <div
+          className="promo-card"
+          style={{
+            backgroundImage:
+              "url('//brew-blis.myshopify.com/cdn/shop/files/Collection03.png?v=1737119679')",
+          }}
+        >
+          <div className="promo-card-content">
+            <div className="promo-card-tag">
+              <img
+                src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564"
+                alt=""
+              />
+              <span>{t('LimitedTimeOffer')}</span>
+              <img
+                src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
+                alt=""
+              />
+            </div>
+            <h3>{t('PromoCard3')}</h3>
+            <Link to="/shop">
+              <button className="promo-btn">{t('ShopSale')}</button>
+            </Link>
+          </div>
         </div>
       </div>
     </>

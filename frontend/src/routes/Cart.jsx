@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useLoader } from '../context/LoaderContext';
 import { useCart } from '../context/CartContext';
 import ProductTable from '../components/ProductTable';
-import CartTotal from '../components/CartTotal';
+import CartSummary from '../components/CartSummary';
 import { useTranslation } from 'react-i18next';
 
 function Cart() {
@@ -92,7 +92,7 @@ function Cart() {
               />
             </div>
           </div>
-          <CartTotal />
+          <CartSummary />
         </div>
       )}
     </>

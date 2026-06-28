@@ -33,7 +33,6 @@ export function CurrencyProvider({ children }) {
     return `${currency.symbol}${value.toFixed(2)}`;
   };
 
-  // ✅ added — formats a plain already-resolved number
   const formatNumber = (value) => `${currency.symbol}${value.toFixed(2)}`;
 
   return (

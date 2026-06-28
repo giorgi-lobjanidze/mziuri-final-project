@@ -5,16 +5,16 @@ import { useCurrency } from '../context/CurrencyContext';
 
 const PRODUCTS_PER_PAGE = 6;
 
-function getLowestPrice(variants, getPrice) {
+const getLowestPrice = (variants, getPrice) => {
   const available = variants.filter((v) => v.available);
   if (available.length === 0) return variants[0];
   return available.reduce(
     (min, v) => (getPrice(v.price) < getPrice(min.price) ? v : min),
     available[0]
   );
-}
+};
 
-function mapProduct(p, getPrice) {
+const mapProduct = (p, getPrice) => {
   const variant = getLowestPrice(p.variants, getPrice);
   const price = variant.price;
   const oldPrice = variant.compare_at_price ?? null;
@@ -38,7 +38,7 @@ function mapProduct(p, getPrice) {
     tags: p.tags ?? [],
     createdAt: p.created_at ?? '',
   };
-}
+};
 
 function ProductList({ filters, sortBy, view }) {
   const [currentPage, setCurrentPage] = useState(1);

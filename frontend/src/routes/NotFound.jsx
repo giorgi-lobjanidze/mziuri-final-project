@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useLoader } from '../context/LoaderContext';
+import { useTranslation } from 'react-i18next';
 
 function NotFound() {
   const { useFakeLoader } = useLoader();
+  const { t } = useTranslation();
+
   useEffect(() => {
     useFakeLoader();
   }, [useFakeLoader]);
@@ -34,16 +37,13 @@ function NotFound() {
               alt="can"
             />
           </div>
-          <h2>Sorry, We Can't Find That Page!</h2>
-          <p>
-            It Seems This Page Has Moved Or Doesn't Exist. Head Back To Our Homepage, Or Reach Out
-            If You Need Help!
-          </p>
+          <h2>{t('NotFoundTitle')}</h2>
+          <p>{t('NotFoundDesc')}</p>
           <Link
             to="/"
             className="not-found-btn"
           >
-            Back To Homepage
+            {t('BackToHomepage')}
           </Link>
         </div>
       </div>

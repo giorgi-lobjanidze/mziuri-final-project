@@ -20,7 +20,6 @@ const UserProvider = ({ children }) => {
     setLoggedIn(false);
   };
 
-  // ✅ restore session on page load/refresh using the httpOnly cookie
   useEffect(() => {
     const restoreSession = async () => {
       try {

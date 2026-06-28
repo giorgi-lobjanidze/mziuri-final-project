@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLoader } from '../context/LoaderContext';
+import { useTranslation } from 'react-i18next';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 function About() {
   const { useFakeLoader } = useLoader();
+  const { t } = useTranslation();
   useEffect(() => {
     useFakeLoader();
   }, [useFakeLoader]);
@@ -16,10 +18,26 @@ function About() {
   const isPausedRef = useRef(false);
 
   const team = [
-    { img: 'https://brew-blis.myshopify.com/cdn/shop/files/team01.png?v=1737460608&width=3000', name: 'Emily Johnson', position: 'Founder/CEO' },
-    { img: 'https://brew-blis.myshopify.com/cdn/shop/files/team02.png?v=1737460608&width=3000', name: 'Michael Brown', position: 'Customer Service Manager' },
-    { img: 'https://brew-blis.myshopify.com/cdn/shop/files/team03.png?v=1737460609&width=3000', name: 'Sarah Davis', position: 'Marketing Specialist' },
-    { img: 'https://brew-blis.myshopify.com/cdn/shop/files/team04.png?v=1737460609&width=3000', name: 'Sophia Martinez', position: 'Art Curator' },
+    {
+      img: 'https://brew-blis.myshopify.com/cdn/shop/files/team01.png?v=1737460608&width=3000',
+      name: 'Emily Johnson',
+      position: 'Founder/CEO',
+    },
+    {
+      img: 'https://brew-blis.myshopify.com/cdn/shop/files/team02.png?v=1737460608&width=3000',
+      name: 'Michael Brown',
+      position: 'Customer Service Manager',
+    },
+    {
+      img: 'https://brew-blis.myshopify.com/cdn/shop/files/team03.png?v=1737460609&width=3000',
+      name: 'Sarah Davis',
+      position: 'Marketing Specialist',
+    },
+    {
+      img: 'https://brew-blis.myshopify.com/cdn/shop/files/team04.png?v=1737460609&width=3000',
+      name: 'Sophia Martinez',
+      position: 'Art Curator',
+    },
   ];
 
   const infCarousel = [
@@ -56,8 +74,12 @@ function About() {
     return () => clearInterval(animationRef.current);
   }, []);
 
-  const handleMouseEnter = () => { isPausedRef.current = true; };
-  const handleMouseLeave = () => { isPausedRef.current = false; };
+  const handleMouseEnter = () => {
+    isPausedRef.current = true;
+  };
+  const handleMouseLeave = () => {
+    isPausedRef.current = false;
+  };
 
   const reviews = [
     {
@@ -102,24 +124,46 @@ function About() {
     },
   ];
 
-  
   return (
     <>
       <div className="shop-banner">
-        <div className="icon"><img src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564" alt="" /></div>
-        <p>About Us</p>
-        <div className="icon"><img src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611" alt="" /></div>
+        <div className="icon">
+          <img
+            src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564"
+            alt=""
+          />
+        </div>
+        <p>{t('AboutUs')}</p>
+        <div className="icon">
+          <img
+            src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
+            alt=""
+          />
+        </div>
       </div>
 
       <div className="about">
         <div className="about-intro">
           <div className="our-story">
-            <div className="icon"><img src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564" alt="" /></div>
-            <p>Our Story</p>
-            <div className="icon"><img src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611" alt="" /></div>
+            <div className="icon">
+              <img
+                src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564"
+                alt=""
+              />
+            </div>
+            <p>{t('OurStory')}</p>
+            <div className="icon">
+              <img
+                src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
+                alt=""
+              />
+            </div>
           </div>
-          <h2>welcome to <span>brew bliss,</span> your ultimate destination for fresh flavors <br /> and delightful sips. we're passionate about delivering premium <br /> food and beverages to satisfy every craving, anytime, anywhere!</h2>
-          <img src='//brew-blis.myshopify.com/cdn/shop/files/about-hero.png?v=1737455564' alt='Brew Bliss' />
+          <h2>{t('AboutIntro')}</h2>
+          <img
+            src="//brew-blis.myshopify.com/cdn/shop/files/about-hero.png?v=1737455564"
+            alt="Brew Bliss"
+          />
         </div>
 
         <div className="about-features">
@@ -165,8 +209,8 @@ function About() {
                 </defs>
               </svg>
             </div>
-            <h4>Free Shipping</h4>
-            <p>Free Shipping On Every Item, Delivered To Your Door, Elevate Your Space With...</p>
+            <h4>{t('FreeShippingTitle')}</h4>
+            <p>{t('FreeShippingDesc')}</p>
           </div>
 
           <div className="about-feature-card">
@@ -196,8 +240,8 @@ function About() {
                 </defs>
               </svg>
             </div>
-            <h4>Gift Package</h4>
-            <p>Gifts That Leave A Lasting Impression, Beautifully Wrapped In Style For Every...</p>
+            <h4>{t('GiftPackage')}</h4>
+            <p>{t('GiftPackageDesc')}</p>
           </div>
 
           <div className="about-feature-card">
@@ -235,8 +279,8 @@ function About() {
                 </defs>
               </svg>
             </div>
-            <h4>One Year Warranty</h4>
-            <p>Shop With Confidence, Our One-Year Warranty Backs Every Jewelry Piece, Crafte...</p>
+            <h4>{t('OneYearWarranty')}</h4>
+            <p>{t('OneYearWarrantyDesc')}</p>
           </div>
 
           <div className="about-feature-card">
@@ -265,23 +309,35 @@ function About() {
                 </defs>
               </svg>
             </div>
-            <h4>Easy Returns</h4>
-            <p>Stress-Free Returns For Peace Of Mind, Ensuring Your Satisfaction With Every...</p>
+            <h4>{t('EasyReturns')}</h4>
+            <p>{t('EasyReturnsDesc')}</p>
           </div>
         </div>
 
         <div className="about-team">
           <div className="about-team-header">
-            <img src='//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564' alt='' />
-            <h2>Meet Our Team Members</h2>
-            <img src='//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611' alt='' />
+            <img
+              src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564"
+              alt=""
+            />
+            <h2>{t('MeetOurTeam')}</h2>
+            <img
+              src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
+              alt=""
+            />
           </div>
-          <p className="about-team-sub">See Why Everyone's Raving About Our Products And Service – Real Stories From Happy Customers!</p>
+          <p className="about-team-sub">{t('TeamSub')}</p>
           <div className="about-team-grid">
             {team.map((member, i) => (
-              <div className="about-team-card" key={i}>
+              <div
+                className="about-team-card"
+                key={i}
+              >
                 <div className="about-team-image">
-                  <img src={member.img} alt={member.name} />
+                  <img
+                    src={member.img}
+                    alt={member.name}
+                  />
                 </div>
                 <div className="about-team-info">
                   <h3>{member.name}</h3>
@@ -292,11 +348,24 @@ function About() {
           </div>
         </div>
 
-        <div className="about-carousel-wrapper" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-          <div className="about-carousel" ref={carouselRef}>
+        <div
+          className="about-carousel-wrapper"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        >
+          <div
+            className="about-carousel"
+            ref={carouselRef}
+          >
             {items.map((item, i) => (
-              <div className="about-carousel-item" key={i}>
-                <img src={item.img} alt="" />
+              <div
+                className="about-carousel-item"
+                key={i}
+              >
+                <img
+                  src={item.img}
+                  alt=""
+                />
               </div>
             ))}
           </div>
@@ -304,11 +373,17 @@ function About() {
 
         <div className="about-reviews">
           <div className="about-reviews-header">
-            <img src='//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564' alt='' />
-            <h2>Raving Reviews</h2>
-            <img src='//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611' alt='' />
+            <img
+              src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564"
+              alt=""
+            />
+            <h2>{t('RavingReviews')}</h2>
+            <img
+              src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
+              alt=""
+            />
           </div>
-          <p className="about-reviews-sub">See Why Everyone's Raving About Our Products And Service – Real Stories From Happy Customers!</p>
+          <p className="about-reviews-sub">{t('TeamSub')}</p>
 
           <Slider
             slidesToShow={3}
@@ -319,13 +394,28 @@ function About() {
             infinite={false}
           >
             {reviews.map((review, i) => (
-              <div className="about-review-card-wrapper" key={i}>
+              <div
+                className="about-review-card-wrapper"
+                key={i}
+              >
                 <div className="about-review-card">
                   <div className="about-review-top">
-                    <img src={review.img} alt={review.name} />
+                    <img
+                      src={review.img}
+                      alt={review.name}
+                    />
                     <span className="about-review-quote">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="38" height="32" viewBox="0 0 38 32" fill="none">
-                        <path d="M25.8837 0L33.2016 32H37.6667V0H25.8837ZM0.581421 0L8.02328 32H12.3644V0H0.581421Z" fill="#CCCCCC"/>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="38"
+                        height="32"
+                        viewBox="0 0 38 32"
+                        fill="none"
+                      >
+                        <path
+                          d="M25.8837 0L33.2016 32H37.6667V0H25.8837ZM0.581421 0L8.02328 32H12.3644V0H0.581421Z"
+                          fill="#CCCCCC"
+                        />
                       </svg>
                     </span>
                   </div>
