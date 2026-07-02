@@ -1,54 +1,54 @@
 @use '../abstracts' as *;
 
 .contact {
-  padding: 48px 210px 80px;
+  padding: calc(48px * var(--app-scale)) calc(210px * var(--app-scale)) calc(80px * var(--app-scale));
   background: #F6FBF2;
 
   .contact-cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
-    margin-bottom: 60px;
+    gap: calc(24px * var(--app-scale));
+    margin-bottom: calc(60px * var(--app-scale));
 
     .contact-card {
       background: #E0E0E0;
-      border-radius: 8px;
-      padding: 32px 24px;
+      border-radius: calc(8px * var(--app-scale));
+      padding: calc(32px * var(--app-scale)) calc(24px * var(--app-scale));
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 8px;
+      gap: calc(8px * var(--app-scale));
       text-align: center;
 
       .contact-card-icon {
-        width: 46px;
-        height: 46px;
+        width: calc(46px * var(--app-scale));
+        height: calc(46px * var(--app-scale));
         background: $color-main;
-        border-radius: 12px;
+        border-radius: calc(12px * var(--app-scale));
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 8px;
+        margin-bottom: calc(8px * var(--app-scale));
       }
 
       h3 {
         font-family: $font-family-2;
-        font-size: 16px;
+        font-size: calc(16px * var(--app-scale));
         font-weight: 600;
         color: #222;
       }
 
       p {
         font-family: $font-family-2;
-        font-size: 13px;
+        font-size: calc(13px * var(--app-scale));
         color: black;
         display: flex;
         align-items: center;
-        gap: 6px;
+        gap: calc(6px * var(--app-scale));
 
         .live-dot {
-          width: 8px;
-          height: 8px;
+          width: calc(8px * var(--app-scale));
+          height: calc(8px * var(--app-scale));
           background: #2ecc71;
           border-radius: 50%;
           display: inline-block;
@@ -57,8 +57,8 @@
 
       .contact-socials {
         display: flex;
-        gap: 12px;
-        margin-top: 4px;
+        gap: calc(12px * var(--app-scale));
+        margin-top: calc(4px * var(--app-scale));
 
         a {
           color: #555;
@@ -76,42 +76,42 @@
   .contact-body {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 48px;
+    gap: calc(48px * var(--app-scale));
     align-items: start;
 
     .contact-form-section {
       h2 {
         font-family: $font-family-2;
-        font-size: 32px;
+        font-size: calc(32px * var(--app-scale));
         font-weight: 400;
         color: #222;
         display: flex;
         align-items: center;
-        gap: 12px;
-        margin-bottom: 8px;
+        gap: calc(12px * var(--app-scale));
+        margin-bottom: calc(8px * var(--app-scale));
 
-        img { width: 24px; }
+        img { width: calc(24px * var(--app-scale)); }
       }
 
       .contact-hours {
         font-family: $font-family-2;
-        font-size: 13px;
+        font-size: calc(13px * var(--app-scale));
         color: #888;
-        margin-bottom: 24px;
+        margin-bottom: calc(24px * var(--app-scale));
       }
 
       .contact-form {
         display: flex;
         flex-direction: column;
-        gap: 16px;
+        gap: calc(16px * var(--app-scale));
 
         .contact-input-wrapper {
           display: flex;
           align-items: center;
-          gap: 12px;
-          border: 1px solid black;
-          border-radius: 8px;
-          padding: 14px 16px;
+          gap: calc(12px * var(--app-scale));
+          border: calc(1px * var(--app-scale)) solid black;
+          border-radius: calc(8px * var(--app-scale));
+          padding: calc(14px * var(--app-scale)) calc(16px * var(--app-scale));
           background: #F6FBF2;
           transition: 0.2s;
 
@@ -121,7 +121,7 @@
             border: none;
             outline: none;
             font-family: $font-family-2;
-            font-size: 14px;
+            font-size: calc(14px * var(--app-scale));
             color: #333;
             background: transparent;
 
@@ -130,7 +130,7 @@
 
           &.textarea-wrapper {
             align-items: flex-start;
-            padding: 14px 16px;
+            padding: calc(14px * var(--app-scale)) calc(16px * var(--app-scale));
 
             textarea {
               flex: 1;
@@ -138,7 +138,7 @@
               outline: none;
               resize: none;
               font-family: $font-family-2;
-              font-size: 14px;
+              font-size: calc(14px * var(--app-scale));
               color: black;
               background: transparent;
               width: 100%;
@@ -152,21 +152,21 @@
 
         .primary-btn {
           width: fit-content;
-          padding: 14px 32px;
+          padding: calc(14px * var(--app-scale)) calc(32px * var(--app-scale));
         }
       }
     }
 
     .contact-map {
-      height: 500px;
-      border-radius: 8px;
+      height: calc(500px * var(--app-scale));
+      border-radius: calc(8px * var(--app-scale));
       overflow: hidden;
     }
 
     .contact-field {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: calc(4px * var(--app-scale));
     }
 
     .contact-input-wrapper {
@@ -177,44 +177,44 @@
 
     .contact-error {
       font-family: $font-family-2;
-      font-size: 12px;
+      font-size: calc(12px * var(--app-scale));
       color: #e74c3c;
     }
 
     .contact-success {
       font-family: $font-family-2;
-      font-size: 14px;
+      font-size: calc(14px * var(--app-scale));
       color: #2ecc71;
       background: #f0fdf4;
-      padding: 10px 14px;
-      border-radius: 8px;
-      margin-bottom: 8px;
+      padding: calc(10px * var(--app-scale)) calc(14px * var(--app-scale));
+      border-radius: calc(8px * var(--app-scale));
+      margin-bottom: calc(8px * var(--app-scale));
     }
   }
   .contact-stores {
-  margin-top: 80px;
+  margin-top: calc(80px * var(--app-scale));
 
   .contact-stores-header {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: calc(40px * var(--app-scale));
 
     h2 {
       font-family: $font-family-2;
-      font-size: 36px;
+      font-size: calc(36px * var(--app-scale));
       font-weight: 400;
       color: #222;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
-      margin-bottom: 12px;
+      gap: calc(12px * var(--app-scale));
+      margin-bottom: calc(12px * var(--app-scale));
 
-      img { width: 24px; }
+      img { width: calc(24px * var(--app-scale)); }
     }
 
     p {
       font-family: $font-family-2;
-      font-size: 14px;
+      font-size: calc(14px * var(--app-scale));
       color: #888;
       line-height: 1.6;
     }
@@ -223,20 +223,20 @@
   .contact-stores-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: calc(24px * var(--app-scale));
   }
 
   .contact-store-card {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: calc(8px * var(--app-scale));
 
     .contact-store-img {
       width: 100%;
-      height: 200px;
-      border-radius: 8px;
+      height: calc(200px * var(--app-scale));
+      border-radius: calc(8px * var(--app-scale));
       overflow: hidden;
-      margin-bottom: 8px;
+      margin-bottom: calc(8px * var(--app-scale));
 
       img {
         width: 100%;
@@ -252,28 +252,28 @@
 
     h4 {
       font-family: $font-family-2;
-      font-size: 16px;
+      font-size: calc(16px * var(--app-scale));
       font-weight: 600;
       color: #222;
     }
 
     p {
       font-family: $font-family-2;
-      font-size: 13px;
+      font-size: calc(13px * var(--app-scale));
       color: #888;
     }
 
     .contact-store-phone {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-top: 4px;
+      gap: calc(12px * var(--app-scale));
+      margin-top: calc(4px * var(--app-scale));
 
       .contact-store-phone-icon {
-        width: 40px;
-        height: 40px;
+        width: calc(40px * var(--app-scale));
+        height: calc(40px * var(--app-scale));
         background: $color-main;
-        border-radius: 8px;
+        border-radius: calc(8px * var(--app-scale));
         display: flex;
         align-items: center;
         justify-content: center;
@@ -282,7 +282,7 @@
 
       span {
         font-family: $font-family-2;
-        font-size: 20px;
+        font-size: calc(20px * var(--app-scale));
         font-weight: 500;
         color: #222;
       }

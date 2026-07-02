@@ -3,16 +3,16 @@
 .not-found {
   font-family: $font-family-2;
   background: #F6FBF2;
-  padding: 50px 20px;
+  padding: calc(50px * var(--app-scale)) calc(20px * var(--app-scale));
   display: flex;
   justify-content: center;
 
   .not-found-content {
     background: white;
-    border-radius: 12px;
-    padding: 60px 80px;
+    border-radius: calc(12px * var(--app-scale));
+    padding: calc(60px * var(--app-scale)) calc(80px * var(--app-scale));
     text-align: center;
-    width: 1100px;
+    width: calc(1100px * var(--app-scale));
     max-width: 100%;
 
     .not-found-number {
@@ -20,27 +20,27 @@
       align-items: center;
       justify-content: center;
       gap: 0;
-      margin-bottom: 32px;
+      margin-bottom: calc(32px * var(--app-scale));
 
       img {
-        height: 180px;
+        height: calc(180px * var(--app-scale));
         object-fit: contain;
-        margin: 0 -10px;
+        margin: 0 calc(-10px * var(--app-scale));
       }
     }
 
     h2 {
-      font-size: 28px;
+      font-size: calc(28px * var(--app-scale));
       font-weight: 550;
       color: #141516;
-      margin-bottom: 16px;
+      margin-bottom: calc(16px * var(--app-scale));
     }
 
     p {
-      font-size: 15px;
+      font-size: calc(15px * var(--app-scale));
       color: #777;
-      max-width: 480px;
-      margin: 0 auto 32px;
+      max-width: calc(480px * var(--app-scale));
+      margin: 0 auto calc(32px * var(--app-scale));
       line-height: 1.6;
     }
 
@@ -49,9 +49,9 @@
       background: #FEA90C;
       color: #141516;
       font-weight: 600;
-      font-size: 15px;
-      padding: 14px 36px;
-      border-radius: 6px;
+      font-size: calc(15px * var(--app-scale));
+      padding: calc(14px * var(--app-scale)) calc(36px * var(--app-scale));
+      border-radius: calc(6px * var(--app-scale));
       text-decoration: none;
       transition: 0.5s;
 

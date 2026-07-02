@@ -1,10 +1,45 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useLoader } from '../context/LoaderContext';
-import { getProductById } from '../api/api';
+import { getProductById, getProducts } from '../api/api';
 import { useCart } from '../context/CartContext';
 import { useTranslation } from 'react-i18next';
 import { useCurrency } from '../context/CurrencyContext';
+import FeaturedProducts from '../components/FeaturedProducts';
+
+const getLowestPrice = (variants, getPrice) => {
+  const available = variants.filter((v) => v.available);
+  if (available.length === 0) return variants[0];
+  return available.reduce(
+    (min, v) => (getPrice(v.price) < getPrice(min.price) ? v : min),
+    available[0]
+  );
+};
+
+const mapProduct = (p, getPrice) => {
+  const variant = getLowestPrice(p.variants, getPrice);
+  const price = variant.price;
+  const oldPrice = variant.compare_at_price ?? null;
+  const priceNum = getPrice(price);
+  const oldPriceNum = oldPrice ? getPrice(oldPrice) : null;
+  const discount =
+    oldPriceNum && oldPriceNum > priceNum ? Math.round((1 - priceNum / oldPriceNum) * 100) : null;
+  const inStock = p.variants.some((v) => v.available);
+  return {
+    id: p.id,
+    name: p.title,
+    volume: variant.option1 ?? null,
+    price,
+    oldPrice: oldPriceNum && oldPriceNum > priceNum ? oldPrice : null,
+    discount,
+    rating: 5,
+    reviews: 1,
+    image: p.images[0]?.src ?? '',
+    inStock,
+    tags: p.tags ?? [],
+    createdAt: p.created_at ?? '',
+  };
+};
 
 function SingleProduct() {
   const { t } = useTranslation();
@@ -18,6 +53,13 @@ function SingleProduct() {
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
   const { formatPrice, getPrice } = useCurrency();
+  const [relatedProducts, setRelatedProducts] = useState([]);
+
+  useEffect(() => {
+    getProducts().then((raw) =>
+      setRelatedProducts((raw ?? []).map((p) => mapProduct(p, getPrice)))
+    );
+  }, []);
 
   useEffect(() => {
     getProductById(id).then((found) => {
@@ -383,6 +425,7 @@ function SingleProduct() {
           </div>
         </div>
       </div>
+      <FeaturedProducts products={relatedProducts} />
     </>
   );
 }

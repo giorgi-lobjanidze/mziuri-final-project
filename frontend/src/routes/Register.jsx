@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLoader } from '../context/LoaderContext';
+import { useTranslation } from 'react-i18next';
 
 function Register() {
   const { useFakeLoader } = useLoader();
   useEffect(() => {
     useFakeLoader();
   }, []);
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const [form, setForm] = useState({
@@ -71,7 +73,7 @@ function Register() {
             alt=""
           />
         </div>
-        <p>Register</p>
+        <p>{t('Register')}</p>
         <div className="icon">
           <img
             src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
@@ -82,7 +84,7 @@ function Register() {
 
       <div className="auth-page">
         <div className="auth-card">
-          <h1>Create Account</h1>
+          <h1>{t('CreateAccount')}</h1>
 
           {serverError && <p className="auth-server-error">{serverError}</p>}
 
@@ -92,12 +94,12 @@ function Register() {
           >
             <div className="auth-field">
               <label>
-                First Name <span>*</span>
+                {t('FirstName')} <span>*</span>
               </label>
               <input
                 type="text"
                 name="firstName"
-                placeholder="First Name"
+                placeholder={t('FirstName')}
                 value={form.firstName}
                 onChange={handleChange}
                 className={errors.firstName ? 'error' : ''}
@@ -107,12 +109,12 @@ function Register() {
 
             <div className="auth-field">
               <label>
-                Last Name <span>*</span>
+                {t('LastName')} <span>*</span>
               </label>
               <input
                 type="text"
                 name="lastName"
-                placeholder="Last Name"
+                placeholder={t('LastName')}
                 value={form.lastName}
                 onChange={handleChange}
                 className={errors.lastName ? 'error' : ''}
@@ -122,12 +124,12 @@ function Register() {
 
             <div className="auth-field">
               <label>
-                Email Address <span>*</span>
+                {t('EmailAddress')} <span>*</span>
               </label>
               <input
                 type="email"
                 name="email"
-                placeholder="Email Address"
+                placeholder={t('EmailAddress')}
                 value={form.email}
                 onChange={handleChange}
                 className={errors.email ? 'error' : ''}
@@ -137,12 +139,12 @@ function Register() {
 
             <div className="auth-field">
               <label>
-                Password <span>*</span>
+                {t('Password')} <span>*</span>
               </label>
               <input
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder={t('Password')}
                 value={form.password}
                 onChange={handleChange}
                 className={errors.password ? 'error' : ''}
@@ -152,12 +154,12 @@ function Register() {
 
             <div className="auth-field">
               <label>
-                Confirm Password <span>*</span>
+                {t('ConfirmPassword')} <span>*</span>
               </label>
               <input
                 type="password"
                 name="confirm"
-                placeholder="Confirm Password"
+                placeholder={t('ConfirmPassword')}
                 value={form.confirm}
                 onChange={handleChange}
                 className={errors.confirm ? 'error' : ''}
@@ -169,14 +171,14 @@ function Register() {
               type="submit"
               className="auth-btn-primary"
             >
-              Create Account
+              {t('CreateAccount')}
             </button>
             <Link to="/login">
               <button
                 type="button"
                 className="auth-btn-secondary"
               >
-                Already Have An Account
+                {t('AlreadyHaveAnAccount')}
               </button>
             </Link>
           </form>

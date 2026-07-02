@@ -1,0 +1,25 @@
+  .about-carousel-wrapper {
+  overflow: hidden;
+  margin-top: calc(110px * var(--app-scale));
+  margin-bottom: calc(80px * var(--app-scale));
+
+  .about-carousel {
+    display: flex;
+    will-change: transform;
+
+    .about-carousel-item {
+      flex-shrink: 0;
+      padding: 0 calc(20px * var(--app-scale));
+
+      img {
+        height: calc(90px * var(--app-scale));
+        object-fit: contain;
+        transition: transform 3s;
+
+        &:hover {
+          transform: scale(1.3);
+        }
+      }
+    }
+  }
+}

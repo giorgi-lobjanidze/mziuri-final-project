@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLoader } from '../context/LoaderContext';
 import * as api from '../api/api.js';
+import { useTranslation } from 'react-i18next';
 
 function ForgotPasword() {
   const { useFakeLoader } = useLoader();
   useEffect(() => {
     useFakeLoader();
   }, []);
+  const { t } = useTranslation();
 
   const [form, setForm] = useState({ email: '' });
   const [errors, setErrors] = useState({});
@@ -49,7 +51,7 @@ function ForgotPasword() {
             alt=""
           />
         </div>
-        <p>Forgot Password</p>
+        <p>{t('ForgotPassword')}</p>
         <div className="icon">
           <img
             src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
@@ -60,8 +62,8 @@ function ForgotPasword() {
 
       <div className="auth-page">
         <div className="auth-card">
-          <h1>Reset Your Password</h1>
-          <p className="resetp">We will send you an email to reset your password.</p>
+          <h1>{t('ResetYourPassword')}</h1>
+          <p className="resetp">{t('ResetPasswordEmail')}</p>
 
           {serverError && <p className="auth-server-error">{serverError}</p>}
           {success && <p className="auth-success">Email sent!</p>}
@@ -72,12 +74,12 @@ function ForgotPasword() {
           >
             <div className="auth-field">
               <label>
-                Email <span>*</span>
+                {t('EmailAddress')} <span>*</span>
               </label>
               <input
                 type="email"
                 name="email"
-                placeholder="Email Address"
+                placeholder={t('EmailAddress')}
                 value={form.email}
                 onChange={handleChange}
                 className={errors.email ? 'error' : ''}
@@ -89,14 +91,14 @@ function ForgotPasword() {
               type="submit"
               className="auth-btn-primary"
             >
-              Submit
+              {t('Submit')}
             </button>
             <Link to="/login">
               <button
                 type="button"
                 className="auth-btn-secondary"
               >
-                Cancel
+                {t('Cancel')}
               </button>
             </Link>
           </form>

@@ -3,12 +3,12 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: calc(32px * var(--app-scale));
 }
 
 .product-list {
   display: grid;
-  gap: 24px;
+  gap: calc(24px * var(--app-scale));
 
   &.grid-2 { grid-template-columns: repeat(2, 1fr); }
   &.grid-3 { grid-template-columns: repeat(3, 1fr); }
@@ -24,16 +24,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: calc(8px * var(--app-scale));
 
   .pagination-btn {
-    width: 40px;
-    height: 40px;
+    width: calc(40px * var(--app-scale));
+    height: calc(40px * var(--app-scale));
     border: none;
     background: #e8e8e8;
-    border-radius: 6px;
+    border-radius: calc(6px * var(--app-scale));
     font-family: $font-family-2;
-    font-size: 14px;
+    font-size: calc(14px * var(--app-scale));
     cursor: pointer;
     transition: 0.2s;
     color: #333;

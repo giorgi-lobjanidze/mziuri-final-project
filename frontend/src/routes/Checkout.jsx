@@ -4,12 +4,14 @@ import { useLoader } from '../context/LoaderContext';
 import { useCart } from '../context/CartContext';
 import { useCurrency } from '../context/CurrencyContext';
 import { useUserData } from '../context/UserContext';
+import { useTranslation } from 'react-i18next';
 
 function Checkout() {
   const { useFakeLoader } = useLoader();
   useEffect(() => {
     useFakeLoader();
   }, []);
+  const { t } = useTranslation();
 
   const { cartItems, subtotal } = useCart();
   const { formatNumber, currency } = useCurrency();
@@ -95,8 +97,8 @@ function Checkout() {
         ) : (
           <div className="checkout-contact">
             <div className="checkout-contact-header">
-              <h3>Contact</h3>
-              <Link to="/login">Sign in</Link>
+              <h3>{t('Contact')}</h3>
+              <Link to="/login">{t('SignIn')}</Link>
             </div>
             <input
               type="text"
@@ -107,13 +109,13 @@ function Checkout() {
             />
             <label className="checkout-checkbox">
               <input type="checkbox" />
-              Email me with news and offers
+              {t('EmailMeWithNewsAndOffers')}
             </label>
           </div>
         )}
 
         <div className="checkout-delivery">
-          <h3>Delivery</h3>
+          <h3>{t('Delivery')}</h3>
 
           <div className="checkout-field-floating">
             <label>Country/Region</label>
@@ -187,15 +189,13 @@ function Checkout() {
             />
           </div>
 
-          <h3>Shipping method</h3>
-          <div className="checkout-shipping-note">
-            Enter your shipping address to view available shipping methods.
-          </div>
+          <h3>{t('ShippingMethod')}</h3>
+          <div className="checkout-shipping-note">{t('EnterShippingAddressToViewMethods')}</div>
         </div>
 
         <div className="checkout-payment">
-          <h3>Payment</h3>
-          <p className="checkout-payment-note">All transactions are secure and encrypted.</p>
+          <h3>{t('Payment')}</h3>
+          <p className="checkout-payment-note">{t('AllTransactionsAreSecureAndEncrypted')}</p>
 
           <div className="checkout-payment-box">
             <div
@@ -208,7 +208,7 @@ function Checkout() {
                 checked={paymentMethod === 'card'}
                 onChange={() => setPaymentMethod('card')}
               />
-              <span>Credit card</span>
+              <span>{t('CreditCard')}</span>
               <span className="checkout-card-badge">B</span>
             </div>
 
@@ -239,12 +239,12 @@ function Checkout() {
                     checked={sameAsBilling}
                     onChange={(e) => setSameAsBilling(e.target.checked)}
                   />
-                  Use shipping address as billing address
+                  {t('UseShippingAddressAsBillingAddress')}
                 </label>
 
                 {!sameAsBilling && (
                   <div className="checkout-billing-address">
-                    <h4>Billing address</h4>
+                    <h4>{t('BillingAddress')}</h4>
                     <div className="checkout-field-floating">
                       <label>Country/Region</label>
                       <select name="billingCountry">
@@ -303,7 +303,7 @@ function Checkout() {
                 checked={paymentMethod === 'cod'}
                 onChange={() => setPaymentMethod('cod')}
               />
-              <span>Cash on Delivery (COD)</span>
+              <span>{t('CashOnDelivery')}</span>
             </div>
           </div>
         </div>
@@ -312,7 +312,7 @@ function Checkout() {
           className="checkout-pay-btn"
           disabled={cartItems.length === 0}
         >
-          Pay now
+          {t('PayNow')}
         </button>
 
         <Link
@@ -353,18 +353,18 @@ function Checkout() {
         <div className="checkout-divider" />
 
         <div className="checkout-summary-row">
-          <span>Subtotal</span>
+          <span>{t('Subtotal')}</span>
           <span>{formatNumber(subtotal)}</span>
         </div>
         <div className="checkout-summary-row">
-          <span>Shipping</span>
-          <span className="checkout-shipping-pending">Enter shipping address</span>
+          <span>{t('Shipping')}</span>
+          <span className="checkout-shipping-pending">{t('EnterShippingAddress')}</span>
         </div>
 
         <div className="checkout-divider" />
 
         <div className="checkout-summary-row total">
-          <span>Total</span>
+          <span>{t('Total')}</span>
           <span>
             <small>{currency.display.split(' ')[0]}</small> {formatNumber(subtotal)}
           </span>

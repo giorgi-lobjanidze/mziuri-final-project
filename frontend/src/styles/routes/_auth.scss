@@ -6,39 +6,39 @@
   align-items: center;
   justify-content: center;
   background: #F6FBF2;
-  padding: 40px 20px;
+  padding: calc(40px * var(--app-scale)) calc(20px * var(--app-scale));
 
   .auth-card {
     background: white;
-    border-radius: 16px;
-    padding: 48px 40px;
+    border-radius: calc(16px * var(--app-scale));
+    padding: calc(48px * var(--app-scale)) calc(40px * var(--app-scale));
     width: 100%;
-    max-width: 560px;
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    max-width: calc(560px * var(--app-scale));
+    box-shadow: 0 calc(4px * var(--app-scale)) calc(24px * var(--app-scale)) rgba(0, 0, 0, 0.06);
 
     h1 {
       font-family: $font-family-2;
-      font-size: 36px;
+      font-size: calc(36px * var(--app-scale));
       font-weight: 400;
       color: #222;
-      margin-bottom: 28px;
+      margin-bottom: calc(28px * var(--app-scale));
     }
 
     form {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: calc(16px * var(--app-scale));
     }
   }
 
   .auth-field {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: calc(6px * var(--app-scale));
 
     label {
       font-family: $font-family-2;
-      font-size: 14px;
+      font-size: calc(14px * var(--app-scale));
       font-weight: 500;
       color: black;
 
@@ -48,18 +48,18 @@
     }
 
     input {
-      padding: 16px 20px;
-      border: 1px solid #696969;
-      border-radius: 10px;
+      padding: calc(16px * var(--app-scale)) calc(20px * var(--app-scale));
+      border: calc(1px * var(--app-scale)) solid #696969;
+      border-radius: calc(10px * var(--app-scale));
       font-family: $font-family-2;
-      font-size: 15px;
+      font-size: calc(15px * var(--app-scale));
       outline: none;
       transition: 0.2s;
       color: #333;
 
       &::placeholder { 
         color: black; 
-        font-size: 13px;
+        font-size: calc(13px * var(--app-scale));
       }
 
       &:focus { 
@@ -74,27 +74,27 @@
 
   .auth-error {
     font-family: $font-family-2;
-    font-size: 12px;
+    font-size: calc(12px * var(--app-scale));
     color: #e74c3c;
-    margin-top: 2px;
+    margin-top: calc(2px * var(--app-scale));
   }
 
   .auth-server-error {
     font-family: $font-family-2;
-    font-size: 14px;
+    font-size: calc(14px * var(--app-scale));
     color: #e74c3c;
     background: #fdf0f0;
-    padding: 10px 14px;
-    border-radius: 8px;
-    margin-bottom: 8px;
+    padding: calc(10px * var(--app-scale)) calc(14px * var(--app-scale));
+    border-radius: calc(8px * var(--app-scale));
+    margin-bottom: calc(8px * var(--app-scale));
   }
 
   .auth-forgot {
     font-family: $font-family-2;
-    font-size: 13px;
+    font-size: calc(13px * var(--app-scale));
     color: #555;
     cursor: pointer;
-    margin-top: -4px;
+    margin-top: calc(-4px * var(--app-scale));
 
     &:hover { 
         color: $color-main; 
@@ -103,17 +103,17 @@
 
   .auth-btn-primary {
     width: 100%;
-    padding: 16px;
+    padding: calc(16px * var(--app-scale));
     background: $color-main;
     color: black;
     border: none;
-    border-radius: 10px;
+    border-radius: calc(10px * var(--app-scale));
     font-family: $font-family-2;
-    font-size: 16px;
+    font-size: calc(16px * var(--app-scale));
     font-weight: 600;
     cursor: pointer;
     transition: 0.5s;
-    margin-top: 4px;
+    margin-top: calc(4px * var(--app-scale));
 
     &:hover { 
         background: #212529; 
@@ -123,13 +123,13 @@
 
   .auth-btn-secondary {
     width: 100%;
-    padding: 16px;
+    padding: calc(16px * var(--app-scale));
     background: transparent;
     color: #222;
-    border: 1.5px solid $color-main;
-    border-radius: 10px;
+    border: calc(1.5px * var(--app-scale)) solid $color-main;
+    border-radius: calc(10px * var(--app-scale));
     font-family: $font-family-2;
-    font-size: 16px;
+    font-size: calc(16px * var(--app-scale));
     font-weight: 600;
     cursor: pointer;
     transition: 0.5s;
@@ -143,7 +143,7 @@
 .resetp {
   color: #696969;
   font-family: $font-family-2;
-  transform: translateY(-25px);
+  transform: translateY(calc(-25px * var(--app-scale)));
   text-transform: capitalize;
-  font-size: 18px;
+  font-size: calc(18px * var(--app-scale));
 }

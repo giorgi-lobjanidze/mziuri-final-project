@@ -2,25 +2,25 @@
 
 .collections {
         display: flex;
-        gap: 16px;
-        padding: 32px 0;
+        gap: calc(16px * var(--app-scale));
+        padding: calc(32px * var(--app-scale)) 0;
 
         &__item {
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: calc(12px * var(--app-scale));
             cursor: pointer;
         }
 
         &__img-wrap {
             background: #F6FBF2;
-            border-radius: 12px;
+            border-radius: calc(12px * var(--app-scale));
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 0;
-            height: 200px;
+            height: calc(200px * var(--app-scale));
             overflow: hidden;
 
             img {
@@ -38,20 +38,19 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            // gap: 8px;
-            padding: 0px 8px;
+            padding: 0px calc(8px * var(--app-scale));
         }
 
         &__name {
             font-family: $font-family-2;
-            font-size: 18px;
+            font-size: calc(18px * var(--app-scale));
             font-weight: 600;
             color: #111;
         }
 
         &__count {
             font-family: $font-family-2;
-            font-size: 13px;
+            font-size: calc(13px * var(--app-scale));
             color: #888;
         }
     }

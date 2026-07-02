@@ -11,29 +11,29 @@
 
 .footer {
   background: #EAEAEC;
-  padding: 60px 185px 0;
+  padding: calc(60px * var(--app-scale)) calc(185px * var(--app-scale)) 0;
   font-family: $font-family-2;
 
   .footer-top {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1.5fr;
-    gap: 40px;
-    padding-bottom: 30px;
+    gap: calc(40px * var(--app-scale));
+    padding-bottom: calc(30px * var(--app-scale));
   }
 
   
 
   .footer-brand {
     .footer-logo {
-      height: 64px;
-      margin-bottom: 16px;
+      height: calc(64px * var(--app-scale));
+      margin-bottom: calc(16px * var(--app-scale));
     }
 
     p {
       color: #777;
-      font-size: 16px;
+      font-size: calc(16px * var(--app-scale));
       line-height: 1.6;
-      margin-bottom: 20px;
+      margin-bottom: calc(20px * var(--app-scale));
     }
 
     .footer-contact {
@@ -41,24 +41,24 @@
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      font-size: 14px;
+      gap: calc(8px * var(--app-scale));
+      font-size: calc(14px * var(--app-scale));
       color: #777;
 
       span {
         font-weight: 550;
         color: #141516;
-        margin-right: 6px;
+        margin-right: calc(6px * var(--app-scale));
       }
     }
   }
 
   .footer-links {
     h4 {
-      font-size: 18px;
+      font-size: calc(18px * var(--app-scale));
       font-weight: 600;
       color: #141516;
-      margin-bottom: 20px;
+      margin-bottom: calc(20px * var(--app-scale));
     }
 
     ul {
@@ -66,12 +66,12 @@
       padding: 0;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: calc(12px * var(--app-scale));
 
       a {
         color: #777;
         text-decoration: none;
-        font-size: 14px;
+        font-size: calc(14px * var(--app-scale));
         transition: color 0.2s;
 
         &:hover { text-decoration: underline; }
@@ -81,30 +81,30 @@
 
   .footer-newsletter {
     h4 {
-      font-size: 18px;
+      font-size: calc(18px * var(--app-scale));
       font-weight: 600;
       color: #141516;
-      margin-bottom: 12px;
+      margin-bottom: calc(12px * var(--app-scale));
     }
 
     > p {
       color: #777;
-      font-size: 14px;
-      margin-bottom: 16px;
+      font-size: calc(14px * var(--app-scale));
+      margin-bottom: calc(16px * var(--app-scale));
     }
 
     .newsletter-form {
       display: flex;
-      gap: 8px;
-      margin-bottom: 28px;
+      gap: calc(8px * var(--app-scale));
+      margin-bottom: calc(28px * var(--app-scale));
 
       .newsletter-input-wrapper {
         display: flex;
         align-items: center;
-        gap: 10px;
-        border: 1px solid black;
-        border-radius: 6px;
-        padding: 13px 14px;
+        gap: calc(10px * var(--app-scale));
+        border: calc(1px * var(--app-scale)) solid black;
+        border-radius: calc(6px * var(--app-scale));
+        padding: calc(13px * var(--app-scale)) calc(14px * var(--app-scale));
         background: #EAEAEC;
         flex: 1;
 
@@ -113,9 +113,9 @@
         input {
           border: none;
           outline: none;
-          font-size: 14px;
+          font-size: calc(14px * var(--app-scale));
           color: #141516;
-          width: 220px;
+          width: calc(220px * var(--app-scale));
           background: transparent;
 
           &::placeholder { color: black; }
@@ -123,13 +123,13 @@
       }
 
       button {
-        width: 130px;
+        width: calc(130px * var(--app-scale));
         background: #141516;
         color: white;
         border: none;
-        border-radius: 6px;
-        padding: 0 20px;
-        font-size: 14px;
+        border-radius: calc(6px * var(--app-scale));
+        padding: 0 calc(20px * var(--app-scale));
+        font-size: calc(14px * var(--app-scale));
         font-weight: 500;
         cursor: pointer;
         transition: 0.2s;
@@ -140,14 +140,14 @@
 
     .footer-socials {
       display: flex;
-      gap: 10px;
+      gap: calc(10px * var(--app-scale));
 
       a {
-        width: 38px;
-        height: 38px;
-        border: 1px solid #ddd;
+        width: calc(38px * var(--app-scale));
+        height: calc(38px * var(--app-scale));
+        border: calc(1px * var(--app-scale)) solid #ddd;
         background: #f3f9ec;
-        border-radius: 5px;
+        border-radius: calc(5px * var(--app-scale));
         display: flex;
         align-items: center;
         justify-content: center;
@@ -164,13 +164,13 @@
   }
 
   .footer-bottom {
-    padding: 20px 0;
+    padding: calc(20px * var(--app-scale)) 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
 
     p {
-      font-size: 14px;
+      font-size: calc(14px * var(--app-scale));
       color: #777;
 
       a {
@@ -183,12 +183,11 @@
     .footer-payments {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: calc(4px * var(--app-scale));
 
       img {
-        height: 30px;
+        height: calc(30px * var(--app-scale));
         object-fit: contain;
-        // filter: grayscale(0.2);
       }
     }
   }

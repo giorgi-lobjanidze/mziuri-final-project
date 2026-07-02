@@ -2,37 +2,37 @@
 
 .account-page {
   background: #F6FBF2;
-  padding: 40px 210px 60px;
+  padding: calc(40px * var(--app-scale)) calc(210px * var(--app-scale)) calc(60px * var(--app-scale));
 
   .account-title {
     text-align: center;
     font-family: $font-family-2;
-    font-size: 36px;
+    font-size: calc(36px * var(--app-scale));
     font-weight: 400;
     color: #222;
-    padding-bottom: 16px;
-    border-bottom: 2px solid #222;
-    margin-bottom: 40px;
+    padding-bottom: calc(16px * var(--app-scale));
+    border-bottom: calc(2px * var(--app-scale)) solid #222;
+    margin-bottom: calc(40px * var(--app-scale));
   }
 
   .account-body {
     display: flex;
-    gap: 32px;
+    gap: calc(32px * var(--app-scale));
     align-items: flex-start;
   }
 
   .account-sidebar {
-    width: 280px;
+    width: calc(280px * var(--app-scale));
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: calc(8px * var(--app-scale));
 
     .account-welcome {
       font-family: $font-family-2;
-      font-size: 15px;
+      font-size: calc(15px * var(--app-scale));
       color: #222;
-      margin-bottom: 16px;
+      margin-bottom: calc(16px * var(--app-scale));
       span {
         color: $color-main;
       }
@@ -42,31 +42,31 @@
 
     h3 {
       font-family: $font-family-2;
-      font-size: 24px;
+      font-size: calc(24px * var(--app-scale));
       font-weight: 400;
       color: #222;
-      margin-bottom: 8px;
+      margin-bottom: calc(8px * var(--app-scale));
     }
 
     .account-no-orders {
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      margin-bottom: 20px;
+      gap: calc(4px * var(--app-scale));
+      margin-bottom: calc(20px * var(--app-scale));
       color: #555;
 
-      svg { margin-bottom: 4px; }
+      svg { margin-bottom: calc(4px * var(--app-scale)); }
 
       a {
         font-family: $font-family-2;
-        font-size: 14px;
+        font-size: calc(14px * var(--app-scale));
         color: #222;
         text-decoration: underline;
       }
 
       p {
         font-family: $font-family-2;
-        font-size: 13px;
+        font-size: calc(13px * var(--app-scale));
         color: #888;
       }
     }
@@ -74,18 +74,18 @@
     .account-nav {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: calc(8px * var(--app-scale));
 
       button {
         display: flex;
         align-items: center;
-        gap: 10px;
-        padding: 14px 16px;
+        gap: calc(10px * var(--app-scale));
+        padding: calc(14px * var(--app-scale)) calc(16px * var(--app-scale));
         background: white;
-        border: 1px solid #ddd;
-        border-radius: 6px;
+        border: calc(1px * var(--app-scale)) solid #ddd;
+        border-radius: calc(6px * var(--app-scale));
         font-family: $font-family-2;
-        font-size: 14px;
+        font-size: calc(14px * var(--app-scale));
         font-weight: 600;
         color: #222;
         cursor: pointer;
@@ -108,29 +108,29 @@
 
     h2 {
       font-family: $font-family-2;
-      font-size: 28px;
+      font-size: calc(28px * var(--app-scale));
       font-weight: 400;
       color: #222;
-      margin-bottom: 16px;
+      margin-bottom: calc(16px * var(--app-scale));
     }
 
     .account-table {
       width: 100%;
       background: white;
-      border-radius: 6px;
+      border-radius: calc(6px * var(--app-scale));
       overflow: hidden;
-      border: 1px solid black;
+      border: calc(1px * var(--app-scale)) solid black;
 
       td {
-        padding: 16px 24px;
+        padding: calc(16px * var(--app-scale)) calc(24px * var(--app-scale));
         font-family: $font-family-2;
-        font-size: 14px;
+        font-size: calc(14px * var(--app-scale));
         color: #333;
-        border-bottom: 1px solid #eee;
+        border-bottom: calc(1px * var(--app-scale)) solid #eee;
 
         &:first-child {
           font-weight: 600;
-          width: 160px;
+          width: calc(160px * var(--app-scale));
           color: #222;
         }
       }

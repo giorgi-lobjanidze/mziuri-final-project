@@ -7,7 +7,7 @@
 }
 
 .top-bar {
-    min-height: 50px;
+    min-height: calc(50px * var(--app-scale));
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -15,15 +15,15 @@
     background-color: #0e0e0e;
     color: white;
     font-family: $font-family-2;
-    padding: 0 210px;
+    padding: 0 calc(210px * var(--app-scale));
 
     a {
         flex: 1;
         color: white;
         svg {
             position: relative;
-            top: 4px;
-            left: -4px;
+            top: calc(4px * var(--app-scale));
+            left: calc(-4px * var(--app-scale));
         }
     }
 
@@ -37,34 +37,34 @@
         display: flex;
         align-items: center;
         justify-content: flex-end;
-        gap: 10px;
+        gap: calc(10px * var(--app-scale));
 
         button {
             background: transparent;
             border: none;
             color: white;
             font-family: $font-family-2;
-            font-size: 14px;
+            font-size: calc(14px * var(--app-scale));
             cursor: pointer;
-            padding: 6px 10px;
+            padding: calc(6px * var(--app-scale)) calc(10px * var(--app-scale));
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: calc(6px * var(--app-scale));
 
             &::after {
                 content: '';
                 display: block;
-                width: 8px;
-                height: 8px;
-                border-right: 1.5px solid white;
-                border-bottom: 1.5px solid white;
-                transform: rotate(45deg) translateY(-2px);
+                width: calc(8px * var(--app-scale));
+                height: calc(8px * var(--app-scale));
+                border-right: calc(1.5px * var(--app-scale)) solid white;
+                border-bottom: calc(1.5px * var(--app-scale)) solid white;
+                transform: rotate(45deg) translateY(calc(-2px * var(--app-scale)));
             }
         }
     }
 
     transition: 0.3s ease;
-    max-height: 50px;
+    max-height: calc(50px * var(--app-scale));
     overflow: hidden;
 
     &.hidden {
@@ -77,20 +77,20 @@
 }
 
 .languages-dropdown {
-    width: 110px;
-    height: 70px;
+    width: calc(110px * var(--app-scale));
+    height: calc(70px * var(--app-scale));
     background-color: white;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 calc(8px * var(--app-scale)) calc(24px * var(--app-scale)) rgba(0, 0, 0, 0.12);
     position: absolute;
-    right: 390px;
-    border-radius: 8px;
-    padding-top: 10px;
-    padding-left: 20px;
+    right: calc(390px * var(--app-scale));
+    border-radius: calc(8px * var(--app-scale));
+    padding-top: calc(10px * var(--app-scale));
+    padding-left: calc(20px * var(--app-scale));
     font-family: $font-family-2;
     z-index: 5;
 
     .select-france {
-        transform: translateY(-24px);
+        transform: translateY(calc(-24px * var(--app-scale)));
         &:hover { cursor: pointer; }
     }
     .select-english {
@@ -99,26 +99,26 @@
 }
 
 .currency-dropdown {
-    width: 200px;
-    height: 60px;
-    right: 170px;
+    width: calc(200px * var(--app-scale));
+    height: calc(60px * var(--app-scale));
+    right: calc(170px * var(--app-scale));
     font-family: $font-family-2;
-    font-size: 14px;
+    font-size: calc(14px * var(--app-scale));
     z-index: 5;
 
     .select-currency {
-        padding-top: 5px;
+        padding-top: calc(5px * var(--app-scale));
         &:hover { cursor: pointer; }
     }
 }
 
 .navbar {
-    height: 80px;
+    height: calc(80px * var(--app-scale));
     display: flex;
     flex-direction: row;
-    padding: 0 210px;
+    padding: 0 calc(210px * var(--app-scale));
     transition: 0.3s;
-    box-shadow: 0 3px 10px #0000000d;
+    box-shadow: 0 calc(3px * var(--app-scale)) calc(10px * var(--app-scale)) #0000000d;
 
     .logo {
         flex: 1;
@@ -130,7 +130,7 @@
         flex: 1;
         display: flex;
         flex-direction: row;
-        gap: 32px;
+        gap: calc(32px * var(--app-scale));
         align-items: center;
         justify-content: center;
         font-family: $font-family-2;
@@ -161,7 +161,7 @@
         display: flex;
         align-items: center;
         justify-content: end;
-        gap: 20px;
+        gap: calc(20px * var(--app-scale));
 
         svg {
             transition: 0.3s;
@@ -179,7 +179,7 @@
             top: 100%;
             left: 0;
             width: 100%;
-            height: 16px;
+            height: calc(16px * var(--app-scale));
         }
 
         &:hover .pages-dropdown-menu { display: flex; }
@@ -193,25 +193,25 @@
             display: none;
             flex-direction: column;
             position: absolute;
-            top: calc(100% + 16px);
+            top: calc(100% + calc(16px * var(--app-scale)));
             left: 0;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-            padding: 16px 0;
-            min-width: 200px;
+            border-radius: calc(8px * var(--app-scale));
+            box-shadow: 0 calc(8px * var(--app-scale)) calc(24px * var(--app-scale)) rgba(0, 0, 0, 0.12);
+            padding: calc(16px * var(--app-scale)) 0;
+            min-width: calc(200px * var(--app-scale));
             z-index: 100;
 
             a {
-                padding: 12px 24px;
+                padding: calc(12px * var(--app-scale)) calc(24px * var(--app-scale));
                 color: #222;
                 font-family: $font-family-2;
-                font-size: 15px;
+                font-size: calc(15px * var(--app-scale));
                 text-decoration: none;
 
                 &:hover {
                     color: $color-main;
-                    transform: translateX(10px);
+                    transform: translateX(calc(10px * var(--app-scale)));
                 }
             }
         }
@@ -227,7 +227,7 @@
             top: 100%;
             left: 0;
             width: 100%;
-            height: 16px;
+            height: calc(16px * var(--app-scale));
         }
 
         &:hover .products-dropdown-menu { display: flex; }
@@ -242,31 +242,31 @@
         display: none;
         flex-direction: row;
         position: absolute;
-        top: calc(100% + 16px);
+        top: calc(100% + calc(16px * var(--app-scale)));
         left: 0;
         background: white;
-        border-radius: 8px;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-        padding: 16px 0;
+        border-radius: calc(8px * var(--app-scale));
+        box-shadow: 0 calc(8px * var(--app-scale)) calc(24px * var(--app-scale)) rgba(0, 0, 0, 0.12);
+        padding: calc(16px * var(--app-scale)) 0;
         z-index: 100;
 
         .whisky, .beer {
             display: flex;
             flex-direction: column;
-            min-width: 180px;
+            min-width: calc(180px * var(--app-scale));
         }
 
         a {
-            padding: 12px 24px;
+            padding: calc(12px * var(--app-scale)) calc(24px * var(--app-scale));
             color: #222;
             font-family: $font-family-2;
-            font-size: 15px;
+            font-size: calc(15px * var(--app-scale));
             text-decoration: none;
             white-space: nowrap;
 
             &:hover {
                 color: $color-main;
-                transform: translateX(10px);
+                transform: translateX(calc(10px * var(--app-scale)));
             }
         }
     }
@@ -294,8 +294,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 120px;
-    gap: 24px;
+    padding-top: calc(120px * var(--app-scale));
+    gap: calc(24px * var(--app-scale));
     opacity: 0;
     pointer-events: none;
     transition: 0.3s;
@@ -307,38 +307,38 @@
 
     .search-close {
         position: absolute;
-        top: 24px;
-        right: 32px;
-        font-size: 24px;
+        top: calc(24px * var(--app-scale));
+        right: calc(32px * var(--app-scale));
+        font-size: calc(24px * var(--app-scale));
         cursor: pointer;
         color: #222;
     }
 
     h2 {
         font-family: $font-family-2;
-        font-size: 20px;
+        font-size: calc(20px * var(--app-scale));
         color: #222;
     }
 
     .search-bar {
         display: flex;
-        width: 480px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
+        width: calc(480px * var(--app-scale));
+        border: calc(1px * var(--app-scale)) solid #ddd;
+        border-radius: calc(4px * var(--app-scale));
 
         input {
             flex: 1;
-            padding: 12px 16px;
+            padding: calc(12px * var(--app-scale)) calc(16px * var(--app-scale));
             border: none;
             outline: none;
             font-family: $font-family-2;
-            font-size: 15px;
+            font-size: calc(15px * var(--app-scale));
         }
 
         button {
             background: $color-main;
             border: none;
-            padding: 0 16px;
+            padding: 0 calc(16px * var(--app-scale));
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -355,15 +355,15 @@
 
   .cart-badge {
     position: absolute;
-    top: -8px;
-    right: -5px;
+    top: calc(-8px * var(--app-scale));
+    right: calc(-5px * var(--app-scale));
     background: $color-main;
     color: white;
     font-family: $font-family-2;
-    font-size: 11px;
+    font-size: calc(11px * var(--app-scale));
     font-weight: 700;
-    width: 18px;
-    height: 18px;
+    width: calc(18px * var(--app-scale));
+    height: calc(18px * var(--app-scale));
     border-radius: 50%;
     display: flex;
     align-items: center;

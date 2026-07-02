@@ -4,12 +4,12 @@
   background-color: $color-main;
   color:            black;
   border:           none;
-  padding:          14px 28px;
+  padding:          calc(14px * var(--app-scale)) calc(28px * var(--app-scale));
   font-family:      $font-family-2;
-  font-size:        15px;
+  font-size:        calc(15px * var(--app-scale));
   cursor:           pointer;
   transition:       0.5s;
-  border-radius:    5px;
+  border-radius:    calc(5px * var(--app-scale));
 
   &:hover {
     background-color: $color-dark;
@@ -20,13 +20,13 @@
 .secondary-btn {
   background-color: $color-light;
   color:            black;
-  border:           1px solid rgba(255, 255, 255, 0.4);
-  padding:          14px 28px;
+  border:           calc(1px * var(--app-scale)) solid rgba(255, 255, 255, 0.4);
+  padding:          calc(14px * var(--app-scale)) calc(28px * var(--app-scale));
   font-family:      $font-family-2;
-  font-size:        15px;
+  font-size:        calc(15px * var(--app-scale));
   cursor:           pointer;
   transition:       0.5s;
-  border-radius:    5px;
+  border-radius:    calc(5px * var(--app-scale));
 
   &:hover {
     background-color: $color-main;

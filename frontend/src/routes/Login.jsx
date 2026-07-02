@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useLoader } from '../context/LoaderContext';
 import { useUserData } from '../context/UserContext';
+import { useTranslation } from 'react-i18next';
 
 function Login() {
   const { useFakeLoader } = useLoader();
   useEffect(() => {
     useFakeLoader();
   }, []);
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const { login } = useUserData();
 
@@ -59,7 +61,7 @@ function Login() {
             alt=""
           />
         </div>
-        <p>Login</p>
+        <p>{t('Login')}</p>
         <div className="icon">
           <img
             src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
@@ -70,7 +72,7 @@ function Login() {
 
       <div className="auth-page">
         <div className="auth-card">
-          <h1>Login</h1>
+          <h1>{t('Login')}</h1>
 
           {serverError && <p className="auth-server-error">{serverError}</p>}
 
@@ -80,12 +82,12 @@ function Login() {
           >
             <div className="auth-field">
               <label>
-                Email Address <span>*</span>
+                {t('EmailAddress')} <span>*</span>
               </label>
               <input
                 type="email"
                 name="email"
-                placeholder="Email Address"
+                placeholder={t('EmailAddress')}
                 value={form.email}
                 onChange={handleChange}
                 className={errors.email ? 'error' : ''}
@@ -95,12 +97,12 @@ function Login() {
 
             <div className="auth-field">
               <label>
-                Password <span>*</span>
+                {t('Password')} <span>*</span>
               </label>
               <input
                 type="password"
                 name="password"
-                placeholder="Password"
+                placeholder={t('Password')}
                 value={form.password}
                 onChange={handleChange}
                 className={errors.password ? 'error' : ''}
@@ -109,21 +111,21 @@ function Login() {
             </div>
 
             <Link to="/forgot-password">
-              <p className="auth-forgot">Forgot Your Password ?</p>
+              <p className="auth-forgot">{t('ForgotYourPassword')}</p>
             </Link>
 
             <button
               type="submit"
               className="auth-btn-primary"
             >
-              Login
+              {t('Login')}
             </button>
             <Link to="/register">
               <button
                 type="button"
                 className="auth-btn-secondary"
               >
-                Create New Account
+                {t('CreateNewAccount')}
               </button>
             </Link>
           </form>

@@ -5,8 +5,8 @@
   background-size:     cover;
   background-position: center;
   height:              90vh;
-  padding-left:        200px;
-  padding-right:       200px;
+  padding-left:        calc(200px * var(--app-scale));
+  padding-right:       calc(200px * var(--app-scale));
   position:            relative;
   overflow:            hidden;
 
@@ -18,14 +18,14 @@
     p, h1 { color: white; }
 
     .arrivals {
-      @include flex(flex-start, center, 10px, row);
+      @include flex(flex-start, center, calc(10px * var(--app-scale)), row);
       font-family:    $font-family-2;
       text-transform: uppercase;
       color:          #feedec;
     }
 
     .hero-header {
-      font-size:      52px;
+      font-size:      calc(52px * var(--app-scale));
       font-family:    $font-family-2;
       font-weight:    400;
       text-transform: capitalize;
@@ -33,16 +33,16 @@
     }
 
     .hero-p {
-      font-size:      14px;
+      font-size:      calc(14px * var(--app-scale));
       font-family:    $font-family-2;
       color:          $color-text-muted;
       text-transform: capitalize;
-      margin-top:     24px;
+      margin-top:     calc(24px * var(--app-scale));
     }
 
     .btns-container {
       @include flex(flex-start, center, 1rem, row);
-      margin-top: 50px;
+      margin-top: calc(50px * var(--app-scale));
     }
   }
 
@@ -53,7 +53,7 @@
 
     img {
       position: absolute;
-      right:    180px;
+      right:    calc(180px * var(--app-scale));
       bottom:   0;
       top:      auto;
       transition: 0.4s;
@@ -63,124 +63,57 @@
     }
   }
 }
-.featured-products {
-  padding: 20px 170px;
-  background: #F6FBF2;
-  overflow: hidden;
-  font-family:    $font-family-2;
-
-  .featured-products-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    margin-bottom: 12px;
-
-    h2 { font-size: 38px; font-weight: 500; color: #141516; }
-    img { height: 28px; }
-  }
-
-  .featured-products-sub {
-    text-align: center;
-    font-size: 14px;
-    color: #777;
-    max-width: 500px;
-    margin: 0 auto 40px;
-    line-height: 1.6;
-  }
-
-  .featured-slider-wrapper {
-    position: relative;
-
-    .slick-list {
-      overflow: hidden;
-      margin: 0 -12px;
-    }
-
-    .featured-products-slide {
-      padding: 0 12px;
-    }
-
-    .featured-arrow {
-      position: absolute;
-      top: 45%;
-      transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: #FEA90C;
-      border: none;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      transition: 0.3s;
-
-      &:hover { background: #e09500; }
-      &--prev { left: -45px; }
-      &--next { right: -68px; }
-    }
-  }
-
-  .featured-products-btn {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-  }
-}
 
 .promo-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  padding: 80px 185px;
+  gap: calc(24px * var(--app-scale));
+  padding: calc(80px * var(--app-scale)) calc(185px * var(--app-scale));
   background: #F6FBF2;
   font-family:    $font-family-2;
 
   .promo-card {
-    border-radius: 12px;
+    border-radius: calc(12px * var(--app-scale));
     overflow: hidden;
     background-size: cover;
     background-position: center;
-    min-height: 420px;
+    min-height: calc(420px * var(--app-scale));
     position: relative;
     display: flex;
     align-items: flex-start;
 
     .promo-card-content {
-      padding: 28px;
+      padding: calc(28px * var(--app-scale));
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: calc(16px * var(--app-scale));
 
       .promo-card-tag {
         display: flex;
         align-items: center;
-        gap: 8px;
-        font-size: 13px;
+        gap: calc(8px * var(--app-scale));
+        font-size: calc(13px * var(--app-scale));
         font-weight: 500;
         color: #141516;
 
-        img { height: 16px; }
+        img { height: calc(16px * var(--app-scale)); }
       }
 
       h3 {
-        font-size: 22px;
+        font-size: calc(22px * var(--app-scale));
         font-weight: 550;
         color: #141516;
-        max-width: 200px;
+        max-width: calc(200px * var(--app-scale));
         line-height: 1.3;
       }
 
       .promo-btn {
         display: inline-block;
-        padding: 12px 24px;
-        border: 1px solid #141516;
-        border-radius: 6px;
+        padding: calc(12px * var(--app-scale)) calc(24px * var(--app-scale));
+        border: calc(1px * var(--app-scale)) solid #141516;
+        border-radius: calc(6px * var(--app-scale));
         background: transparent;
-        font-size: 14px;
+        font-size: calc(14px * var(--app-scale));
         font-weight: 500;
         color: #141516;
         cursor: pointer;
@@ -193,4 +126,159 @@
       }
     }
   }
+}
+
+.new-arrivals {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: $font-family-2;
+  padding: calc(60px * var(--app-scale)) calc(200px * var(--app-scale)) calc(60px * var(--app-scale)) calc(150px * var(--app-scale));
+  gap: calc(40px * var(--app-scale));
+  position: relative;
+  overflow: hidden;
+
+  
+
+  .new-arrivals-bottles {
+    margin-left: calc(40px * var(--app-scale));
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-width: 100%;
+      max-height: calc(690px * var(--app-scale));
+      object-fit: contain;
+      transition: 0.4s;
+      &:hover {
+        scale: 0.9;
+      }
+    }
+  }
+
+  .new-arrivals-content {
+    flex: 1;
+    max-width: calc(600px * var(--app-scale));
+    position: relative;
+
+    .new-arrivals-header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: calc(12px * var(--app-scale));
+      margin-bottom: calc(8px * var(--app-scale));
+
+      .icon img {
+        width: calc(28px * var(--app-scale));
+        height: calc(28px * var(--app-scale));
+      }
+
+      h2 {
+        font-size: calc(36px * var(--app-scale));
+        font-weight: 400;
+        color: #222;
+      }
+    }
+
+    .new-arrivals-sub {
+      font-size: calc(15px * var(--app-scale));
+      text-align: center;
+      color: #666;
+      margin-bottom: calc(32px * var(--app-scale));
+    }
+  }
+
+  .new-arrivals-slider-wrapper {
+    position: relative;
+
+    .featured-arrow {
+      position: absolute;
+      top: 45%;
+      transform: translateY(-50%);
+      width: calc(44px * var(--app-scale));
+      height: calc(44px * var(--app-scale));
+      border-radius: 50%;
+      background: #FEA90C;
+      border: none;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: 0.3s;
+
+      &:hover { background: #e09500; }
+      &--prev { left: calc(-25px * var(--app-scale)); }
+      &--next { right: calc(-25px * var(--app-scale)); }
+    }
+
+    .slick-track {
+      display: flex;
+    }
+
+    .slick-dots {
+      position: relative;
+      margin-top: calc(10px * var(--app-scale));
+      display: flex;
+      justify-content: flex-start;
+      gap: calc(8px * var(--app-scale));
+      list-style: none;
+      padding: 0;
+
+      li {
+        width: auto;
+        height: auto;
+
+        button {
+          width: calc(10px * var(--app-scale));
+          height: calc(10px * var(--app-scale));
+          border-radius: 50%;
+          background: #ccc;
+          border: none;
+          padding: 0;
+          text-indent: calc(-9999px * var(--app-scale));
+          cursor: pointer;
+        }
+
+        &.slick-active button {
+          background: $color-main;
+        }
+      }
+    }
+  }
+}
+
+.features-home {
+  background: #F6FBF2;
+  padding: calc(80px * var(--app-scale)) calc(185px * var(--app-scale)) calc(30px * var(--app-scale)) calc(185px * var(--app-scale));
+  font-family: $font-family-2;
+}
+
+.limited-banner {
+  font-family: $font-family-2;
+  padding: calc(128px * var(--app-scale)) 0 calc(180px * var(--app-scale)) calc(190px * var(--app-scale));
+  background-color: #e2eafe;
+  background-image: url(//brew-blis.myshopify.com/cdn/shop/files/Discount_Banner_1920x.png?v=1737182608);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  p {
+    text-transform: uppercase;
+  }
+  h1 {
+    font-weight: 500;
+    margin-top: calc(10px * var(--app-scale));
+    margin-bottom: calc(30px * var(--app-scale));
+    line-height: 1.2;
+  }
+}
+
+.reviews-home {
+  background: #F6FBF2;
+  padding: calc(1px * var(--app-scale)) calc(185px * var(--app-scale)) calc(80px * var(--app-scale)) calc(16px * var(--app-scale));
+  font-family: $font-family-2;
 }

@@ -1,0 +1,41 @@
+ .about-features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: calc(24px * var(--app-scale));
+    margin-bottom: calc(80px * var(--app-scale));
+
+    .about-feature-card {
+      background: #e8e8e8;
+      border-radius: calc(10px * var(--app-scale));
+      padding: calc(28px * var(--app-scale)) calc(24px * var(--app-scale));
+
+      .about-feature-icon {
+        width: calc(48px * var(--app-scale));
+        height: calc(48px * var(--app-scale));
+        background: #FEA90C;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: calc(20px * var(--app-scale));
+        transition: 0.3s;
+        &:hover {
+          transform: translateY(calc(-15px * var(--app-scale)));
+          cursor: pointer;
+        }
+      }
+
+      h4 {
+        font-size: calc(16px * var(--app-scale));
+        font-weight: 600;
+        color: #141516;
+        margin-bottom: calc(10px * var(--app-scale));
+      }
+
+      p {
+        font-size: calc(13px * var(--app-scale));
+        color: #777;
+        line-height: 1.6;
+      }
+    }
+  }

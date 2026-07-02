@@ -11,6 +11,10 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { Link } from 'react-router-dom';
+import Features from '../components/Features';
+import InfCarousel from '../components/InfCarousel';
+import Reviews from '../components/Reviews';
+import FeaturedProducts from '../components/FeaturedProducts';
 
 const getLowestPrice = (variants, getPrice) => {
   const available = variants.filter((v) => v.available);
@@ -98,10 +102,10 @@ function Home() {
     getProducts().then((raw) => setProducts((raw ?? []).map((p) => mapProduct(p, getPrice))));
   }, []);
 
-  const sliderSettings = {
-    slidesToShow: 4,
+  const newArrivalsSliderSettings = {
+    slidesToShow: 2,
     slidesToScroll: 1,
-    dots: false,
+    dots: true,
     arrows: true,
     speed: 400,
     infinite: false,
@@ -152,46 +156,7 @@ function Home() {
         <Collections />
       </div>
 
-      <div className="featured-products">
-        <div className="featured-products-header">
-          <div className="icon">
-            <img
-              src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564"
-              alt=""
-            />
-          </div>
-          <h2>{t('FeaturedProducts')}</h2>
-          <div className="icon">
-            <img
-              src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
-              alt=""
-            />
-          </div>
-        </div>
-        <p className="featured-products-sub">{t('FeaturedProductsSub')}</p>
-
-        <div className="featured-slider-wrapper">
-          <Slider {...sliderSettings}>
-            {products.map((product) => (
-              <div
-                className="featured-products-slide"
-                key={product.id}
-              >
-                <Product
-                  product={product}
-                  className="product-home-card"
-                />
-              </div>
-            ))}
-          </Slider>
-        </div>
-
-        <div className="featured-products-btn">
-          <Link to={'/shop'}>
-            <Primarybtn>{t('ShowAll')}</Primarybtn>
-          </Link>
-        </div>
-      </div>
+      <FeaturedProducts products={products} />
 
       <div className="promo-cards">
         <div
@@ -271,6 +236,70 @@ function Home() {
             </Link>
           </div>
         </div>
+      </div>
+
+      <div
+        className="new-arrivals"
+        style={{
+          backgroundImage:
+            "url('//brew-blis.myshopify.com/cdn/shop/files/New_Arrivals.png?v=1737123247')",
+        }}
+      >
+        <div className="new-arrivals-bottles">
+          <img
+            src="//brew-blis.myshopify.com/cdn/shop/files/right-hand_img_product_43443b50-5d1a-46b5-91e5-7943cb7cfbd4.png?v=1737122100"
+            alt="Tasty Beer bottles"
+          />
+        </div>
+
+        <div className="new-arrivals-content">
+          <div className="new-arrivals-header">
+            <div className="icon">
+              <img
+                src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon1.png?v=1737455564"
+                alt=""
+              />
+            </div>
+            <h2>{t('NewArrivals')}</h2>
+            <div className="icon">
+              <img
+                src="//brew-blis.myshopify.com/cdn/shop/files/breadcrumicon2.png?v=1737455611"
+                alt=""
+              />
+            </div>
+          </div>
+          <p className="new-arrivals-sub">{t('NewArrivalsSub')}</p>
+
+          <div className="new-arrivals-slider-wrapper">
+            <Slider {...newArrivalsSliderSettings}>
+              {products.map((product) => (
+                <div
+                  className="new-arrivals-slide"
+                  key={product.id}
+                >
+                  <Product product={product} />
+                </div>
+              ))}
+            </Slider>
+          </div>
+        </div>
+      </div>
+
+      <div className="features-home">
+        <Features />
+        <InfCarousel />
+      </div>
+
+      <div className="limited-banner">
+        <p>{t('LimitedTimeOnly')}</p>
+        <h1>
+          {t('PourBeerFirst')} <br /> {t('PourBeerSecond')}
+        </h1>
+        <Primarybtn>{t('ShopSale')}</Primarybtn>
+      </div>
+
+      <div className="reviews-home">
+        <Reviews />
       </div>
     </>
   );

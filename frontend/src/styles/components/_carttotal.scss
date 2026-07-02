@@ -1,24 +1,24 @@
 @use '../abstracts' as *;
 
 .cart-summary {
-  border: 1px solid #696969;
-  width: 300px;
+  border: calc(1px * var(--app-scale)) solid #696969;
+  width: calc(300px * var(--app-scale));
   background: #F6FBF2;
-  border-radius: 8px;
-  padding: 24px;
+  border-radius: calc(8px * var(--app-scale));
+  padding: calc(24px * var(--app-scale));
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: calc(16px * var(--app-scale));
   flex-shrink: 0;
 
   .cart-summary-freeship {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: calc(12px * var(--app-scale));
 
     p {
       font-family: $font-family-2;
-      font-size: 15px;
+      font-size: calc(15px * var(--app-scale));
       color: #555;
       strong { color: #222; }
       span { color: $color-main; font-weight: 600; }
@@ -26,7 +26,7 @@
   }
 
   .cart-summary-divider {
-    height: 1px;
+    height: calc(1px * var(--app-scale));
     background: #7a7a7a;
   }
 
@@ -34,13 +34,13 @@
     display: flex;
     justify-content: space-between;
     font-family: $font-family-2;
-    font-size: 16px;
+    font-size: calc(16px * var(--app-scale));
     font-weight: 550;
     color: #222;
 
     &.total {
       font-weight: 600;
-      font-size: 16px;
+      font-size: calc(16px * var(--app-scale));
       color: #222;
     }
 
@@ -50,30 +50,30 @@
   .cart-summary-section {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: calc(8px * var(--app-scale));
 
     h4 {
       font-family: $font-family-2;
-      font-size: 16px;
+      font-size: calc(16px * var(--app-scale));
       font-weight: 600;
       color: #222;
     }
 
     label {
       font-family: $font-family-2;
-      font-size: 15px;
+      font-size: calc(15px * var(--app-scale));
       font-weight: 600;
       color: #222;
     }
 
     select, input {
       width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #696969;
+      padding: calc(10px * var(--app-scale)) calc(12px * var(--app-scale));
+      border: calc(1px * var(--app-scale)) solid #696969;
       background: #F6FBF2;
-      border-radius: 10px;
+      border-radius: calc(10px * var(--app-scale));
       font-family: $font-family-2;
-      font-size: 13px;
+      font-size: calc(13px * var(--app-scale));
       outline: none;
       appearance: auto;
       box-sizing: border-box;
@@ -82,19 +82,19 @@
 
     .cart-summary-coupon-note {
       font-family: $font-family-2;
-      font-size: 16px;
+      font-size: calc(16px * var(--app-scale));
       color: #696969;
     }
   }
 
   .cart-summary-calc-btn {
-    padding: 15px;
+    padding: calc(15px * var(--app-scale));
     background: $color-main;
     color: black;
     border: none;
-    border-radius: 6px;
+    border-radius: calc(6px * var(--app-scale));
     font-family: $font-family-2;
-    font-size: 15px;
+    font-size: calc(15px * var(--app-scale));
     cursor: pointer;
     transition: 0.5s;
     &:hover { background: #1a1a1a; color: white; }
@@ -102,32 +102,32 @@
 
   .cart-summary-tax-note {
     font-family: $font-family-2;
-    font-size: 16px;
+    font-size: calc(16px * var(--app-scale));
     color: #696969;
   }
 
   .cart-summary-agree {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: calc(8px * var(--app-scale));
     font-family: $font-family-2;
-    font-size: 13px;
+    font-size: calc(13px * var(--app-scale));
     color: #555;
     cursor: pointer;
 
-    input[type='checkbox'] { accent-color: $color-main; width: 16px; height: 16px; }
+    input[type='checkbox'] { accent-color: $color-main; width: calc(16px * var(--app-scale)); height: calc(16px * var(--app-scale)); }
     span { color: $color-main; text-decoration: underline; }
   }
 
   .cart-summary-checkout {
     width: 100%;
-    padding: 14px;
+    padding: calc(14px * var(--app-scale));
     background: #ddd;
     color: #888;
     border: none;
-    border-radius: 6px;
+    border-radius: calc(6px * var(--app-scale));
     font-family: $font-family-2;
-    font-size: 15px;
+    font-size: calc(15px * var(--app-scale));
     font-weight: 600;
     cursor: default;
     transition: 0.3s;

@@ -1,0 +1,11 @@
+@use '../abstracts' as *;
+
+.blog-container{
+    background: #F6FBF2;
+    font-family: $font-family-2;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

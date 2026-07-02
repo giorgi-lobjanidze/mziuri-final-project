@@ -1,9 +1,9 @@
 @use '../abstracts' as *;
 
 .product-table-wrapper {
-  border: 1px solid #696969;
+  border: calc(1px * var(--app-scale)) solid #696969;
   background: #F6FBF2;
-  border-radius: 8px;
+  border-radius: calc(8px * var(--app-scale));
   overflow: hidden;
 }
 
@@ -13,45 +13,45 @@
 
   th {
     font-family: $font-family-2;
-    font-size: 18px;
+    font-size: calc(18px * var(--app-scale));
     font-weight: 600;
     color: #222;
-    padding: 16px 20px;
+    padding: calc(16px * var(--app-scale)) calc(20px * var(--app-scale));
     text-align: left;
-    border-bottom: 1px solid #696969;
+    border-bottom: calc(1px * var(--app-scale)) solid #696969;
   }
 
   td {
-    padding: 20px;
-    border-bottom: 1px solid #696969;
+    padding: calc(20px * var(--app-scale));
+    border-bottom: calc(1px * var(--app-scale)) solid #696969;
     vertical-align: middle;
   }
 
   .product-table-info {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: calc(16px * var(--app-scale));
 
     img {
-      width: 80px;
-      height: 100px;
+      width: calc(80px * var(--app-scale));
+      height: calc(100px * var(--app-scale));
       object-fit: contain;
       background: #E0E0E0;
-      border-radius: 6px;
-      padding: 8px;
+      border-radius: calc(6px * var(--app-scale));
+      padding: calc(8px * var(--app-scale));
     }
 
     h4 {
       font-family: $font-family-2;
-      font-size: 16px;
+      font-size: calc(16px * var(--app-scale));
       font-weight: 600;
       color: #222;
-      margin-bottom: 4px;
+      margin-bottom: calc(4px * var(--app-scale));
     }
 
     p {
       font-family: $font-family-2;
-      font-size: 15px;
+      font-size: calc(15px * var(--app-scale));
       color: #222;
       padding: 0;
     }
@@ -59,60 +59,63 @@
     .product-table-price {
       font-weight: 600;
       color: #222;
-      margin-top: 4px;
+      margin-top: calc(4px * var(--app-scale));
     }
 
     .product-table-old-price {
       color: #aaa;
       text-decoration: line-through;
-      font-size: 12px;
+      font-size: calc(12px * var(--app-scale));
     }
   }
 
   .product-table-qty {
     display: flex;
     align-items: center;
-    border: 1px solid #696969;
-    border-radius: 4px;
+    border: calc(1px * var(--app-scale)) solid #696969;
+    border-radius: calc(4px * var(--app-scale));
     overflow: hidden;
     width: fit-content;
 
     button {
-      width: 36px;
-      height: 36px;
+      width: calc(36px * var(--app-scale));
+      height: calc(36px * var(--app-scale));
       border: none;
       background: #F6FBF2;
-      font-size: 18px;
+      font-size: calc(18px * var(--app-scale));
       cursor: pointer;
       color: #333;
       transition: 0.2s;
-      &:hover { background: $color-main; color: white; }
+      &:hover { 
+        background: $color-main; 
+        color: white; 
+      }
     }
 
     span {
-      width: 40px;
+      width: calc(40px * var(--app-scale));
       text-align: center;
       font-family: $font-family-2;
-      font-size: 14px;
-      border-left: 1px solid #ddd;
-      border-right: 1px solid #ddd;
-      line-height: 36px;
+      font-size: calc(14px * var(--app-scale));
+      border-left: calc(1px * var(--app-scale)) solid #ddd;
+      border-right: calc(1px * var(--app-scale)) solid #ddd;
+      line-height: calc(36px * var(--app-scale));
     }
   }
 
   .product-table-subtotal {
     font-family: $font-family-2;
-    font-size: 15px;
+    font-size: calc(15px * var(--app-scale));
     font-weight: 600;
     color: #222;
   }
 
   .product-table-remove {
-    width: 36px;
-    height: 36px;
+    width: calc(36px * var(--app-scale));
+    height: calc(36px * var(--app-scale));
     background: #e74c3c;
     border: none;
-    border-radius: 6px;
+    border-radius: calc(6px * var(--app-scale));
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -125,7 +128,7 @@
 .product-table-actions {
   display: flex;
   justify-content: space-between;
-  padding: 16px 20px;
+  padding: calc(16px * var(--app-scale)) calc(20px * var(--app-scale));
 
   .secondary-btn {
     background: $color-main;

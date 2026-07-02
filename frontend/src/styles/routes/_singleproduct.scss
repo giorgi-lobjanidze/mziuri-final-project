@@ -3,28 +3,28 @@
 .single-product {
   background-color: #F6FBF2;
   display: flex;
-  gap: 48px;
-  padding: 40px 210px 60px;
+  gap: calc(48px * var(--app-scale));
+  padding: calc(40px * var(--app-scale)) calc(210px * var(--app-scale)) calc(60px * var(--app-scale));
 
   .single-images {
     display: flex;
-    gap: 16px;
+    gap: calc(16px * var(--app-scale));
     flex: 1;
 
     .single-thumbs {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: calc(12px * var(--app-scale));
 
       img {
-        width: 110px;
-        height: 150px;
+        width: calc(110px * var(--app-scale));
+        height: calc(150px * var(--app-scale));
         object-fit: contain;
-        border: 1px solid transparent;
-        border-radius: 4px;
+        border: calc(1px * var(--app-scale)) solid transparent;
+        border-radius: calc(4px * var(--app-scale));
         cursor: pointer;
         background: #E0E0E0;
-        padding: 4px;
+        padding: calc(4px * var(--app-scale));
         transition: 0.2s;
 
         &:hover, &.active { 
@@ -37,29 +37,29 @@
       flex: 1;
       position: relative;
       background: #E0E0E0;
-      border-radius: 8px;
+      border-radius: calc(8px * var(--app-scale));
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 32px;
-      height: 510px;
+      padding: calc(32px * var(--app-scale));
+      height: calc(510px * var(--app-scale));
 
       img {
         width: 100%;
-        max-height: 510px;
+        max-height: calc(510px * var(--app-scale));
         object-fit: contain;
       }
 
       .product-badge {
         position: absolute;
-        top: 16px;
-        left: 16px;
+        top: calc(16px * var(--app-scale));
+        left: calc(16px * var(--app-scale));
         background: #e74c3c;
         color: white;
         font-family: $font-family-2;
-        font-size: 12px;
-        padding: 4px 10px;
-        border-radius: 2px;
+        font-size: calc(12px * var(--app-scale));
+        padding: calc(4px * var(--app-scale)) calc(10px * var(--app-scale));
+        border-radius: calc(2px * var(--app-scale));
       }
     }
   }
@@ -68,11 +68,11 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: calc(16px * var(--app-scale));
 
     h1 {
       font-family: $font-family-2;
-      font-size: 28px;
+      font-size: calc(28px * var(--app-scale));
       font-weight: 500;
       color: #222;
     }
@@ -80,40 +80,40 @@
     .single-rating {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: calc(10px * var(--app-scale));
 
       .stars span { 
-        font-size: 18px; 
+        font-size: calc(18px * var(--app-scale)); 
     }
 
       .review-text {
         font-family: $font-family-2;
-        font-size: 13px;
+        font-size: calc(13px * var(--app-scale));
         color: #888;
       }
 
       .sold-text {
         font-family: $font-family-2;
-        font-size: 13px;
+        font-size: calc(13px * var(--app-scale));
         color: #555;
-        margin-left: 8px;
+        margin-left: calc(8px * var(--app-scale));
       }
     }
 
     .single-price {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: calc(12px * var(--app-scale));
 
       .price-current {
-        font-size: 26px;
+        font-size: calc(26px * var(--app-scale));
         font-weight: 500;
         color: #DD3842;
         font-family: $font-family-2;
       }
 
       .price-old {
-        font-size: 16px;
+        font-size: calc(16px * var(--app-scale));
         color: #aaa;
         text-decoration: line-through;
         font-family: $font-family-2;
@@ -123,9 +123,9 @@
     .single-stock-bar {
       p {
         font-family: $font-family-2;
-        font-size: 13px;
+        font-size: calc(13px * var(--app-scale));
         color: #555;
-        margin-bottom: 6px;
+        margin-bottom: calc(6px * var(--app-scale));
 
         .stock-number { 
             color: $color-main; font-weight: 700; 
@@ -133,15 +133,15 @@
       }
 
       .stock-bar {
-        height: 6px;
+        height: calc(6px * var(--app-scale));
         background: #e0e0e0;
-        border-radius: 3px;
+        border-radius: calc(3px * var(--app-scale));
         overflow: hidden;
 
         .stock-fill {
           height: 100%;
           background: $color-main;
-          border-radius: 3px;
+          border-radius: calc(3px * var(--app-scale));
           transition: width 0.4s ease;
         }
       }
@@ -149,12 +149,12 @@
 
     .single-description {
       font-family: $font-family-2;
-      font-size: 14px;
+      font-size: calc(14px * var(--app-scale));
       color: #555;
       line-height: 1.7;
-      border-top: 1px solid #eee;
-      border-bottom: 1px solid #eee;
-      padding: 16px 0;
+      border-top: calc(1px * var(--app-scale)) solid #eee;
+      border-bottom: calc(1px * var(--app-scale)) solid #eee;
+      padding: calc(16px * var(--app-scale)) 0;
     }
 
     .single-freeship {
@@ -163,7 +163,7 @@
 
       p {
         font-family: $font-family-2;
-        font-size: 13px;
+        font-size: calc(13px * var(--app-scale));
         color: black;
         font-weight: 600;
 
@@ -177,11 +177,11 @@
     .single-option {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: calc(8px * var(--app-scale));
 
       label {
         font-family: $font-family-2;
-        font-size: 18px;
+        font-size: calc(18px * var(--app-scale));
         color: #222;
 
         strong { 
@@ -192,17 +192,17 @@
       .single-option-values {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
+        gap: calc(8px * var(--app-scale));
       }
 
       .single-option-btn {
-        padding: 8px 18px;
-        border: 1px solid #ddd;
+        padding: calc(8px * var(--app-scale)) calc(18px * var(--app-scale));
+        border: calc(1px * var(--app-scale)) solid #ddd;
         background: white;
         font-family: $font-family-2;
-        font-size: 18px;
+        font-size: calc(18px * var(--app-scale));
         cursor: pointer;
-        border-radius: 4px;
+        border-radius: calc(4px * var(--app-scale));
         transition: 0.2s;
 
         &:hover { 
@@ -221,19 +221,19 @@
     .single-availability {
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      border-top: 1px solid #eee;
-      padding-top: 12px;
+      gap: calc(4px * var(--app-scale));
+      border-top: calc(1px * var(--app-scale)) solid #eee;
+      padding-top: calc(12px * var(--app-scale));
 
       p {
         font-family: $font-family-2;
-        font-size: 18px;
+        font-size: calc(18px * var(--app-scale));
         color: #555;
 
         span { 
             font-weight: 600;
             color: #222; 
-            margin-right: 6px; 
+            margin-right: calc(6px * var(--app-scale)); 
         }
       }
     }
@@ -241,28 +241,28 @@
     .single-quantity-row {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: calc(8px * var(--app-scale));
 
       .quantity-label {
         font-family: $font-family-2;
-        font-size: 18px;
+        font-size: calc(18px * var(--app-scale));
         color: #555;
       }
 
       .single-quantity {
         display: flex;
         align-items: center;
-        border: 1px solid black;
+        border: calc(1px * var(--app-scale)) solid black;
         width: fit-content;
-        border-radius: 4px;
+        border-radius: calc(4px * var(--app-scale));
         overflow: hidden;
 
         button {
-          width: 40px;
-          height: 40px;
+          width: calc(40px * var(--app-scale));
+          height: calc(40px * var(--app-scale));
           border: none;
           background: #F6FBF2;
-          font-size: 20px;
+          font-size: calc(20px * var(--app-scale));
           cursor: pointer;
           transition: 0.2s;
           color: #333;
@@ -274,32 +274,32 @@
         }
 
         span {
-          width: 48px;
+          width: calc(48px * var(--app-scale));
           text-align: center;
           font-family: $font-family-2;
-          font-size: 15px;
-          border-left: 1px solid #ddd;
-          border-right: 1px solid #ddd;
-          line-height: 40px;
+          font-size: calc(15px * var(--app-scale));
+          border-left: calc(1px * var(--app-scale)) solid #ddd;
+          border-right: calc(1px * var(--app-scale)) solid #ddd;
+          line-height: calc(40px * var(--app-scale));
         }
       }
     }
 
     .single-buttons {
       display: flex;
-      gap: 12px;
+      gap: calc(12px * var(--app-scale));
 
       .single-add-to-cart {
         flex: 1;
-        padding: 14px;
+        padding: calc(14px * var(--app-scale));
         background: #222;
         color: white;
         border: none;
         font-family: $font-family-2;
-        font-size: 15px;
+        font-size: calc(15px * var(--app-scale));
         cursor: pointer;
         transition: 0.5s;
-        border-radius: 4px;
+        border-radius: calc(4px * var(--app-scale));
 
         &:hover { 
             background: $color-main; 
@@ -311,15 +311,15 @@
 
       .single-buy-now {
         flex: 1;
-        padding: 14px;
+        padding: calc(14px * var(--app-scale));
         background: $color-main;
         color: white;
         border: none;
         font-family: $font-family-2;
-        font-size: 15px;
+        font-size: calc(15px * var(--app-scale));
         cursor: pointer;
         transition: 0.5s;
-        border-radius: 4px;
+        border-radius: calc(4px * var(--app-scale));
 
         &:hover { 
             background: #222; 
@@ -330,13 +330,13 @@
     .single-delivery {
       display: flex;
       flex-direction: column;
-      gap: 8px;
-      border-top: 1px solid #eee;
-      padding-top: 12px;
+      gap: calc(8px * var(--app-scale));
+      border-top: calc(1px * var(--app-scale)) solid #eee;
+      padding-top: calc(12px * var(--app-scale));
 
       p {
         font-family: $font-family-2;
-        font-size: 18px;
+        font-size: calc(18px * var(--app-scale));
         color: #222;
 
         
@@ -350,13 +350,13 @@
     .single-share {
       display: flex;
       align-items: center;
-      gap: 12px;
-      border-top: 1px solid #eee;
-      padding-top: 12px;
+      gap: calc(12px * var(--app-scale));
+      border-top: calc(1px * var(--app-scale)) solid #eee;
+      padding-top: calc(12px * var(--app-scale));
 
       span {
         font-family: $font-family-2;
-        font-size: 18px;
+        font-size: calc(18px * var(--app-scale));
         font-weight: 600;
         color: #222;
       }
@@ -368,8 +368,8 @@
         align-items: center;
         svg {
             background-color: rgb(219, 219, 219);
-            border-radius: 5px;
-            padding: 5px;
+            border-radius: calc(5px * var(--app-scale));
+            padding: calc(5px * var(--app-scale));
             fill: black;
         }
 
@@ -381,9 +381,9 @@
   }
 
   &-error {
-    padding: 60px 210px;
+    padding: calc(60px * var(--app-scale)) calc(210px * var(--app-scale));
     font-family: $font-family-2;
-    font-size: 18px;
+    font-size: calc(18px * var(--app-scale));
     color: #888;
   }
 }

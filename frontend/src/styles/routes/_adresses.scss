@@ -2,63 +2,63 @@
 
 .addresses-page {
   background: #f5f3ee;
-  padding: 40px 210px 60px;
+  padding: calc(40px * var(--app-scale)) calc(210px * var(--app-scale)) calc(60px * var(--app-scale));
 
   .addresses-title {
     text-align: center;
     font-family: $font-family-2;
-    font-size: 36px;
+    font-size: calc(36px * var(--app-scale));
     font-weight: 400;
     color: #222;
-    padding-bottom: 16px;
-    border-bottom: 2px solid #222;
-    margin-bottom: 40px;
+    padding-bottom: calc(16px * var(--app-scale));
+    border-bottom: calc(2px * var(--app-scale)) solid #222;
+    margin-bottom: calc(40px * var(--app-scale));
     text-transform: uppercase;
   }
 
   .addresses-body {
     display: flex;
-    gap: 48px;
+    gap: calc(48px * var(--app-scale));
     align-items: flex-start;
   }
 
   .addresses-form-section {
     flex: 1;
-    max-width: 480px;
+    max-width: calc(480px * var(--app-scale));
 
     h3 {
       font-family: $font-family-2;
-      font-size: 18px;
+      font-size: calc(18px * var(--app-scale));
       font-weight: 600;
       color: #222;
-      margin-bottom: 20px;
+      margin-bottom: calc(20px * var(--app-scale));
     }
 
     form {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: calc(16px * var(--app-scale));
     }
   }
 
   .addresses-field {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: calc(6px * var(--app-scale));
 
     label {
       font-family: $font-family-2;
-      font-size: 13px;
+      font-size: calc(13px * var(--app-scale));
       font-weight: 600;
       color: #222;
     }
 
     input {
-      padding: 14px 16px;
-      border: 1.5px solid #ddd;
-      border-radius: 8px;
+      padding: calc(14px * var(--app-scale)) calc(16px * var(--app-scale));
+      border: calc(1.5px * var(--app-scale)) solid #ddd;
+      border-radius: calc(8px * var(--app-scale));
       font-family: $font-family-2;
-      font-size: 14px;
+      font-size: calc(14px * var(--app-scale));
       outline: none;
       transition: 0.2s;
       background: white;
@@ -71,48 +71,48 @@
 
   .addresses-error {
     font-family: $font-family-2;
-    font-size: 12px;
+    font-size: calc(12px * var(--app-scale));
     color: #e74c3c;
   }
 
   .addresses-server-error {
     font-family: $font-family-2;
-    font-size: 14px;
+    font-size: calc(14px * var(--app-scale));
     color: #e74c3c;
     background: #fdf0f0;
-    padding: 10px 14px;
-    border-radius: 8px;
+    padding: calc(10px * var(--app-scale)) calc(14px * var(--app-scale));
+    border-radius: calc(8px * var(--app-scale));
   }
 
   .addresses-success {
     font-family: $font-family-2;
-    font-size: 14px;
+    font-size: calc(14px * var(--app-scale));
     color: #2ecc71;
     background: #f0fdf4;
-    padding: 10px 14px;
-    border-radius: 8px;
+    padding: calc(10px * var(--app-scale)) calc(14px * var(--app-scale));
+    border-radius: calc(8px * var(--app-scale));
   }
 
   .addresses-checkbox {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: calc(8px * var(--app-scale));
     font-family: $font-family-2;
-    font-size: 14px;
+    font-size: calc(14px * var(--app-scale));
     color: #555;
     cursor: pointer;
 
-    input { accent-color: $color-main; width: 16px; height: 16px; }
+    input { accent-color: $color-main; width: calc(16px * var(--app-scale)); height: calc(16px * var(--app-scale)); }
   }
 
   .addresses-submit {
-    padding: 16px;
+    padding: calc(16px * var(--app-scale));
     background: $color-main;
     color: white;
     border: none;
-    border-radius: 8px;
+    border-radius: calc(8px * var(--app-scale));
     font-family: $font-family-2;
-    font-size: 15px;
+    font-size: calc(15px * var(--app-scale));
     font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
@@ -124,11 +124,11 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: calc(16px * var(--app-scale));
 
     h3 {
       font-family: $font-family-2;
-      font-size: 18px;
+      font-size: calc(18px * var(--app-scale));
       font-weight: 600;
       color: #222;
     }
@@ -136,29 +136,29 @@
 
   .addresses-card {
     background: white;
-    border-radius: 8px;
-    padding: 20px;
+    border-radius: calc(8px * var(--app-scale));
+    padding: calc(20px * var(--app-scale));
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: calc(4px * var(--app-scale));
 
     p {
       font-family: $font-family-2;
-      font-size: 14px;
+      font-size: calc(14px * var(--app-scale));
       color: #444;
     }
 
     .addresses-default-badge {
       position: absolute;
-      top: 12px;
-      right: 12px;
+      top: calc(12px * var(--app-scale));
+      right: calc(12px * var(--app-scale));
       background: $color-main;
       color: white;
-      font-size: 11px;
+      font-size: calc(11px * var(--app-scale));
       font-weight: 600;
-      padding: 4px 10px;
-      border-radius: 4px;
+      padding: calc(4px * var(--app-scale)) calc(10px * var(--app-scale));
+      border-radius: calc(4px * var(--app-scale));
     }
   }
 }
