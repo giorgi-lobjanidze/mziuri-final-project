@@ -11,9 +11,12 @@
   overflow:            hidden;
 
   @include flex(space-between, center, 0, row);
+  flex-wrap: wrap;
+  
 
   .hero-text {
     @include flex(center, flex-start, 0, column);
+    // flex-wrap: wrap;
 
     p, h1 { color: white; }
 
@@ -21,7 +24,7 @@
       @include flex(flex-start, center, calc(10px * var(--app-scale)), row);
       font-family:    $font-family-2;
       text-transform: uppercase;
-      color:          #feedec;
+      color:          #ff0d00;
     }
 
     .hero-header {
@@ -216,10 +219,6 @@
       &--next { right: calc(-25px * var(--app-scale)); }
     }
 
-    .slick-track {
-      display: flex;
-    }
-
     .slick-dots {
       position: relative;
       margin-top: calc(10px * var(--app-scale));
@@ -281,4 +280,93 @@
   background: #F6FBF2;
   padding: calc(1px * var(--app-scale)) calc(185px * var(--app-scale)) calc(80px * var(--app-scale)) calc(16px * var(--app-scale));
   font-family: $font-family-2;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding-left: 20px;
+    padding-right: 20px;
+    height: auto;
+
+    .arrivals {
+      margin: auto;
+      margin-top: 50px;
+    }
+
+    .hero-text {
+      .hero-header { 
+        text-align: center;
+        font-size: 28px; 
+        margin: auto;
+        margin-top: 800px;
+      }
+      .hero-p { 
+        font-size: 13px;
+        text-align: center;
+        margin: auto;
+      }
+
+      .btns-container {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: auto;
+        margin-top: 30px;
+        margin-bottom: 50px;
+      }
+    }
+
+    .img-container img {
+      max-width: 550px;
+      position: absolute;
+      top: 100px;
+      left: 0;
+    }
+  }
+
+  .promo-cards {
+    grid-template-columns: 1fr;
+    padding: 40px 20px;
+    gap: 16px;
+
+    .promo-card {
+      min-height: 320px;
+    }
+  }
+
+  .new-arrivals {
+    padding: 40px 0px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .new-arrivals-content {
+      transform: translateX(-40px);
+      .new-arrivals-header h2 {
+        font-size: 26px;
+      }
+    }
+
+    .new-arrivals-slider-wrapper {
+      padding: 0 20px;
+      margin-left: 50px;
+      .featured-arrow {
+        width: 36px;
+        height: 36px;
+
+        &--prev { left: -10px; }
+        &--next { right: -10px; }
+      }
+    }
+  }
+
+  .features-home,
+  .reviews-home {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .limited-banner {
+    padding: 60px 40px;
+
+    h1 { font-size: 28px; }
+  }
 }

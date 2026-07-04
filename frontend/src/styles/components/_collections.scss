@@ -53,4 +53,34 @@
             font-size: calc(13px * var(--app-scale));
             color: #888;
         }
+}
+@media (max-width: 768px) {
+    .shop {
+    padding: 0;
+  }
+  .collections {
+    gap: 20px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    &__item {
+      margin-left: 10px;
+      &:nth-child(n + 3) {
+        display: none;
+      }
     }
+
+    &__img-wrap {
+      height: 250px;
+      border-radius: 8px;
+    }
+
+    &__name {
+      font-size: 14px;
+    }
+
+    &__count {
+      font-size: 11px;
+    }
+  }
+}

@@ -1,5 +1,6 @@
 .about-reviews {
   margin-top: calc(80px * var(--app-scale));
+  margin-left: 150px;
   text-align: center;
 
   .slick-list {
@@ -135,3 +136,12 @@
     }
   }
 } 
+
+@media (max-width: 768px) {
+  .about-reviews {
+    margin-left: 0;
+      .slick-list {
+        margin-right: 10px;
+      }
+  }
+}

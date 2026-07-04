@@ -48,6 +48,25 @@ function Reviews() {
       name: 'Jason K. Manato',
     },
   ];
+
+  const reviewSliderSettings = {
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    dots: true,
+    arrows: false,
+    speed: 500,
+    infinite: false,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: true,
+        },
+      },
+    ],
+  };
   return (
     <div className="about-reviews">
       <div className="about-reviews-header">
@@ -63,14 +82,7 @@ function Reviews() {
       </div>
       <p className="about-reviews-sub">{t('TeamSub')}</p>
 
-      <Slider
-        slidesToShow={3}
-        slidesToScroll={1}
-        dots={true}
-        arrows={false}
-        speed={500}
-        infinite={false}
-      >
+      <Slider {...reviewSliderSettings}>
         {reviews.map((review, i) => (
           <div
             className="about-review-card-wrapper"

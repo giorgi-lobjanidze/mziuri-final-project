@@ -39,3 +39,14 @@
       }
     }
   }
+
+  @media (max-width: 768px) { 
+     .about-features {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      .about-feature-card {
+        width: 200px;
+      }
+     }
+  }
