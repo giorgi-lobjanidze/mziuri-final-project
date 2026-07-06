@@ -31,3 +31,27 @@
     margin-top: calc(40px * var(--app-scale));
   }
 }
+@media (max-width: 768px) {
+  .wishlist {
+    padding: 24px 16px;
+    min-height: auto;
+
+    h2 {
+      font-size: 22px;
+    }
+
+    p {
+      font-size: 13px;
+    }
+
+    .zero-wishlist {
+      padding-top: 60px;
+    }
+
+    .products-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+  }
+}

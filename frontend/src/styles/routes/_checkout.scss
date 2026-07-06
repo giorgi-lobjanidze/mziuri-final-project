@@ -419,3 +419,34 @@ input[type='text'], select {
     }
   }
 }
+@media (max-width: 768px) {
+  .checkout-page {
+    flex-direction: column;
+
+    .checkout-left {
+      order: 2;
+      max-width: 100%;
+      padding: 24px 16px;
+      border-right: none;
+      border-top: 1px solid #eee;
+    }
+
+    .checkout-right {
+      order: 1;
+      max-width: 100%;
+      padding: 24px 16px;
+    }
+  }
+
+  .checkout-row-2,
+  .checkout-row-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .checkout-summary-item {
+    .checkout-summary-info {
+      h4 { font-size: 13px; }
+      p { font-size: 11px; }
+    }
+  }
+}

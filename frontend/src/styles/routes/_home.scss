@@ -8,7 +8,7 @@
   padding-left:        calc(200px * var(--app-scale));
   padding-right:       calc(200px * var(--app-scale));
   position:            relative;
-  overflow:            hidden;
+  // overflow:            hidden;
 
   @include flex(space-between, center, 0, row);
   flex-wrap: wrap;
@@ -16,7 +16,6 @@
 
   .hero-text {
     @include flex(center, flex-start, 0, column);
-    // flex-wrap: wrap;
 
     p, h1 { color: white; }
 
@@ -56,6 +55,7 @@
 
     img {
       position: absolute;
+      height: 750px;
       right:    calc(180px * var(--app-scale));
       bottom:   0;
       top:      auto;

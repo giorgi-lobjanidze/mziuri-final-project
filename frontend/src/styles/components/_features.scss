@@ -43,6 +43,7 @@
   @media (max-width: 768px) { 
      .about-features {
       display: flex;
+      justify-content: center;
       flex-direction: row;
       flex-wrap: wrap;
       .about-feature-card {

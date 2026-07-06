@@ -9,7 +9,7 @@ function Product({ product, className = '' }) {
   const { toggleWishlist, isWishlisted } = useWishlist();
   const wishlisted = isWishlisted(product.id);
   const { addToCart } = useCart();
-  const { formatPrice, getPrice } = useCurrency();
+  const { formatPrice } = useCurrency();
 
   const handleAddToCart = () => {
     const variant = {

@@ -387,3 +387,14 @@
     color: #888;
   }
 }
+@media (max-width: 768px) {
+  .single-product {
+    flex-wrap: wrap;
+    padding: 40px 30px;
+    .single-images{
+      .single-main-image {
+        width: 350px;
+      }
+    }
+  }
+}

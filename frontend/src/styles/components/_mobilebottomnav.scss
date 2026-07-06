@@ -1,0 +1,58 @@
+@use '../abstracts' as *;
+
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: $color-main;
+    z-index: 500;
+
+    .mobile-bottom-nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #141516;
+      flex: 1;
+    }
+
+    .mobile-bottom-nav-icon-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-bottom-nav-badge {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background: #DD3842;
+      color: white;
+      font-family: $font-family-2;
+      font-size: 11px;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  // reserve space so page content doesn't sit underneath the fixed bar
+  .mobile-bottom-nav-spacer {
+    display: block;
+    height: 60px;
+  }
+}

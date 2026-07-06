@@ -63,3 +63,15 @@
     }
   }
 }
+@media (max-width: 768px) {
+    .cart-page{
+      flex-wrap: wrap;
+      padding:40px 0px;
+      .cart-left {
+        .cart-note {
+          width: 93%;
+          margin: 15px;
+        }
+      }
+    }
+}

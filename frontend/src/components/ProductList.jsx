@@ -40,7 +40,7 @@ const mapProduct = (p, getPrice) => {
   };
 };
 
-function ProductList({ filters, sortBy, view }) {
+function ProductList({ filters, sortBy, view, onFilteredCountChange }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [rawProducts, setRawProducts] = useState([]);
   const { getPrice } = useCurrency();
@@ -51,7 +51,6 @@ function ProductList({ filters, sortBy, view }) {
 
   let products = rawProducts.map((p) => mapProduct(p, getPrice));
 
-  // filter
   if (filters.category.length > 0) {
     products = products.filter((p) => filters.category.some((cat) => p.tags.includes(cat)));
   }
@@ -72,7 +71,6 @@ function ProductList({ filters, sortBy, view }) {
     products = products.filter((p) => getPrice(p.price) <= parseFloat(filters.priceTo));
   }
 
-  // sort
   products = [...products].sort((a, b) => {
     switch (sortBy) {
       case 'alphabetically-az':
@@ -91,6 +89,14 @@ function ProductList({ filters, sortBy, view }) {
         return 0;
     }
   });
+
+  useEffect(() => {
+    onFilteredCountChange?.(products.length);
+  }, [products.length]);
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [filters, sortBy]);
 
   const totalPages = Math.ceil(products.length / PRODUCTS_PER_PAGE);
   const paginated = products.slice(

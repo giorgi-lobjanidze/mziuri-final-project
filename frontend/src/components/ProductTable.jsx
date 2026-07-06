@@ -40,7 +40,7 @@ function ProductTable() {
                   )}
                 </div>
               </td>
-              <td>
+              <td className="product-table-qty-cell">
                 <div className="product-table-qty">
                   <button
                     onClick={() => updateQuantity(item.id, item.variant.title, item.quantity - 1)}
@@ -58,7 +58,7 @@ function ProductTable() {
               <td className="product-table-subtotal">
                 {formatNumber(getPrice(item.price) * item.quantity)}
               </td>
-              <td>
+              <td className="product-table-remove-cell">
                 <button
                   className="product-table-remove"
                   onClick={() => removeFromCart(item.id, item.variant.title)}

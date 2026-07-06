@@ -277,7 +277,7 @@ function Contact() {
                 alt=""
               />
             </h2>
-            <p className="contact-hours">{t('OpenHours')}.</p>
+            <p className="contact-hours">{t('OpenHours')}</p>
 
             {success && <p className="contact-success">{t('MessageSuccessfull')}!</p>}
 

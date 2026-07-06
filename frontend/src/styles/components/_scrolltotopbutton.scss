@@ -34,3 +34,8 @@
     transform: translateY(calc(-3px * var(--app-scale)));
   }
 }
+@media (max-width: 768px) {
+  .scroll-to-top {
+    bottom: 5rem;
+  }
+}

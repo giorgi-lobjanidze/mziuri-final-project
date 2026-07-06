@@ -98,3 +98,21 @@
     }
   }
 }
+@media (max-width: 768px) {
+  .about {
+    padding: 80px 10px;
+    .about-team {
+      .about-team-grid {
+        grid-template-columns: repeat(1, 1fr);
+        .about-team-card {
+          .about-team-image {
+            img {
+              height: 650px;
+              object-fit: cover;
+            }
+          }
+        }
+      }
+    }
+  }
+}

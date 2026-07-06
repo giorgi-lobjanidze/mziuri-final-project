@@ -1,4 +1,5 @@
 @use '../abstracts' as *;
+
 .shop-banner {
     background-image: url(//brew-blis.myshopify.com/cdn/shop/files/breadcrum_1920x.png?v=1737448594);
     height: calc(300px * var(--app-scale));
@@ -26,4 +27,214 @@
         gap: calc(32px * var(--app-scale));
         align-items: flex-start;
     }
+
+    .mobile-search,
+    .mobile-filter-bar {
+        display: none;
+    }
+}
+
+.mobile-filter-overlay {
+    display: none;
+}
+
+@media (max-width: 768px) {
+  .shop {
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+
+    .mobile-search {
+      display: flex;
+      width: 95%;
+      border: 1px solid black;
+      border-radius: 4px;
+      overflow: hidden;
+      background: white;
+      margin: 16px auto;
+      order: 1;
+
+      input {
+        flex: 1;
+        width: 100%;
+        padding: 12px 16px;
+        border: none;
+        outline: none;
+        font-family: $font-family-2;
+        font-size: 14px;
+        background: #F6FBF2;
+      }
+
+      button {
+        background: $color-main;
+        border: none;
+        padding: 0 16px;
+        cursor: pointer;
+      }
+    }
+
+    .mobile-filter-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 90%;
+      background: white;
+      border: 1px solid black;
+      border-radius: 6px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+      margin: 0px auto 16px auto;
+      cursor: pointer;
+      font-family: $font-family-2;
+      font-size: 14px;
+      font-weight: 600;
+      order: 2;
+
+      span:first-child {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-transform: uppercase;
+      }
+
+      .mobile-filter-count {
+        color: #777;
+        font-weight: 400;
+      }
+    }
+
+    .shop-controls {
+      display: none;
+    }
+
+    .shop-body {
+      order: 3;
+      width: 100%;
+
+      .filter-section {
+        display: none;
+      }
+
+      .product-list {
+        &.grid-2, &.grid-3, &.grid-4, &.list {
+          padding: 10px 15px;
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      .pagination {
+        margin-bottom: 30px;
+      }
+    }
+  }
+
+  .shop-banner {
+    height: 150px;
+    font-size: 24px;
+    .icon {
+      height: 24px;
+      width: 22px;
+    }
+  }
+
+  .mobile-filter-overlay {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0;
+    background: white;
+    z-index: 600;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+
+    &.open {
+      transform: translateX(0);
+    }
+
+    .mobile-filter-overlay-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #141516;
+      color: white;
+      padding: 18px 16px;
+      font-family: $font-family-2;
+      font-weight: 700;
+      font-size: 15px;
+      text-transform: uppercase;
+
+      .mobile-filter-close {
+        background: transparent;
+        border: none;
+        color: white;
+        width: 32px;
+        height: 32px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+    }
+
+    .mobile-filter-overlay-body {
+      padding: 16px;
+
+      .mobile-filter-overlay-count {
+        font-family: $font-family-2;
+        font-size: 13px;
+        color: #777;
+        margin-bottom: 12px;
+      }
+
+      .filter-section {
+        display: flex;
+        min-width: 0;
+      }
+
+      .mobile-filter-sort {
+        padding: 16px 0;
+        border-bottom: 1px solid #eee;
+
+        .sortby {
+          border: none;
+          background: transparent;
+          padding: 0;
+          border-radius: 0;
+
+          .sort-select {
+            margin-left: 0;
+            width: 100%;
+
+            select {
+              flex: 1;
+            }
+          }
+        }
+      }
+    }
+
+    .mobile-filter-overlay-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+
+      span {
+        font-family: $font-family-2;
+        font-size: 14px;
+        cursor: pointer;
+        color: #444;
+      }
+
+      button {
+        background: $color-main;
+        border: none;
+        color: #141516;
+        font-weight: 700;
+        padding: 12px 32px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-family: $font-family-2;
+        text-transform: uppercase;
+      }
+    }
+  }
 }

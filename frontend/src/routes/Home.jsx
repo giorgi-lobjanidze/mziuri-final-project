@@ -10,7 +10,7 @@ import { useCurrency } from '../context/CurrencyContext';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Features from '../components/Features';
 import InfCarousel from '../components/InfCarousel';
 import Reviews from '../components/Reviews';
@@ -93,6 +93,7 @@ function Home() {
   const { useFakeLoader } = useLoader();
   const { getPrice } = useCurrency();
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     useFakeLoader();
@@ -150,8 +151,8 @@ function Home() {
             {t('ExploreRichDiverseWorldSecond')}
           </p>
           <div className="btns-container">
-            <Primarybtn>{t('ShopSale')}</Primarybtn>
-            <Secondarybtn>{t('OurCollections')}</Secondarybtn>
+            <Primarybtn onClick={() => navigate('shop')}>{t('ShopSale')}</Primarybtn>
+            <Secondarybtn onClick={() => navigate('shop')}>{t('OurCollections')}</Secondarybtn>
           </div>
         </div>
         <div className="img-container">
@@ -305,7 +306,7 @@ function Home() {
         <h1>
           {t('PourBeerFirst')} <br /> {t('PourBeerSecond')}
         </h1>
-        <Primarybtn>{t('ShopSale')}</Primarybtn>
+        <Primarybtn onClick={() => navigate('shop')}>{t('ShopSale')}</Primarybtn>
       </div>
 
       <div className="reviews-home">

@@ -1,18 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 import { useTranslation } from 'react-i18next';
 import { useCurrency } from '../context/CurrencyContext';
+import { useWishlist } from '../context/WishlistContext';
 
-function Header() {
+function Header({ isSearchOpen, setIsSearchOpen }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isCurrencyOpen, setIsCurrencyOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
+  // const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { totalItems } = useCart();
   const [showTopBar, setShowTopBar] = useState(true);
   const { t, i18n } = useTranslation();
   const { currency, setCurrency, CURRENCIES } = useCurrency();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const { wishlist } = useWishlist();
+  const wishlistCount = wishlist?.length ?? 0;
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -157,13 +161,17 @@ function Header() {
       )}
 
       <div className={`navbar ${showTopBar ? '' : 'sticky'}`}>
-        <button className="burger-btn" onClick={() => setIsMobileMenuOpen(true)}>
+        <button
+          className="burger-btn"
+          onClick={() => setIsMobileMenuOpen(true)}
+        >
           <span />
           <span />
           <span />
         </button>
         <div className="logo">
           <img
+            onClick={() => navigate('/')}
             src="//brew-blis.myshopify.com/cdn/shop/files/Logo_200x@2x.png?v=1736775810"
             alt="Brew Blis"
             height="113"
@@ -505,37 +513,98 @@ function Header() {
       </div>
       <div className={`mobile-sidebar ${isMobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-sidebar-header">
-          <span className="mobile-close" onClick={() => setIsMobileMenuOpen(false)}>
+          <span
+            className="mobile-close"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
             Close ✕
           </span>
         </div>
 
         <div className="mobile-search">
-          <input type="text" placeholder="Search" />
+          <input
+            type="text"
+            placeholder="Search"
+          />
           <button>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
               <g clipPath="url(#clip0_11518_1140)">
-                <path d="M9.74062 0C15.1116 0 19.4812 4.36964 19.4812 9.74063C19.4812 12.1734 18.5847 14.4008 17.1047 16.1097L23.7941 22.7997C24.0687 23.0743 24.0686 23.5195 23.794 23.7941C23.5194 24.0687 23.0743 24.0686 22.7997 23.7941L16.1104 17.1041C14.4014 18.5845 12.1738 19.4813 9.74062 19.4813C4.36964 19.4813 0 15.1116 0 9.74063C0 4.36964 4.36964 0 9.74062 0ZM9.74062 18.075C14.3362 18.075 18.075 14.3362 18.075 9.74063C18.075 5.14505 14.3362 1.40625 9.74062 1.40625C5.14505 1.40625 1.40625 5.14505 1.40625 9.74063C1.40625 14.3362 5.14505 18.075 9.74062 18.075Z" fill="#ffffff"/>
+                <path
+                  d="M9.74062 0C15.1116 0 19.4812 4.36964 19.4812 9.74063C19.4812 12.1734 18.5847 14.4008 17.1047 16.1097L23.7941 22.7997C24.0687 23.0743 24.0686 23.5195 23.794 23.7941C23.5194 24.0687 23.0743 24.0686 22.7997 23.7941L16.1104 17.1041C14.4014 18.5845 12.1738 19.4813 9.74062 19.4813C4.36964 19.4813 0 15.1116 0 9.74063C0 4.36964 4.36964 0 9.74062 0ZM9.74062 18.075C14.3362 18.075 18.075 14.3362 18.075 9.74063C18.075 5.14505 14.3362 1.40625 9.74062 1.40625C5.14505 1.40625 1.40625 5.14505 1.40625 9.74063C1.40625 14.3362 5.14505 18.075 9.74062 18.075Z"
+                  fill="#ffffff"
+                />
               </g>
             </svg>
           </button>
         </div>
 
-        <Link to="/profile" className="mobile-login" onClick={() => setIsMobileMenuOpen(false)}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none">
-            <path d="M12 0C8.51067 0 5.67188 2.8388 5.67188 6.32812C5.67188 9.81745 8.51067 12.6562 12 12.6562C15.4893 12.6562 18.3281 9.81745 18.3281 6.32812C18.3281 2.8388 15.4893 0 12 0ZM12 11.25C9.28608 11.25 7.07812 9.04205 7.07812 6.32812C7.07812 3.6142 9.28608 1.40625 12 1.40625C14.7139 1.40625 16.9219 3.6142 16.9219 6.32812C16.9219 9.04205 14.7139 11.25 12 11.25Z" fill="#1E1F20"/>
-            <path d="M19.8734 16.7904C18.1409 15.0313 15.8442 14.0625 13.4062 14.0625H10.5938C8.15588 14.0625 5.85909 15.0313 4.12659 16.7904C2.40258 18.5409 1.45312 20.8515 1.45312 23.2969C1.45312 23.6852 1.76794 24 2.15625 24H21.8438C22.2321 24 22.5469 23.6852 22.5469 23.2969C22.5469 20.8515 21.5974 18.5409 19.8734 16.7904ZM2.89031 22.5938C3.24258 18.6053 6.56302 15.4688 10.5938 15.4688H13.4062C17.437 15.4688 20.7574 18.6053 21.1097 22.5938H2.89031Z" fill="#1E1F20"/>
+        <Link
+          to="/profile"
+          className="mobile-login"
+          onClick={() => setIsMobileMenuOpen(false)}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M12 0C8.51067 0 5.67188 2.8388 5.67188 6.32812C5.67188 9.81745 8.51067 12.6562 12 12.6562C15.4893 12.6562 18.3281 9.81745 18.3281 6.32812C18.3281 2.8388 15.4893 0 12 0ZM12 11.25C9.28608 11.25 7.07812 9.04205 7.07812 6.32812C7.07812 3.6142 9.28608 1.40625 12 1.40625C14.7139 1.40625 16.9219 3.6142 16.9219 6.32812C16.9219 9.04205 14.7139 11.25 12 11.25Z"
+              fill="#1E1F20"
+            />
+            <path
+              d="M19.8734 16.7904C18.1409 15.0313 15.8442 14.0625 13.4062 14.0625H10.5938C8.15588 14.0625 5.85909 15.0313 4.12659 16.7904C2.40258 18.5409 1.45312 20.8515 1.45312 23.2969C1.45312 23.6852 1.76794 24 2.15625 24H21.8438C22.2321 24 22.5469 23.6852 22.5469 23.2969C22.5469 20.8515 21.5974 18.5409 19.8734 16.7904ZM2.89031 22.5938C3.24258 18.6053 6.56302 15.4688 10.5938 15.4688H13.4062C17.437 15.4688 20.7574 18.6053 21.1097 22.5938H2.89031Z"
+              fill="#1E1F20"
+            />
           </svg>
           Login / Register
         </Link>
 
         <div className="mobile-nav-links">
-          <Link to="/" onClick={() => setIsMobileMenuOpen(false)}>{t('Home')}</Link>
-          <Link to="/shop" onClick={() => setIsMobileMenuOpen(false)}>{t('Shop')} <span className="mobile-new-badge">New</span></Link>
-          <Link to="/about" onClick={() => setIsMobileMenuOpen(false)}>{t('Pages')}</Link>
-          <Link to="/blog" onClick={() => setIsMobileMenuOpen(false)}>{t('Blog')}</Link>
-          <Link to="/wishlist" onClick={() => setIsMobileMenuOpen(false)}>{t('Wishlist')} ( 0 )</Link>
-          <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)}>Contact Us</Link>
+          <Link
+            to="/"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {t('Home')}
+          </Link>
+          <Link
+            to="/shop"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {t('Shop')} <span className="mobile-new-badge">New</span>
+          </Link>
+          <Link
+            to="/about"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {t('Pages')}
+          </Link>
+          <Link
+            to="/blog"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {t('Blog')}
+          </Link>
+          <Link
+            to="/wishlist"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {t('Wishlist')} ( {wishlistCount} )
+          </Link>
+          <Link
+            to="/contact"
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            {t('ContactUs')}
+          </Link>
         </div>
 
         <div className="mobile-bottom">
@@ -561,7 +630,10 @@ function Header() {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="mobile-overlay" onClick={() => setIsMobileMenuOpen(false)} />
+        <div
+          className="mobile-overlay"
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
       )}
     </>
   );

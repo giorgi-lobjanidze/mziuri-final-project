@@ -157,3 +157,27 @@
         }
     }
 }
+.filter-section.mobile-accordion {
+  .accordion-item {
+    border-bottom: 1px solid #eee;
+
+    .filter-group-header {
+      cursor: pointer;
+      padding: 16px 0;
+
+      .accordion-arrow {
+        transition: transform 0.2s;
+      }
+    }
+
+    .accordion-content {
+      display: none;
+      padding-bottom: 16px;
+    }
+
+    &.open {
+      .accordion-arrow { transform: rotate(90deg); }
+      .accordion-content { display: flex; flex-direction: column; gap: 10px; }
+    }
+  }
+}

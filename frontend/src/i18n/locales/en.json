@@ -180,5 +180,8 @@
   "ResetYourPassword": "Reset Your Password",
   "ResetPasswordEmail": "We will send you an email to reset your password.",
   "Submit": "Submit",
-  "Cancel": "Cancel"
+  "Cancel": "Cancel",
+  "FilterAndSort":"Filter And Sort",
+  "RemoveAll":"Remove All",
+  "Apply":"Apply"
 }

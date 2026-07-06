@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Header from './layouts/Header';
 import Main from './layouts/Main';
@@ -25,6 +26,7 @@ import ForgotPasword from './routes/ForgotPasword';
 import ResetPassword from './routes/ResetPassword';
 import ScrollToTopButton from './components/ScrollToTopButton';
 import Addresses from './routes/Addresses';
+import MobileBottomNav from './components/MobileBottomNav';
 
 function App() {
   useDocumentTitle();
@@ -32,10 +34,14 @@ function App() {
   useAppScale();
 
   const { loading } = useLoader();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
     <>
-      <Header />
+      <Header
+        isSearchOpen={isSearchOpen}
+        setIsSearchOpen={setIsSearchOpen}
+      />
       <Main>
         {loading && <Spinnerloader />}
         <Routes>
@@ -107,6 +113,11 @@ function App() {
         <ScrollToTopButton />
       </Main>
       <Footer />
+      <MobileBottomNav
+        isSearchOpen={isSearchOpen}
+        setIsSearchOpen={setIsSearchOpen}
+      />
+      <div className="mobile-bottom-nav-spacer" />
     </>
   );
 }
