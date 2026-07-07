@@ -1,0 +1,16 @@
+export { default as About } from './About';
+export { default as Addresses } from './Addresses';
+export { default as Blog } from './Blog';
+export { default as Cart } from './Cart';
+export { default as Checkout } from './Checkout';
+export { default as Contact } from './Contact';
+export { default as ForgotPasword } from './ForgotPasword';
+export { default as Home } from './Home';
+export { default as Login } from './Login';
+export { default as NotFound } from './NotFound';
+export { default as Profile } from './Profile';
+export { default as Register } from './Register';
+export { default as ResetPassword } from './ResetPassword';
+export { default as Shop } from './Shop';
+export { default as SingleProduct } from './SingleProduct';
+export { default as Wishlist } from './Wishlist';

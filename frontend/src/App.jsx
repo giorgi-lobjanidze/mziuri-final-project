@@ -4,28 +4,30 @@ import Header from './layouts/Header';
 import Main from './layouts/Main';
 import Footer from './layouts/Footer';
 import './styles/style.scss';
-import Home from './routes/Home';
-import About from './routes/About';
-import Blog from './routes/Blog';
-import Cart from './routes/Cart';
-import Checkout from './routes/Checkout';
-import Contact from './routes/Contact';
-import Login from './routes/Login';
-import NotFound from './routes/NotFound';
-import Profile from './routes/Profile';
-import Register from './routes/Register';
-import Shop from './routes/Shop';
-import SingleProduct from './routes/SingleProduct';
-import Wishlist from './routes/Wishlist';
+import {
+  About,
+  Addresses,
+  Blog,
+  Cart,
+  Checkout,
+  Contact,
+  ForgotPasword,
+  Home,
+  Login,
+  NotFound,
+  Profile,
+  Register,
+  ResetPassword,
+  Shop,
+  SingleProduct,
+  Wishlist,
+} from './routes';
 import useDocumentTitle from './hooks/useDocumentTitle';
 import useScrollTop from './hooks/useScrollTop';
 import useAppScale from './hooks/useAppScale';
 import { useLoader } from './context/LoaderContext';
 import Spinnerloader from './components/Spinnerloader';
-import ForgotPasword from './routes/ForgotPasword';
-import ResetPassword from './routes/ResetPassword';
 import ScrollToTopButton from './components/ScrollToTopButton';
-import Addresses from './routes/Addresses';
 import MobileBottomNav from './components/MobileBottomNav';
 
 function App() {
