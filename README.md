@@ -70,13 +70,7 @@ Performance optimizations include:
 
 ## 📱 Responsive Design
 
-Designed to work seamlessly on:
-
-- Desktop
-- Tablet
-- Mobile
-
----
+Designed to work seamlessly on both Desktop and Mobile
 
 ## 🗄️ Database
 
@@ -84,7 +78,6 @@ MongoDB stores:
 
 - Products
 - Users
-- Orders
 - User favorites
 - Shopping cart data
 
@@ -198,4 +191,4 @@ env.example
 
 ---
 
-Made with 🍺 and ☕ by **Giorgi**
+Made by **Giorgi Lobjanidze**
